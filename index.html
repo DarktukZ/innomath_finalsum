@@ -33,7 +33,7 @@ code{font-family:var(--mono);font-size:.88em;background:var(--navy-soft);padding
 .key{background:var(--navy-soft);border-color:var(--navy)}.key .label{color:var(--navy)}
 .note{background:var(--amber-soft);border-color:var(--amber)}.note .label{color:var(--amber)}
 .warn{background:var(--red-soft);border-color:var(--red)}.warn .label{color:var(--red)}
-.tw{overflow-x:auto;margin:10px 0}table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:420px}
+.tw{overflow-x:auto;margin:10px 0}table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:480px}
 th{background:var(--navy);color:var(--onnavy);text-align:left;padding:6px 10px;font-weight:600}
 td{padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top}tr.hl td{background:var(--hl)}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}.two>.box{margin:0}
@@ -47,6 +47,27 @@ math{font-size:1.05em}
 .quizcard .meta{font-size:.88rem;color:var(--muted)}
 .btn-quiz{flex:none;display:inline-block;background:var(--navy);color:var(--onnavy);font:700 1rem var(--disp);padding:10px 20px;border-radius:8px;text-decoration:none}
 .btn-quiz:hover{opacity:.9}
+/* responsive: phone + iPad */
+html{-webkit-text-size-adjust:100%}
+.toc{-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent);padding-right:24px}
+.toc a{padding:7px 14px}
+figure{overflow-x:auto}
+@media (min-width:900px){main{max-width:820px}body{font-size:17px}}
+@media (max-width:600px){
+  body{font-size:16.5px;line-height:1.8}
+  h1{font-size:1.45rem}h2{font-size:1.12rem;margin-top:28px}h3{font-size:1.02rem}
+  .box{padding:10px 12px}
+  figure svg{min-width:560px}
+  .tw{overflow:visible}
+  .tw table{min-width:0;font-size:.95rem}
+  .tw thead{display:none}
+  .tw tr{display:block;border:1px solid var(--line);border-radius:8px;margin:0 0 10px;padding:6px 10px;background:var(--bg)}
+  .tw tr.hl{background:var(--hl);border-color:var(--amber);padding:4px 10px}
+  .tw td{display:block;border:0;padding:4px 0}
+  .tw td[data-label]:not([data-label=""])::before{content:attr(data-label);display:block;font:700 .78rem var(--disp);color:var(--navy);letter-spacing:.02em}
+  .tw tr.hl td{background:transparent}
+  .quizcard{padding:14px}.btn-quiz{width:100%;text-align:center}
+}
 </style>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
@@ -63,9 +84,9 @@ math{font-size:1.05em}
 <h2>ภาพรวมในหน้าเดียว</h2>
 <p>ข้อสอบเก่า (ต้น 64) มี 3 ตอน 6 ข้อ 20 คะแนน <b>เขียนตอบทั้งหมด</b> — ถามให้ "อธิบายลักษณะสำคัญ / ระบุ / ยกตัวอย่าง / เขียนขั้นตอน" ไม่ใช่ปรนัย <span class="ref">ข้อสอบ น.1–5</span></p>
 <div class="tw"><table><thead><tr><th>ตอน</th><th>ข้อสอบเก่าถาม</th><th>คะแนน</th><th>อ่านส่วนไหน</th></tr></thead>
-<tr><td>1</td><td>1.1 ลักษณะสำคัญของเอกสารสรุปมโนทัศน์ / เอกสารเชื่อมโยง · 1.2 ข้อควรพิจารณาในการออกแบบเอกสารตัวอย่างงาน 2 ข้อ</td><td>5</td><td>หัวข้อ 1</td></tr>
-<tr><td>2</td><td>2. เขียนขั้นตอนสร้าง 4 งานใน GeoGebra · 3. เล่านวัตกรรมเทคโนโลยี 2 ชิ้น + เหตุผล + ลักษณะ</td><td>5 + 3</td><td>หัวข้อ 2, 3</td></tr>
-<tr><td>3</td><td>4. ความรู้เชิงมโนทัศน์ vs เชิงกระบวนการ + ตัวอย่าง · 5. การเขียนจุดประสงค์ · 6. องค์ประกอบแผน + ความสัมพันธ์</td><td>7</td><td>หัวข้อ 4</td></tr>
+<tr><td data-label="ตอน">1</td><td data-label="ข้อสอบเก่าถาม">1.1 ลักษณะสำคัญของเอกสารสรุปมโนทัศน์ / เอกสารเชื่อมโยง · 1.2 ข้อควรพิจารณาในการออกแบบเอกสารตัวอย่างงาน 2 ข้อ</td><td data-label="คะแนน">5</td><td data-label="อ่านส่วนไหน">หัวข้อ 1</td></tr>
+<tr><td data-label="ตอน">2</td><td data-label="ข้อสอบเก่าถาม">2. เขียนขั้นตอนสร้าง 4 งานใน GeoGebra · 3. เล่านวัตกรรมเทคโนโลยี 2 ชิ้น + เหตุผล + ลักษณะ</td><td data-label="คะแนน">5 + 3</td><td data-label="อ่านส่วนไหน">หัวข้อ 2, 3</td></tr>
+<tr><td data-label="ตอน">3</td><td data-label="ข้อสอบเก่าถาม">4. ความรู้เชิงมโนทัศน์ vs เชิงกระบวนการ + ตัวอย่าง · 5. การเขียนจุดประสงค์ · 6. องค์ประกอบแผน + ความสัมพันธ์</td><td data-label="คะแนน">7</td><td data-label="อ่านส่วนไหน">หัวข้อ 4</td></tr>
 </table></div>
 <ol class="big">
   <li><b>สื่อเอกสาร 3 กลุ่ม</b> — เฉพาะ (สรุปมโนทัศน์ · เชื่อมโยง · ตัวอย่างงาน · แนะแนวทาง) / ทั่วไป (ใบกิจกรรม · ใบงาน · ใบความรู้) / สมบูรณ์ในตัว (บทเรียนสำเร็จรูป · บทเรียนการ์ตูน · ชุดการเรียนการสอน) <span class="ref">สื่อ น.5</span></li>
@@ -87,9 +108,9 @@ math{font-size:1.05em}
 
 <h3>แผนผัง 3 กลุ่ม (แบ่งตามขอบเขตเนื้อหา)</h3>
 <div class="tw"><table><thead><tr><th>กลุ่ม</th><th>สมาชิก</th><th>จำง่ายๆ</th></tr></thead>
-<tr><td><b>1. เฉพาะ</b></td><td>1.1 เอกสารสรุปมโนทัศน์ · 1.2 เอกสารเชื่อมโยง · 1.3 เอกสารตัวอย่างงาน · 1.4 เอกสารแนะแนวทาง</td><td>ออกแบบมาเพื่อจุดประสงค์เฉพาะอย่าง</td></tr>
-<tr><td><b>2. ทั่วไป</b></td><td>2.1 ใบกิจกรรม · 2.2 ใบงาน · 2.3 ใบความรู้</td><td>ใช้ประกอบการสอนทั่วไป</td></tr>
-<tr><td><b>3. สมบูรณ์ในตัว</b></td><td>3.1 บทเรียนแบบโปรแกรม/สำเร็จรูป · 3.2 บทเรียนการ์ตูน · 3.3 ชุดการเรียนการสอน</td><td>เรียนเองได้ครบในชุดเดียว</td></tr>
+<tr><td data-label="กลุ่ม"><b>1. เฉพาะ</b></td><td data-label="สมาชิก">1.1 เอกสารสรุปมโนทัศน์ · 1.2 เอกสารเชื่อมโยง · 1.3 เอกสารตัวอย่างงาน · 1.4 เอกสารแนะแนวทาง</td><td data-label="จำง่ายๆ">ออกแบบมาเพื่อจุดประสงค์เฉพาะอย่าง</td></tr>
+<tr><td data-label="กลุ่ม"><b>2. ทั่วไป</b></td><td data-label="สมาชิก">2.1 ใบกิจกรรม · 2.2 ใบงาน · 2.3 ใบความรู้</td><td data-label="จำง่ายๆ">ใช้ประกอบการสอนทั่วไป</td></tr>
+<tr><td data-label="กลุ่ม"><b>3. สมบูรณ์ในตัว</b></td><td data-label="สมาชิก">3.1 บทเรียนแบบโปรแกรม/สำเร็จรูป · 3.2 บทเรียนการ์ตูน · 3.3 ชุดการเรียนการสอน</td><td data-label="จำง่ายๆ">เรียนเองได้ครบในชุดเดียว</td></tr>
 </table></div>
 <p class="ref">สื่อ น.5, 33, 44, 59</p>
 
@@ -127,10 +148,10 @@ math{font-size:1.05em}
 (3) ใช้เป็น<b>แนวทางฝึกทำ</b> (How to) เช่น แก้ระบบสมการสองตัวแปรด้วยการกำจัดตัวแปร</div>
 <p><b>ประเภทตัวอย่างงาน 4 แบบ</b> (Booth et al., 2015) <span class="ref">สื่อ น.19–24</span></p>
 <div class="tw"><table><thead><tr><th>ประเภท</th><th>หน้าตา (ตัวอย่างในสไลด์: $3(4x+7)=15$)</th></tr></thead>
-<tr><td>1. Faded Worked Example</td><td>ตัวอย่างแรกทำครบ → ข้อถัดไปทำให้ครึ่งทาง ให้นักเรียนทำต่อ → "Your Turn" ทำเองทั้งข้อ (ค่อยๆ ลดความช่วยเหลือ)</td></tr>
-<tr><td>2. Worked Example with Self-explanation</td><td>วิธีทำถูก ✓ + คำถามให้อธิบาย เช่น "ทำไมลบ 7 ทั้งสองข้าง" แล้วทำข้อคล้ายกัน</td></tr>
-<tr><td>3. Incorrect Worked Example</td><td>วิธีทำผิด ✗ ให้หาว่าผิดตรงไหน / ผิดเพราะอะไร (หน้าต่อ: เทียบวิธีถูกกับผิด)</td></tr>
-<tr><td>4. Comparing Worked Examples</td><td>วิธีถูก 2 วิธีเทียบกัน (หาร 3 ก่อน vs กระจายก่อน) ถามว่าต่างกันอย่างไร จะเลือกวิธีไหน</td></tr>
+<tr><td data-label="ประเภท">1. Faded Worked Example</td><td data-label="หน้าตา (ตัวอย่างในสไลด์: $3(4x+7)=15$)">ตัวอย่างแรกทำครบ → ข้อถัดไปทำให้ครึ่งทาง ให้นักเรียนทำต่อ → "Your Turn" ทำเองทั้งข้อ (ค่อยๆ ลดความช่วยเหลือ)</td></tr>
+<tr><td data-label="ประเภท">2. Worked Example with Self-explanation</td><td data-label="หน้าตา (ตัวอย่างในสไลด์: $3(4x+7)=15$)">วิธีทำถูก ✓ + คำถามให้อธิบาย เช่น "ทำไมลบ 7 ทั้งสองข้าง" แล้วทำข้อคล้ายกัน</td></tr>
+<tr><td data-label="ประเภท">3. Incorrect Worked Example</td><td data-label="หน้าตา (ตัวอย่างในสไลด์: $3(4x+7)=15$)">วิธีทำผิด ✗ ให้หาว่าผิดตรงไหน / ผิดเพราะอะไร (หน้าต่อ: เทียบวิธีถูกกับผิด)</td></tr>
+<tr><td data-label="ประเภท">4. Comparing Worked Examples</td><td data-label="หน้าตา (ตัวอย่างในสไลด์: $3(4x+7)=15$)">วิธีถูก 2 วิธีเทียบกัน (หาร 3 ก่อน vs กระจายก่อน) ถามว่าต่างกันอย่างไร จะเลือกวิธีไหน</td></tr>
 </table></div>
 <div class="box ex"><span class="label">ตัวอย่างงานผิดในสไลด์ (ตรวจแล้ว) <span class="ref">สื่อ น.22</span></span>
 $3(4x+7)=15 \Rightarrow 4x+7=5 \Rightarrow$ <b>ลบ 7 แค่ข้างซ้าย</b> $\Rightarrow 4x=5 \Rightarrow x=\tfrac54$ ✗<br>
@@ -156,9 +177,9 @@ $3(4x+7)=15 \Rightarrow 4x+7=5 \Rightarrow$ <b>ลบ 7 แค่ข้างซ
 <p>เอกสารประกอบการจัดกิจกรรม ให้นักเรียน "ปฏิบัติกิจกรรมตามรูปแบบหรือกระบวนการที่ชัดเจน" รูปแบบขึ้นกับวิธีสอน/รูปแบบการสอน/ลักษณะกิจกรรมที่เลือก <span class="ref">สื่อ น.34</span></p>
 <p><b>ส่วนประกอบ:</b> ชื่อ-สกุล เลขที่ ชั้น · ชื่อกิจกรรม (เนื้อหา) · คำชี้แจง · ข้อมูล/เนื้อหา (มีหรือไม่ก็ได้) · <b>กิจกรรมที่ให้ทำ + บริเวณบันทึก</b> (คิด อ่าน เขียน สรุป สะท้อนคิด — ต้องออกแบบรอบคอบที่สุด) · อื่นๆ เช่น แหล่งเรียนรู้ เฉลย <span class="ref">สื่อ น.35</span></p>
 <div class="tw"><table><thead><tr><th>ฐานในการออกแบบกิจกรรม</th><th>ตัวอย่าง</th></tr></thead>
-<tr><td>วิธีสอน</td><td>บรรยาย · อภิปราย · นิรนัย · อุปนัย · สาธิต · ทดลอง · ศูนย์การเรียน · ทัศนศึกษา</td></tr>
-<tr><td>รูปแบบการสอน</td><td>Cooperative learning · Project-based learning</td></tr>
-<tr><td>กิจกรรมคณิตศาสตร์</td><td>ทักษะและกระบวนการ · กิจกรรมเชิงสำรวจ</td></tr></table></div>
+<tr><td data-label="ฐานในการออกแบบกิจกรรม">วิธีสอน</td><td data-label="ตัวอย่าง">บรรยาย · อภิปราย · นิรนัย · อุปนัย · สาธิต · ทดลอง · ศูนย์การเรียน · ทัศนศึกษา</td></tr>
+<tr><td data-label="ฐานในการออกแบบกิจกรรม">รูปแบบการสอน</td><td data-label="ตัวอย่าง">Cooperative learning · Project-based learning</td></tr>
+<tr><td data-label="ฐานในการออกแบบกิจกรรม">กิจกรรมคณิตศาสตร์</td><td data-label="ตัวอย่าง">ทักษะและกระบวนการ · กิจกรรมเชิงสำรวจ</td></tr></table></div>
 <p class="ref">สื่อ น.36</p>
 <p><b>วิธีสอนแบบอุปนัย:</b> นักเรียนสร้างความรู้ใหม่ด้วยตนเองจากตัวอย่าง — สังเกตชุดตัวอย่าง/เติมข้อมูล → หาความสัมพันธ์ → เขียนข้อสรุป → สร้างข้อสรุปที่เป็นความรู้ (ตัวอย่างสไลด์: $(a^m)^n=a^{mn}$ จากตาราง $(5^2)^4=5^8$, $((-2)^{-3})^5=(-2)^{-15}$, $(7^2)^{-3}=7^{-6}$, $(11^{-3})^{-2}=11^6$) <span class="ref">สื่อ น.3, 37–38</span></p>
 
@@ -175,8 +196,8 @@ $3(4x+7)=15 \Rightarrow 4x+7=5 \Rightarrow$ <b>ลบ 7 แค่ข้างซ
 <h3>3. สื่อสมบูรณ์ในตัว</h3>
 <p><b>3.1 บทเรียนแบบโปรแกรม/สำเร็จรูป (Program Text)</b> — เรียนด้วยตนเอง ก้าวตามความสามารถของตน <span class="ref">สื่อ น.45</span> · ลักษณะ: ① แบ่งเนื้อหาเป็นตอนย่อยจากง่ายไปยาก เรียก <b>"กรอบ (Frame)"</b> ② กรอบต่อเนื่องกัน ช่วยให้ค้นพบเอง ③ ทุกกรอบมีคำถามและ<b>เฉลยทันที</b> ④ จบแล้วได้ความรู้ตามจุดประสงค์ <span class="ref">สื่อ น.46</span></p>
 <div class="tw"><table><thead><tr><th></th><th>แบบเส้นตรง</th><th>แบบสาขา</th></tr></thead>
-<tr><td>ทำงานอย่างไร</td><td>ให้ความรู้ → คำถาม (ถูก/ผิด เติมคำ) → เฉลย ตอบผิดอ่านซ้ำจนถูกจึงไปกรอบต่อไป</td><td><b>กรอบยืน</b> = ลำดับหลักที่ทุกคนเรียน · <b>กรอบสาขา (Remedial Frame)</b> = อธิบายว่าทำไมตอบผิด แล้วกลับไปตอบกรอบเดิมให้ถูก</td></tr>
-<tr><td>เหมาะ/ไม่เหมาะ</td><td>เหมาะวิชาเน้นเนื้อหาสาระ · ไม่เหมาะเนื้อหาความคิดเห็น (คำตอบได้หลายแบบ)</td><td>ตัวอย่าง: อินเวอร์สของความสัมพันธ์</td></tr></table></div>
+<tr><td data-label="">ทำงานอย่างไร</td><td data-label="แบบเส้นตรง">ให้ความรู้ → คำถาม (ถูก/ผิด เติมคำ) → เฉลย ตอบผิดอ่านซ้ำจนถูกจึงไปกรอบต่อไป</td><td data-label="แบบสาขา"><b>กรอบยืน</b> = ลำดับหลักที่ทุกคนเรียน · <b>กรอบสาขา (Remedial Frame)</b> = อธิบายว่าทำไมตอบผิด แล้วกลับไปตอบกรอบเดิมให้ถูก</td></tr>
+<tr><td data-label="">เหมาะ/ไม่เหมาะ</td><td data-label="แบบเส้นตรง">เหมาะวิชาเน้นเนื้อหาสาระ · ไม่เหมาะเนื้อหาความคิดเห็น (คำตอบได้หลายแบบ)</td><td data-label="แบบสาขา">ตัวอย่าง: อินเวอร์สของความสัมพันธ์</td></tr></table></div>
 <p class="ref">สื่อ น.47–50</p>
 <p><b>3.2 บทเรียนการ์ตูน</b> — คล้ายบทเรียนสำเร็จรูป แต่นำเสนอเนื้อหาผ่านเรื่องราวและการ์ตูน · ส่วนประกอบ: เนื้อหา (แทรกในเรื่อง) / คำถามหรือกิจกรรม / เฉลย <span class="ref">สื่อ น.52</span></p>
 <p><b>3.3 ชุดการเรียนการสอน (Instructional package)</b> — หน่วยการเรียนรู้ครบวงจร จัดเป็นชุดสำเร็จรูป เรียนเอง (รายบุคคล/กลุ่ม) หรือครูใช้สอนได้ · 3 ชนิด: สำหรับครู / สำหรับนักเรียน / แบบผสม <span class="ref">สื่อ น.55</span><br>
@@ -213,49 +234,49 @@ $3(4x+7)=15 \Rightarrow 4x+7=5 \Rightarrow$ <b>ลบ 7 แค่ข้างซ
 <h3>เครื่องมือทุกตัวใน Graphing Calculator (6 หมวด)</h3>
 <div class="tw"><table><thead><tr><th style="width:24%">เครื่องมือ</th><th>ทำอะไร / วิธีใช้</th></tr></thead>
 <tr class="hl"><td colspan="2"><b>BASIC TOOLS</b> (หมวดแรกที่เห็นทันที)</td></tr>
-<tr><td>Move</td><td>เลือก/ลากวัตถุอิสระ (จุด, slider) — กด Esc กลับมาที่ Move เสมอ</td></tr>
-<tr><td>Point</td><td>คลิกที่ว่างได้จุดอิสระ · คลิกบนเส้น/กราฟได้จุดที่ติดอยู่บนวัตถุนั้น</td></tr>
-<tr><td>Slider</td><td>คลิกที่ว่าง → กล่องตั้ง Name, แบบ Number/Angle/Integer, Min, Max, Increment → ได้ตัวแปรเลื่อนค่าได้ เอาไปใช้ในสมการ</td></tr>
-<tr><td>Intersect</td><td>คลิกวัตถุ 2 ชิ้น → ได้จุดตัดทั้งหมด (หรือคลิกตรงจุดตัดเลย)</td></tr>
-<tr><td>Extremum</td><td>คลิกกราฟฟังก์ชัน → จุดสูงสุด/ต่ำสุดสัมพัทธ์</td></tr>
-<tr><td>Roots</td><td>คลิกกราฟฟังก์ชัน → จุดตัดแกน X (ราก)</td></tr>
-<tr><td>Best Fit Line</td><td>ลากกรอบครอบจุดหลายจุด (หรือเลือก list ของจุด) → เส้นตรงถดถอยที่เหมาะที่สุด</td></tr>
+<tr><td data-label="เครื่องมือ">Move</td><td data-label="ทำอะไร / วิธีใช้">เลือก/ลากวัตถุอิสระ (จุด, slider) — กด Esc กลับมาที่ Move เสมอ</td></tr>
+<tr><td data-label="เครื่องมือ">Point</td><td data-label="ทำอะไร / วิธีใช้">คลิกที่ว่างได้จุดอิสระ · คลิกบนเส้น/กราฟได้จุดที่ติดอยู่บนวัตถุนั้น</td></tr>
+<tr><td data-label="เครื่องมือ">Slider</td><td data-label="ทำอะไร / วิธีใช้">คลิกที่ว่าง → กล่องตั้ง Name, แบบ Number/Angle/Integer, Min, Max, Increment → ได้ตัวแปรเลื่อนค่าได้ เอาไปใช้ในสมการ</td></tr>
+<tr><td data-label="เครื่องมือ">Intersect</td><td data-label="ทำอะไร / วิธีใช้">คลิกวัตถุ 2 ชิ้น → ได้จุดตัดทั้งหมด (หรือคลิกตรงจุดตัดเลย)</td></tr>
+<tr><td data-label="เครื่องมือ">Extremum</td><td data-label="ทำอะไร / วิธีใช้">คลิกกราฟฟังก์ชัน → จุดสูงสุด/ต่ำสุดสัมพัทธ์</td></tr>
+<tr><td data-label="เครื่องมือ">Roots</td><td data-label="ทำอะไร / วิธีใช้">คลิกกราฟฟังก์ชัน → จุดตัดแกน X (ราก)</td></tr>
+<tr><td data-label="เครื่องมือ">Best Fit Line</td><td data-label="ทำอะไร / วิธีใช้">ลากกรอบครอบจุดหลายจุด (หรือเลือก list ของจุด) → เส้นตรงถดถอยที่เหมาะที่สุด</td></tr>
 <tr class="hl"><td colspan="2"><b>EDIT</b></td></tr>
-<tr><td>Select Objects</td><td>ลากกรอบเลือกหลายวัตถุพร้อมกัน</td></tr>
-<tr><td>Move Graphics View</td><td>ลากเลื่อนพื้นที่กราฟ (pan) และซูม</td></tr>
-<tr><td>Delete</td><td>คลิกวัตถุที่จะลบ (วัตถุที่สร้างต่อจากมันจะหายด้วย)</td></tr>
-<tr><td>Show / Hide Label</td><td>คลิกวัตถุ → สลับแสดง/ซ่อนชื่อ</td></tr>
-<tr><td>Show / Hide Object</td><td>คลิกวัตถุที่จะซ่อน (จะเห็นเป็นไฮไลต์) → <b>เปลี่ยนไปเครื่องมืออื่นจึงซ่อนจริง</b></td></tr>
-<tr><td>Copy Visual Style</td><td>คลิกวัตถุต้นแบบ → คลิกวัตถุอื่น → คัดลอกสี/เส้น/ความหนา</td></tr>
+<tr><td data-label="เครื่องมือ">Select Objects</td><td data-label="ทำอะไร / วิธีใช้">ลากกรอบเลือกหลายวัตถุพร้อมกัน</td></tr>
+<tr><td data-label="เครื่องมือ">Move Graphics View</td><td data-label="ทำอะไร / วิธีใช้">ลากเลื่อนพื้นที่กราฟ (pan) และซูม</td></tr>
+<tr><td data-label="เครื่องมือ">Delete</td><td data-label="ทำอะไร / วิธีใช้">คลิกวัตถุที่จะลบ (วัตถุที่สร้างต่อจากมันจะหายด้วย)</td></tr>
+<tr><td data-label="เครื่องมือ">Show / Hide Label</td><td data-label="ทำอะไร / วิธีใช้">คลิกวัตถุ → สลับแสดง/ซ่อนชื่อ</td></tr>
+<tr><td data-label="เครื่องมือ">Show / Hide Object</td><td data-label="ทำอะไร / วิธีใช้">คลิกวัตถุที่จะซ่อน (จะเห็นเป็นไฮไลต์) → <b>เปลี่ยนไปเครื่องมืออื่นจึงซ่อนจริง</b></td></tr>
+<tr><td data-label="เครื่องมือ">Copy Visual Style</td><td data-label="ทำอะไร / วิธีใช้">คลิกวัตถุต้นแบบ → คลิกวัตถุอื่น → คัดลอกสี/เส้น/ความหนา</td></tr>
 <tr class="hl"><td colspan="2"><b>MEDIA</b></td></tr>
-<tr><td>Text</td><td>คลิกตำแหน่งบน Graphics View → พิมพ์ข้อความ (ไทยได้) · ใส่สัญลักษณ์จากแป้นคณิต/สูตร LaTeX · ใส่วัตถุให้ค่าเปลี่ยนตาม (dynamic text) ได้</td></tr>
+<tr><td data-label="เครื่องมือ">Text</td><td data-label="ทำอะไร / วิธีใช้">คลิกตำแหน่งบน Graphics View → พิมพ์ข้อความ (ไทยได้) · ใส่สัญลักษณ์จากแป้นคณิต/สูตร LaTeX · ใส่วัตถุให้ค่าเปลี่ยนตาม (dynamic text) ได้</td></tr>
 <tr class="hl"><td colspan="2"><b>POINTS</b></td></tr>
-<tr><td>Point · Intersect · Extremum · Roots</td><td>ซ้ำกับ Basic Tools</td></tr>
-<tr><td>Point on Object</td><td>คลิกบน/ในวัตถุ → จุดที่ขยับได้เฉพาะบนวัตถุนั้น</td></tr>
-<tr><td>Attach / Detach Point</td><td>คลิกจุดอิสระ แล้วคลิกวัตถุ → ผูกจุดไว้บนวัตถุ · คลิกจุดที่ผูกอยู่ → ปลดออก</td></tr>
-<tr><td>Complex Number</td><td>คลิกบนระนาบ → จำนวนเชิงซ้อน เช่น $z_1 = 2+3i$</td></tr>
-<tr><td>List</td><td>ลากกรอบเลือกหลายวัตถุ → สร้าง list เช่น {A, B, C}</td></tr>
+<tr><td data-label="เครื่องมือ">Point · Intersect · Extremum · Roots</td><td data-label="ทำอะไร / วิธีใช้">ซ้ำกับ Basic Tools</td></tr>
+<tr><td data-label="เครื่องมือ">Point on Object</td><td data-label="ทำอะไร / วิธีใช้">คลิกบน/ในวัตถุ → จุดที่ขยับได้เฉพาะบนวัตถุนั้น</td></tr>
+<tr><td data-label="เครื่องมือ">Attach / Detach Point</td><td data-label="ทำอะไร / วิธีใช้">คลิกจุดอิสระ แล้วคลิกวัตถุ → ผูกจุดไว้บนวัตถุ · คลิกจุดที่ผูกอยู่ → ปลดออก</td></tr>
+<tr><td data-label="เครื่องมือ">Complex Number</td><td data-label="ทำอะไร / วิธีใช้">คลิกบนระนาบ → จำนวนเชิงซ้อน เช่น $z_1 = 2+3i$</td></tr>
+<tr><td data-label="เครื่องมือ">List</td><td data-label="ทำอะไร / วิธีใช้">ลากกรอบเลือกหลายวัตถุ → สร้าง list เช่น {A, B, C}</td></tr>
 <tr class="hl"><td colspan="2"><b>LINES</b></td></tr>
-<tr><td>Line</td><td>คลิก 2 จุด → เส้นตรงผ่าน 2 จุด (ยาวไม่สิ้นสุด)</td></tr>
-<tr><td>Ray</td><td>คลิกจุดเริ่ม → คลิกจุดที่รังสีผ่าน</td></tr>
-<tr><td>Vector</td><td>คลิกจุดเริ่ม → คลิกจุดปลาย</td></tr>
+<tr><td data-label="เครื่องมือ">Line</td><td data-label="ทำอะไร / วิธีใช้">คลิก 2 จุด → เส้นตรงผ่าน 2 จุด (ยาวไม่สิ้นสุด)</td></tr>
+<tr><td data-label="เครื่องมือ">Ray</td><td data-label="ทำอะไร / วิธีใช้">คลิกจุดเริ่ม → คลิกจุดที่รังสีผ่าน</td></tr>
+<tr><td data-label="เครื่องมือ">Vector</td><td data-label="ทำอะไร / วิธีใช้">คลิกจุดเริ่ม → คลิกจุดปลาย</td></tr>
 <tr class="hl"><td colspan="2"><b>OTHERS</b></td></tr>
-<tr><td>Pen</td><td>วาดอิสระด้วยเมาส์/ปากกา (เขียนอธิบายบนกราฟ)</td></tr>
-<tr><td>Freehand Function</td><td>วาดเส้นโค้งด้วยมือ → GeoGebra แปลงเป็นฟังก์ชัน</td></tr>
-<tr><td>Button</td><td>คลิกตำแหน่ง → ตั้ง Caption + สคริปต์ที่จะทำเมื่อกดปุ่ม</td></tr>
-<tr><td>Check Box</td><td>คลิกตำแหน่ง → ตั้ง Caption + เลือกวัตถุที่จะแสดง/ซ่อนตามการติ๊ก</td></tr>
-<tr><td>Input Box</td><td>คลิกตำแหน่ง → ตั้ง Caption + วัตถุที่ผูก → ผู้ใช้พิมพ์ค่าเปลี่ยนวัตถุได้</td></tr>
+<tr><td data-label="เครื่องมือ">Pen</td><td data-label="ทำอะไร / วิธีใช้">วาดอิสระด้วยเมาส์/ปากกา (เขียนอธิบายบนกราฟ)</td></tr>
+<tr><td data-label="เครื่องมือ">Freehand Function</td><td data-label="ทำอะไร / วิธีใช้">วาดเส้นโค้งด้วยมือ → GeoGebra แปลงเป็นฟังก์ชัน</td></tr>
+<tr><td data-label="เครื่องมือ">Button</td><td data-label="ทำอะไร / วิธีใช้">คลิกตำแหน่ง → ตั้ง Caption + สคริปต์ที่จะทำเมื่อกดปุ่ม</td></tr>
+<tr><td data-label="เครื่องมือ">Check Box</td><td data-label="ทำอะไร / วิธีใช้">คลิกตำแหน่ง → ตั้ง Caption + เลือกวัตถุที่จะแสดง/ซ่อนตามการติ๊ก</td></tr>
+<tr><td data-label="เครื่องมือ">Input Box</td><td data-label="ทำอะไร / วิธีใช้">คลิกตำแหน่ง → ตั้ง Caption + วัตถุที่ผูก → ผู้ใช้พิมพ์ค่าเปลี่ยนวัตถุได้</td></tr>
 </table></div>
 <div class="box warn"><span class="label">⚠ Graphing Calculator ไม่มีเครื่องมือเหล่านี้ — ต้องพิมพ์คำสั่งใน Input</span>
 <div class="tw"><table><thead><tr><th>อยากได้</th><th>คำสั่ง</th><th>ใน Classic / Calculator Suite อยู่ที่</th></tr></thead>
-<tr><td>ส่วนของเส้นตรง AB</td><td><code>Segment(A, B)</code></td><td>Lines → Segment</td></tr>
-<tr><td>เส้นตั้งฉากผ่าน C กับเส้น f</td><td><code>PerpendicularLine(C, f)</code></td><td>Construct → Perpendicular Line</td></tr>
-<tr><td>เส้นขนาน</td><td><code>Line(C, f)</code></td><td>Construct → Parallel Line</td></tr>
-<tr><td>จุดกึ่งกลาง</td><td><code>Midpoint(A, B)</code></td><td>Construct → Midpoint or Center</td></tr>
-<tr><td>เส้นแบ่งครึ่งตั้งฉาก</td><td><code>PerpendicularBisector(A, B)</code></td><td>Construct</td></tr>
-<tr><td>วงกลม จุดศูนย์กลาง A รัศมี 3</td><td><code>Circle(A, 3)</code></td><td>Circles</td></tr>
-<tr><td>รูปหลายเหลี่ยม</td><td><code>Polygon(A, B, C)</code></td><td>Polygons</td></tr>
-<tr><td>ระยะทาง / มุม</td><td><code>Distance(A, B)</code> · <code>Angle(A, B, C)</code></td><td>Measure</td></tr>
+<tr><td data-label="อยากได้">ส่วนของเส้นตรง AB</td><td data-label="คำสั่ง"><code>Segment(A, B)</code></td><td data-label="ใน Classic / Calculator Suite อยู่ที่">Lines → Segment</td></tr>
+<tr><td data-label="อยากได้">เส้นตั้งฉากผ่าน C กับเส้น f</td><td data-label="คำสั่ง"><code>PerpendicularLine(C, f)</code></td><td data-label="ใน Classic / Calculator Suite อยู่ที่">Construct → Perpendicular Line</td></tr>
+<tr><td data-label="อยากได้">เส้นขนาน</td><td data-label="คำสั่ง"><code>Line(C, f)</code></td><td data-label="ใน Classic / Calculator Suite อยู่ที่">Construct → Parallel Line</td></tr>
+<tr><td data-label="อยากได้">จุดกึ่งกลาง</td><td data-label="คำสั่ง"><code>Midpoint(A, B)</code></td><td data-label="ใน Classic / Calculator Suite อยู่ที่">Construct → Midpoint or Center</td></tr>
+<tr><td data-label="อยากได้">เส้นแบ่งครึ่งตั้งฉาก</td><td data-label="คำสั่ง"><code>PerpendicularBisector(A, B)</code></td><td data-label="ใน Classic / Calculator Suite อยู่ที่">Construct</td></tr>
+<tr><td data-label="อยากได้">วงกลม จุดศูนย์กลาง A รัศมี 3</td><td data-label="คำสั่ง"><code>Circle(A, 3)</code></td><td data-label="ใน Classic / Calculator Suite อยู่ที่">Circles</td></tr>
+<tr><td data-label="อยากได้">รูปหลายเหลี่ยม</td><td data-label="คำสั่ง"><code>Polygon(A, B, C)</code></td><td data-label="ใน Classic / Calculator Suite อยู่ที่">Polygons</td></tr>
+<tr><td data-label="อยากได้">ระยะทาง / มุม</td><td data-label="คำสั่ง"><code>Distance(A, B)</code> · <code>Angle(A, B, C)</code></td><td data-label="ใน Classic / Calculator Suite อยู่ที่">Measure</td></tr>
 </table></div>
 คำตอบในข้อสอบเก่าเขียน "Tools → Lines → Segment" ซึ่งเป็นเมนูของ Classic/Calculator Suite — ถ้าในห้องใช้ Graphing Calculator ให้เขียนคำสั่งพิมพ์ <b>ควบคู่</b>ไปด้วยจะปลอดภัยที่สุด</div>
 
@@ -283,12 +304,12 @@ $3(4x+7)=15 \Rightarrow 4x+7=5 \Rightarrow$ <b>ลบ 7 แค่ข้างซ
 
 <h3>งานที่อาจออกเพิ่ม (เสริม — ฝึกเผื่อ)</h3>
 <div class="tw"><table><thead><tr><th>งาน</th><th>ขั้นตอนใน Graphing Calculator</th></tr></thead>
-<tr><td>หาจุดตัดของ $y=x^2-4$ กับ $y=x+2$</td><td>Input พิมพ์ทั้งสองสมการ → Basic Tools → Intersect → คลิกกราฟทั้งสอง (ได้ (−2, 0) และ (3, 5))</td></tr>
-<tr><td>หารากและจุดยอดของ $f(x)=x^2-2x-3$</td><td>พิมพ์ฟังก์ชัน → Roots คลิกกราฟ ได้ (−1, 0), (3, 0) → Extremum ได้ (1, −4)</td></tr>
-<tr><td>เส้นตรง $y=mx+c$ ปรับความชัน</td><td>พิมพ์ <code>y = m x + c</code> → Create Sliders m, c → ตั้งช่วงใน Settings → Slider</td></tr>
-<tr><td>สามเหลี่ยมมุมฉาก + วัดด้าน</td><td>Point สร้าง A, B, C → <code>Polygon(A, B, C)</code> → <code>Distance(A, B)</code> · <code>Angle(A, B, C)</code></td></tr>
-<tr><td>เส้นถดถอยจากข้อมูล</td><td>พิมพ์จุด หรือ <code>{(1,2),(2,3),(3,5)}</code> → Best Fit Line ลากกรอบครอบจุด</td></tr>
-<tr><td>ปุ่มเฉลย/ซ่อนคำตอบ</td><td>Others → Check Box → Caption "แสดงคำตอบ" → เลือกข้อความเฉลย</td></tr>
+<tr><td data-label="งาน">หาจุดตัดของ $y=x^2-4$ กับ $y=x+2$</td><td data-label="ขั้นตอนใน Graphing Calculator">Input พิมพ์ทั้งสองสมการ → Basic Tools → Intersect → คลิกกราฟทั้งสอง (ได้ (−2, 0) และ (3, 5))</td></tr>
+<tr><td data-label="งาน">หารากและจุดยอดของ $f(x)=x^2-2x-3$</td><td data-label="ขั้นตอนใน Graphing Calculator">พิมพ์ฟังก์ชัน → Roots คลิกกราฟ ได้ (−1, 0), (3, 0) → Extremum ได้ (1, −4)</td></tr>
+<tr><td data-label="งาน">เส้นตรง $y=mx+c$ ปรับความชัน</td><td data-label="ขั้นตอนใน Graphing Calculator">พิมพ์ <code>y = m x + c</code> → Create Sliders m, c → ตั้งช่วงใน Settings → Slider</td></tr>
+<tr><td data-label="งาน">สามเหลี่ยมมุมฉาก + วัดด้าน</td><td data-label="ขั้นตอนใน Graphing Calculator">Point สร้าง A, B, C → <code>Polygon(A, B, C)</code> → <code>Distance(A, B)</code> · <code>Angle(A, B, C)</code></td></tr>
+<tr><td data-label="งาน">เส้นถดถอยจากข้อมูล</td><td data-label="ขั้นตอนใน Graphing Calculator">พิมพ์จุด หรือ <code>{(1,2),(2,3),(3,5)}</code> → Best Fit Line ลากกรอบครอบจุด</td></tr>
+<tr><td data-label="งาน">ปุ่มเฉลย/ซ่อนคำตอบ</td><td data-label="ขั้นตอนใน Graphing Calculator">Others → Check Box → Caption "แสดงคำตอบ" → เลือกข้อความเฉลย</td></tr>
 </table></div>
 <p class="ref">จุดตัด/รากในตาราง คำนวณซ้ำแล้ว</p>
 
@@ -310,8 +331,8 @@ $3(4x+7)=15 \Rightarrow 4x+7=5 \Rightarrow$ <b>ลบ 7 แค่ข้างซ
 
 <h3>การเขียน prompt</h3>
 <div class="tw"><table><thead><tr><th>กรอบ</th><th>องค์ประกอบ</th></tr></thead>
-<tr><td><b>PTCF</b> (สพฐ., 2568)</td><td><b>P</b>ersona บทบาท · <b>T</b>ask งานที่ให้ทำ · <b>C</b>ontext ข้อมูลประกอบ · <b>F</b>ormat รูปแบบผลลัพธ์</td></tr>
-<tr><td>Google's AI Prompting (2023)</td><td>Task → Context → Reference → Evaluate → Iterate</td></tr></table></div>
+<tr><td data-label="กรอบ"><b>PTCF</b> (สพฐ., 2568)</td><td data-label="องค์ประกอบ"><b>P</b>ersona บทบาท · <b>T</b>ask งานที่ให้ทำ · <b>C</b>ontext ข้อมูลประกอบ · <b>F</b>ormat รูปแบบผลลัพธ์</td></tr>
+<tr><td data-label="กรอบ">Google's AI Prompting (2023)</td><td data-label="องค์ประกอบ">Task → Context → Reference → Evaluate → Iterate</td></tr></table></div>
 <p class="ref">AI น.12–13</p>
 <div class="box ex"><span class="label">แยก PTCF จาก prompt ในสไลด์ <span class="ref">AI น.22</span></span>
 <b>P:</b> "คุณเป็นครูคณิตศาสตร์ชั้นมัธยม เชี่ยวชาญการวัดและประเมินผล" · <b>T:</b> "สร้างข้อสอบ 4 ตัวเลือก คำตอบถูกข้อเดียว 5 ข้อ" · <b>C:</b> "เรื่องสมบัติการคูณ-หารเลขยกกำลังฐานเดียวกัน ม.2 ใช้ 3–4 สมบัติผสม" · <b>F:</b> "ขอเฉลยพร้อมเหตุผล ภาษาทางการ"<br>
@@ -321,19 +342,19 @@ $3(4x+7)=15 \Rightarrow 4x+7=5 \Rightarrow$ <b>ลบ 7 แค่ข้างซ
 <div class="box key"><span class="label">4 Roles of AI <span class="ref">AI น.18</span></span>
 ① Content Assistant ② Task Designer ③ Thinking Partner ④ Assessment Assistant</div>
 <div class="tw"><table><thead><tr><th>ด้านการจัดการเรียนรู้และสื่อ (7) <span class="ref">AI น.19</span></th><th>ด้านการตรวจงานและประเมิน (6) <span class="ref">AI น.20</span></th></tr></thead>
-<tr><td>1) หาผลลัพธ์ แสดงวิธีทำ/พิสูจน์ 2) ยกตัวอย่างโจทย์/สถานการณ์ 3) ออกแบบกิจกรรม 4) สร้างสื่อ (ภาพ วิดีโอ) 5) สร้างเกม/แต่งเพลง 6) ร่างแผนการสอน 7) Personalized learning</td>
-<td>1) สร้างข้อสอบหลากหลายรูปแบบ 2) ตรวจให้คะแนนอัตโนมัติ (ดีกับเลือกตอบ) 3) สร้างรูบริก 4) วิเคราะห์ข้อผิดพลาดรายคน 5) ให้ feedback 6) ตรวจความซื่อสัตย์ทางวิชาการ</td></tr></table></div>
+<tr><td data-label="ด้านการจัดการเรียนรู้และสื่อ (7) AI น.19">1) หาผลลัพธ์ แสดงวิธีทำ/พิสูจน์ 2) ยกตัวอย่างโจทย์/สถานการณ์ 3) ออกแบบกิจกรรม 4) สร้างสื่อ (ภาพ วิดีโอ) 5) สร้างเกม/แต่งเพลง 6) ร่างแผนการสอน 7) Personalized learning</td>
+<td data-label="ด้านการตรวจงานและประเมิน (6) AI น.20">1) สร้างข้อสอบหลากหลายรูปแบบ 2) ตรวจให้คะแนนอัตโนมัติ (ดีกับเลือกตอบ) 3) สร้างรูบริก 4) วิเคราะห์ข้อผิดพลาดรายคน 5) ให้ feedback 6) ตรวจความซื่อสัตย์ทางวิชาการ</td></tr></table></div>
 <div class="box warn"><span class="label">ข้อจำกัดของ AI ในการศึกษาคณิต 7 ข้อ <span class="ref">AI น.21</span></span>
 1) คำนวณ/แสดงวิธีผิด ใช้เงื่อนไขไม่ครบ เช่นลืมโดเมน-เรนจ์ 2) อธิบายสูงเกินระดับบทเรียน 3) เน้นคำนวณ/ผลลัพธ์มากไป 4) ใช้ไม่เหมาะ → ขาดทักษะแก้ปัญหา คิดวิจารณญาณ สร้างสรรค์ 5) Hallucination 6) ใช้มากไป → ขาดปฏิสัมพันธ์มนุษย์ 7) งบประมาณ/อินเทอร์เน็ต</div>
 <p>สไลด์ "AI เก่งคณิตจริงไหม" ให้ลองถามโจทย์รากซ้อน และพิสูจน์ BM = AM = CM ในสามเหลี่ยมมุมฉากที่ M เป็นจุดกึ่งกลางด้านตรงข้ามมุมฉาก — ชี้ว่า AI อาจตอบผิด ต้องตรวจเสมอ <span class="ref">AI น.17</span></p>
 
 <h3>เครื่องมือ AI สำหรับคณิต</h3>
 <div class="tw"><table><thead><tr><th>เครื่องมือ</th><th>ทำอะไร</th><th>ลักษณะเด่น (ใช้ตอบข้อ "เล่านวัตกรรม")</th></tr></thead>
-<tr><td><b>NotebookLM</b></td><td>สรุปเนื้อหาจากเอกสาร ไฟล์เสียง วิดีโอ ลิงก์</td><td>นำสรุปไปสร้างสื่อต่อ: คลิป ไฟล์เสียงแบบ podcast mind map รายงาน <span class="ref">AI น.27</span></td></tr>
-<tr><td><b>Canva AI</b></td><td>ใบงาน/ใบกิจกรรม สไลด์ เกม (จับคู่ เติมคำ ลาก-วาง) สคริปต์วิดีโอ สตอรีบอร์ด เพลง กลอน</td><td>สร้างเกม HTML5 จาก prompt ได้ เช่น เกมจับคู่โจทย์ ม.1 · เกมเก็บลูกบอลทศนิยม ม.1 · เกมล่าขุมทรัพย์คู่อันดับ (มีตัวลวงสลับเครื่องหมาย) <span class="ref">AI น.28–37</span></td></tr>
-<tr><td><b>Suno AI</b></td><td>แต่งเพลง: ให้แต่งทั้งเนื้อ+ทำนอง หรือใส่เนื้อเพลงเองให้แต่งทำนอง</td><td>เลือกสไตล์ตามวัย: ประถม = Children Pop, Chant/Cheer, Hip-Hop เบาๆ, Folk/ลูกทุ่ง · ม.ต้น = Pop Rock/Acoustic, Reggae/Ska, Reggaeton, Rap <span class="ref">AI น.39–40</span></td></tr>
-<tr><td><b>AlphaGeometry</b></td><td>แก้โจทย์และพิสูจน์เรขาคณิต</td><td>ให้แสดงวิธีคิด/พิสูจน์หลายแบบ <span class="ref">ข้อสอบ น.3</span></td></tr>
-<tr><td><b>Chatbot</b></td><td>โปรแกรมจำลองการสนทนาด้วย NLP + AI ตอบแบบ real-time</td><td>4 ชนิด: Rule-based · AI-powered · Hybrid · Voice-enabled <span class="ref">AI น.43–44</span></td></tr></table></div>
+<tr><td data-label="เครื่องมือ"><b>NotebookLM</b></td><td data-label="ทำอะไร">สรุปเนื้อหาจากเอกสาร ไฟล์เสียง วิดีโอ ลิงก์</td><td data-label="ลักษณะเด่น (ใช้ตอบข้อ "เล่านวัตกรรม")">นำสรุปไปสร้างสื่อต่อ: คลิป ไฟล์เสียงแบบ podcast mind map รายงาน <span class="ref">AI น.27</span></td></tr>
+<tr><td data-label="เครื่องมือ"><b>Canva AI</b></td><td data-label="ทำอะไร">ใบงาน/ใบกิจกรรม สไลด์ เกม (จับคู่ เติมคำ ลาก-วาง) สคริปต์วิดีโอ สตอรีบอร์ด เพลง กลอน</td><td data-label="ลักษณะเด่น (ใช้ตอบข้อ "เล่านวัตกรรม")">สร้างเกม HTML5 จาก prompt ได้ เช่น เกมจับคู่โจทย์ ม.1 · เกมเก็บลูกบอลทศนิยม ม.1 · เกมล่าขุมทรัพย์คู่อันดับ (มีตัวลวงสลับเครื่องหมาย) <span class="ref">AI น.28–37</span></td></tr>
+<tr><td data-label="เครื่องมือ"><b>Suno AI</b></td><td data-label="ทำอะไร">แต่งเพลง: ให้แต่งทั้งเนื้อ+ทำนอง หรือใส่เนื้อเพลงเองให้แต่งทำนอง</td><td data-label="ลักษณะเด่น (ใช้ตอบข้อ "เล่านวัตกรรม")">เลือกสไตล์ตามวัย: ประถม = Children Pop, Chant/Cheer, Hip-Hop เบาๆ, Folk/ลูกทุ่ง · ม.ต้น = Pop Rock/Acoustic, Reggae/Ska, Reggaeton, Rap <span class="ref">AI น.39–40</span></td></tr>
+<tr><td data-label="เครื่องมือ"><b>AlphaGeometry</b></td><td data-label="ทำอะไร">แก้โจทย์และพิสูจน์เรขาคณิต</td><td data-label="ลักษณะเด่น (ใช้ตอบข้อ "เล่านวัตกรรม")">ให้แสดงวิธีคิด/พิสูจน์หลายแบบ <span class="ref">ข้อสอบ น.3</span></td></tr>
+<tr><td data-label="เครื่องมือ"><b>Chatbot</b></td><td data-label="ทำอะไร">โปรแกรมจำลองการสนทนาด้วย NLP + AI ตอบแบบ real-time</td><td data-label="ลักษณะเด่น (ใช้ตอบข้อ "เล่านวัตกรรม")">4 ชนิด: Rule-based · AI-powered · Hybrid · Voice-enabled <span class="ref">AI น.43–44</span></td></tr></table></div>
 <p><b>ใช้ chatbot ในการเรียนและประเมิน 7 ข้อ:</b> 1) ให้สื่อ/แหล่งเรียนรู้เพิ่ม 2) ติดตาม syllabus งาน rubric กำหนดส่ง 3) feedback ทันที (formative) 24/7 4) ประเมิน/วินิจฉัยด้วย quiz (placement, diagnostic, formative, summative, self-assessment) 5) แจ้งคะแนน/เกรดอย่างเปิดเผยและเป็นส่วนตัว 6) เก็บข้อมูลทำ learning analytics 7) ใช้ GenAI สนทนาในขอบเขตที่กำหนด <span class="ref">AI น.45–51</span></p>
 <div class="box ex"><span class="label">Fluffy Bot (ตัวอย่างของวิทยากร) <span class="ref">AI น.52–61</span></span>
 Hybrid chatbot สำหรับมือใหม่ ตัวอย่างวิชาสถิติ · สร้างด้วย <b>Google Sheet + Apps Script</b> + <b>Messaging API (LINE Developer)</b> + <b>Gemini AI</b> · Rich menu 6 ปุ่ม: Learn more, Gain more! (ลิงก์ Drive สื่อ) · Track my tasks (Sheet ความคืบหน้าส่งงาน) · Practice makes perfect (แบบฝึก 3 ตัวเลือก + feedback ทันที) · Test a hit or a miss (สอบ 4 ตัวเลือก บันทึกคะแนน) · Check my scores (ล็อกอินด้วยรหัส ดูคะแนน — privacy) · Chat with Fluffy (คุยกับ Gemini ในบทครูคณิตที่สุภาพ ตอบสั้น มีอีโมจิ)</div>
@@ -343,9 +364,9 @@ Hybrid chatbot สำหรับมือใหม่ ตัวอย่าง�
 
 <h3>4.1 ความรู้ทางคณิตศาสตร์ 2 ประเภท</h3>
 <div class="tw"><table><thead><tr><th></th><th>ความรู้เชิงมโนทัศน์ (Conceptual)</th><th>ความรู้เชิงขั้นตอน/กระบวนการ (Procedural)</th></tr></thead>
-<tr><td>คืออะไร</td><td>ความหมายและโครงสร้างทางคณิต · ความสัมพันธ์ของสิ่งที่ใช้อธิบาย · ความรู้เกี่ยวกับ<b>บทนิยาม กฎ สมบัติ ทฤษฎีบท สูตร สัญลักษณ์</b> · <b>ที่มา/เหตุผลของขั้นตอน</b></td><td><b>การคำนวณ</b> · <b>การใช้กฎ/ทฤษฎีบท/สูตร</b> · <b>ขั้นตอนการดำเนินงาน</b>ทางคณิต</td></tr>
-<tr><td>ตัวอย่างในสไลด์</td><td>ทฤษฎีบทตัวประกอบตรรกยะ · นิยาม ห.ร.ม. · ที่มาของสูตรระยะทางระหว่างจุดสองจุด</td><td>หารสังเคราะห์ · หา ห.ร.ม. แบบยุคลิด · ขั้นตอนการสร้าง · ขั้นตอนแก้ปัญหา · ขั้นตอนไม่มีชื่อทางการ · หาควอร์ไทล์ · หาส่วนเบี่ยงเบนมาตรฐาน 5 ขั้น</td></tr>
-<tr><td>อธิบายอย่างไร</td><td>(1) ใช้นิยาม/สมบัติที่เรียนก่อนหน้า + เหตุผลทางคณิต (2) ให้นิพจน์มีความหมายด้วยบริบทชีวิตจริง/รูปธรรม</td><td>อธิบายกฎและขั้นตอนให้ชัด ไปพร้อมกับทำงานคณิตเป็นลำดับขั้น</td></tr></table></div>
+<tr><td data-label="">คืออะไร</td><td data-label="ความรู้เชิงมโนทัศน์ (Conceptual)">ความหมายและโครงสร้างทางคณิต · ความสัมพันธ์ของสิ่งที่ใช้อธิบาย · ความรู้เกี่ยวกับ<b>บทนิยาม กฎ สมบัติ ทฤษฎีบท สูตร สัญลักษณ์</b> · <b>ที่มา/เหตุผลของขั้นตอน</b></td><td data-label="ความรู้เชิงขั้นตอน/กระบวนการ (Procedural)"><b>การคำนวณ</b> · <b>การใช้กฎ/ทฤษฎีบท/สูตร</b> · <b>ขั้นตอนการดำเนินงาน</b>ทางคณิต</td></tr>
+<tr><td data-label="">ตัวอย่างในสไลด์</td><td data-label="ความรู้เชิงมโนทัศน์ (Conceptual)">ทฤษฎีบทตัวประกอบตรรกยะ · นิยาม ห.ร.ม. · ที่มาของสูตรระยะทางระหว่างจุดสองจุด</td><td data-label="ความรู้เชิงขั้นตอน/กระบวนการ (Procedural)">หารสังเคราะห์ · หา ห.ร.ม. แบบยุคลิด · ขั้นตอนการสร้าง · ขั้นตอนแก้ปัญหา · ขั้นตอนไม่มีชื่อทางการ · หาควอร์ไทล์ · หาส่วนเบี่ยงเบนมาตรฐาน 5 ขั้น</td></tr>
+<tr><td data-label="">อธิบายอย่างไร</td><td data-label="ความรู้เชิงมโนทัศน์ (Conceptual)">(1) ใช้นิยาม/สมบัติที่เรียนก่อนหน้า + เหตุผลทางคณิต (2) ให้นิพจน์มีความหมายด้วยบริบทชีวิตจริง/รูปธรรม</td><td data-label="ความรู้เชิงขั้นตอน/กระบวนการ (Procedural)">อธิบายกฎและขั้นตอนให้ชัด ไปพร้อมกับทำงานคณิตเป็นลำดับขั้น</td></tr></table></div>
 <p class="ref">วิธี2 น.4–8, 12, 14</p>
 <div class="box key"><span class="label">ประโยคตอบสอบ (ข้อ 4 ข้อสอบเก่า, 2 คะแนน)</span>
 <b>ความรู้เชิงมโนทัศน์</b> คือความรู้เกี่ยวกับความหมายและโครงสร้างทางคณิตศาสตร์ ความสัมพันธ์ของสิ่งที่ใช้อธิบาย ได้แก่ บทนิยาม กฎ สมบัติ ทฤษฎีบท สูตร สัญลักษณ์ รวมถึงที่มาหรือเหตุผลของขั้นตอน เช่น "สมการเชิงเส้นตัวแปรเดียวคือสมการที่เขียนได้ในรูป $ax+b=0$ เมื่อ $a\ne0$"<br>
@@ -361,15 +382,15 @@ Hybrid chatbot สำหรับมือใหม่ ตัวอย่าง�
 <h3>4.2 แผนการจัดการเรียนรู้ (Lesson Plan)</h3>
 <p>การออกแบบการจัดการเรียนรู้ประจำหน่วย/เรื่อง เพื่อเตรียมล่วงหน้าอย่างเป็นระบบและเป็นลายลักษณ์อักษร <span class="ref">วิธี1 น.3</span></p>
 <div class="tw"><table><thead><tr><th>องค์ประกอบ (9)</th><th>เขียนอย่างไร</th></tr></thead>
-<tr><td>1. หัวเรื่อง</td><td>ลำดับที่แผน · กลุ่มสาระ · ระดับชั้น · หัวข้อ (บท/หัวข้อย่อย) · เวลา · วัน-วันที่-ช่วงเวลา <span class="ref">วิธี1 น.7</span></td></tr>
-<tr><td>2. มาตรฐานการเรียนรู้และตัวชี้วัด / ผลการเรียนรู้ที่คาดหวัง</td><td>วิชาพื้นฐาน → มาตรฐาน + ตัวชี้วัด · วิชาเพิ่มเติม → ผลการเรียนรู้ (ที่คาดหวัง) ตามหลักสูตรแกนกลาง/สถานศึกษา <span class="ref">วิธี1 น.9–10</span></td></tr>
-<tr><td>3. จุดประสงค์การเรียนรู้</td><td>สิ่งที่ครูคาดหวังหลังเรียน: รู้อะไร (K) · ทำอะไรได้ (P) · คุณลักษณะ (A) · สอดคล้องมาตรฐาน/ตัวชี้วัด <span class="ref">วิธี1 น.12</span></td></tr>
-<tr><td>4. สาระสำคัญ (Concept)</td><td>ข้อความสรุปจากลักษณะเด่นของเนื้อหา กระชับ ชัด · ความเรียงหรือข้อๆ · ชั้นต้นๆ ควรมีสาระสำคัญเดียว <span class="ref">วิธี1 น.13–14</span></td></tr>
-<tr><td>5. สาระการเรียนรู้ (Content)</td><td>ทฤษฎีบท หลักการ วิธีการ ขั้นตอน ตัวอย่าง เรียงตามกิจกรรม · ไม่ต้องเขียนสาระสำคัญซ้ำ <span class="ref">วิธี1 น.19</span></td></tr>
-<tr><td>6. กิจกรรมการเรียนรู้</td><td>ใช้ทฤษฎี/รูปแบบ/วิธี/เทคนิคการสอน เขียนเป็นข้อตามวิธีสอน สอดคล้องจุดประสงค์ เห็นแนวประเมิน บอกทำอะไร-อย่างไร-เวลา ไม่ต้องเขียนคำพูดครู เน้นผู้เรียนเป็นสำคัญ <span class="ref">วิธี1 น.20–21</span></td></tr>
-<tr><td>7. สื่อและแหล่งการเรียนรู้</td><td>สื่อ: วัสดุ สื่อมือ แอป คลิป เอกสาร · แหล่ง: หนังสือเรียน เว็บไซต์ <span class="ref">วิธี1 น.23</span></td></tr>
-<tr><td>8. การวัดและประเมินผล</td><td>ระบุวิธีให้สอดคล้องจุดประสงค์ + วิธีการ เครื่องมือ เกณฑ์ (ตาราง: จุดประสงค์ K/P/A | วิธีวัด | เครื่องมือ | เกณฑ์ | ผล) · วิธี: สังเกต ถาม ตรวจชิ้นงาน แบบทดสอบท้ายคาบ <span class="ref">วิธี1 น.25–27</span></td></tr>
-<tr><td>9. บันทึกหลังการจัดการเรียนรู้</td><td>รายห้อง รายคาบ: ผลการจัด (ข้อดี/ข้อจำกัด) · ปัญหาอุปสรรค · แนวทางแก้ไข <span class="ref">วิธี1 น.28</span></td></tr></table></div>
+<tr><td data-label="องค์ประกอบ (9)">1. หัวเรื่อง</td><td data-label="เขียนอย่างไร">ลำดับที่แผน · กลุ่มสาระ · ระดับชั้น · หัวข้อ (บท/หัวข้อย่อย) · เวลา · วัน-วันที่-ช่วงเวลา <span class="ref">วิธี1 น.7</span></td></tr>
+<tr><td data-label="องค์ประกอบ (9)">2. มาตรฐานการเรียนรู้และตัวชี้วัด / ผลการเรียนรู้ที่คาดหวัง</td><td data-label="เขียนอย่างไร">วิชาพื้นฐาน → มาตรฐาน + ตัวชี้วัด · วิชาเพิ่มเติม → ผลการเรียนรู้ (ที่คาดหวัง) ตามหลักสูตรแกนกลาง/สถานศึกษา <span class="ref">วิธี1 น.9–10</span></td></tr>
+<tr><td data-label="องค์ประกอบ (9)">3. จุดประสงค์การเรียนรู้</td><td data-label="เขียนอย่างไร">สิ่งที่ครูคาดหวังหลังเรียน: รู้อะไร (K) · ทำอะไรได้ (P) · คุณลักษณะ (A) · สอดคล้องมาตรฐาน/ตัวชี้วัด <span class="ref">วิธี1 น.12</span></td></tr>
+<tr><td data-label="องค์ประกอบ (9)">4. สาระสำคัญ (Concept)</td><td data-label="เขียนอย่างไร">ข้อความสรุปจากลักษณะเด่นของเนื้อหา กระชับ ชัด · ความเรียงหรือข้อๆ · ชั้นต้นๆ ควรมีสาระสำคัญเดียว <span class="ref">วิธี1 น.13–14</span></td></tr>
+<tr><td data-label="องค์ประกอบ (9)">5. สาระการเรียนรู้ (Content)</td><td data-label="เขียนอย่างไร">ทฤษฎีบท หลักการ วิธีการ ขั้นตอน ตัวอย่าง เรียงตามกิจกรรม · ไม่ต้องเขียนสาระสำคัญซ้ำ <span class="ref">วิธี1 น.19</span></td></tr>
+<tr><td data-label="องค์ประกอบ (9)">6. กิจกรรมการเรียนรู้</td><td data-label="เขียนอย่างไร">ใช้ทฤษฎี/รูปแบบ/วิธี/เทคนิคการสอน เขียนเป็นข้อตามวิธีสอน สอดคล้องจุดประสงค์ เห็นแนวประเมิน บอกทำอะไร-อย่างไร-เวลา ไม่ต้องเขียนคำพูดครู เน้นผู้เรียนเป็นสำคัญ <span class="ref">วิธี1 น.20–21</span></td></tr>
+<tr><td data-label="องค์ประกอบ (9)">7. สื่อและแหล่งการเรียนรู้</td><td data-label="เขียนอย่างไร">สื่อ: วัสดุ สื่อมือ แอป คลิป เอกสาร · แหล่ง: หนังสือเรียน เว็บไซต์ <span class="ref">วิธี1 น.23</span></td></tr>
+<tr><td data-label="องค์ประกอบ (9)">8. การวัดและประเมินผล</td><td data-label="เขียนอย่างไร">ระบุวิธีให้สอดคล้องจุดประสงค์ + วิธีการ เครื่องมือ เกณฑ์ (ตาราง: จุดประสงค์ K/P/A | วิธีวัด | เครื่องมือ | เกณฑ์ | ผล) · วิธี: สังเกต ถาม ตรวจชิ้นงาน แบบทดสอบท้ายคาบ <span class="ref">วิธี1 น.25–27</span></td></tr>
+<tr><td data-label="องค์ประกอบ (9)">9. บันทึกหลังการจัดการเรียนรู้</td><td data-label="เขียนอย่างไร">รายห้อง รายคาบ: ผลการจัด (ข้อดี/ข้อจำกัด) · ปัญหาอุปสรรค · แนวทางแก้ไข <span class="ref">วิธี1 น.28</span></td></tr></table></div>
 <div class="box ex"><span class="label">วิธีเขียนสาระสำคัญ 3 แบบ <span class="ref">วิธี1 น.15–18</span></span>
 จาก<b>ความหมาย</b>: "การบวกคือการนับเลขแต่ละจำนวนต่อเนื่องกันไปจนหมด" · จาก<b>ความสำคัญ</b>: "การหาปริมาณ ระยะทาง เวลา พื้นที่ ปริมาตร จำเป็นต้องใช้การวัด ใช้หน่วยสากล SI" · จาก<b>องค์ประกอบ/ขั้นตอน</b>: แก้โจทย์ร้อยละ 4 ขั้น เข้าใจโจทย์ → วางแผน (เขียนสัดส่วน) → ดำเนินการ → ตรวจคำตอบ</div>
 <p><b>กิจกรรม 50 นาที:</b> ขั้นนำ 5–10 นาที (กระตุ้นความสนใจ ทบทวนพื้นฐาน บอกจุดประสงค์) → ขั้นสอน (ลำดับกิจกรรม สะท้อนจุดประสงค์ วิธีสอน สื่อ การประเมิน) → ขั้นสรุป (ให้นักเรียนลองสรุปก่อน) <span class="ref">วิธี1 น.22</span></p>
@@ -415,21 +436,21 @@ Hybrid chatbot สำหรับมือใหม่ ตัวอย่าง�
 <!-- ========================= สรุปรวม ========================= -->
 <h2 id="sum">สรุปรวม 1 หน้า</h2>
 <div class="tw"><table><thead><tr><th style="width:26%">เรื่อง</th><th>จำให้ได้</th></tr></thead>
-<tr><td>สื่อเอกสาร 3 กลุ่ม</td><td>เฉพาะ (สรุปมโนทัศน์ เชื่อมโยง ตัวอย่างงาน แนะแนวทาง) · ทั่วไป (ใบกิจกรรม ใบงาน ใบความรู้) · สมบูรณ์ในตัว (บทเรียนสำเร็จรูป การ์ตูน ชุดการเรียนการสอน)</td></tr>
-<tr><td>สรุปมโนทัศน์</td><td>ชื่อ · นิยาม · ลักษณะสำคัญ · ตัวอย่าง ✓+เหตุผล · ตัวอย่าง ✗+เหตุผล</td></tr>
-<tr><td>เชื่อมโยง</td><td>4 ช่อง: คณิต · ชีวิตประจำวัน · ภาพ/กราฟ · คำอธิบายผู้เรียน</td></tr>
-<tr><td>ตัวอย่างงาน</td><td>ตัวอย่างวิธีทำ + โจทย์ฝึก (+สรุป) · เน้น ขั้นตอนเฉพาะ/ข้อผิดพลาด/How to · 4 แบบ Faded, Self-explanation, Incorrect, Comparing</td></tr>
-<tr><td>แนะแนวทาง</td><td>กิจกรรมง่าย→ยาก ค้นพบเอง + ส่วนสรุป · ไม่มีเฉลย · สร้าง 4 ขั้น</td></tr>
-<tr><td>ใบกิจกรรม/ใบงาน/ใบความรู้</td><td>ทำกิจกรรมตามกระบวนการ / ภาระงานเข้าใจ+ฝึกทักษะ (Bloom) / เนื้อหาให้อ่านเอง</td></tr>
-<tr><td>บทเรียนสำเร็จรูป</td><td>กรอบ (Frame) เฉลยทันที · เส้นตรง vs สาขา (กรอบยืน + กรอบสาขา Remedial)</td></tr>
-<tr><td>ชุดการเรียนการสอน</td><td>คู่มือ · คำสั่ง/มอบงาน · เนื้อหาสื่อประสม+กิจกรรม · ประเมินผล</td></tr>
-<tr><td>GeoGebra Graphing</td><td>Basic (Move Point Slider Intersect Extremum Roots Best Fit Line) · Edit (Select, Move Graphics View, Delete, Show/Hide Label, Show/Hide Object, Copy Visual Style) · Media (Text) · Points (+Point on Object, Attach/Detach, Complex Number, List) · Lines (Line Ray Vector) · Others (Pen, Freehand Function, Button, Check Box, Input Box)</td></tr>
-<tr><td>GeoGebra คำสั่ง</td><td><code>Segment(A,B)</code> <code>PerpendicularLine(C,f)</code> <code>Midpoint(A,B)</code> <code>Circle(A,3)</code> <code>Polygon(A,B,C)</code> <code>a=Slider(-10,10,0.1)</code> · ซ่อน = วงกลมสี / Show/Hide Object / Settings→Show Object</td></tr>
-<tr><td>AI</td><td>ลักษณะ 4: Input · Inference · Adaptability · Autonomous · จริยธรรม 5: ตรวจสอบได้ · ส่วนตัว · เป็นธรรม · โปร่งใส · ปลอดภัย · PTCF · 4 Roles: Content, Task Designer, Thinking Partner, Assessment</td></tr>
-<tr><td>เครื่องมือ AI</td><td>NotebookLM สรุป→สื่อ · Canva AI ใบงาน/เกม · Suno เพลง · AlphaGeometry พิสูจน์ · Chatbot 4 ชนิด · Fluffy Bot = Sheet+Apps Script+LINE+Gemini</td></tr>
-<tr><td>ความรู้ทางคณิต</td><td>มโนทัศน์ = นิยาม กฎ สมบัติ ทฤษฎีบท สูตร สัญลักษณ์ ที่มา · กระบวนการ = คำนวณ ใช้สูตร ขั้นตอน</td></tr>
-<tr><td>แผน 9 องค์ประกอบ</td><td>หัวเรื่อง · มาตรฐาน/ตัวชี้วัด · จุดประสงค์ · สาระสำคัญ · สาระการเรียนรู้ · กิจกรรม · สื่อ · วัดผล · บันทึกหลังสอน</td></tr>
-<tr><td>จุดประสงค์</td><td>K-P-A · กริยาวัดได้ · 1 กริยา/ข้อ · เน้นผู้เรียน · สอดคล้องตัวชี้วัด · ทักษะ 5: แก้ปัญหา สื่อสาร เชื่อมโยง ให้เหตุผล คิดสร้างสรรค์</td></tr>
+<tr><td data-label="เรื่อง">สื่อเอกสาร 3 กลุ่ม</td><td data-label="จำให้ได้">เฉพาะ (สรุปมโนทัศน์ เชื่อมโยง ตัวอย่างงาน แนะแนวทาง) · ทั่วไป (ใบกิจกรรม ใบงาน ใบความรู้) · สมบูรณ์ในตัว (บทเรียนสำเร็จรูป การ์ตูน ชุดการเรียนการสอน)</td></tr>
+<tr><td data-label="เรื่อง">สรุปมโนทัศน์</td><td data-label="จำให้ได้">ชื่อ · นิยาม · ลักษณะสำคัญ · ตัวอย่าง ✓+เหตุผล · ตัวอย่าง ✗+เหตุผล</td></tr>
+<tr><td data-label="เรื่อง">เชื่อมโยง</td><td data-label="จำให้ได้">4 ช่อง: คณิต · ชีวิตประจำวัน · ภาพ/กราฟ · คำอธิบายผู้เรียน</td></tr>
+<tr><td data-label="เรื่อง">ตัวอย่างงาน</td><td data-label="จำให้ได้">ตัวอย่างวิธีทำ + โจทย์ฝึก (+สรุป) · เน้น ขั้นตอนเฉพาะ/ข้อผิดพลาด/How to · 4 แบบ Faded, Self-explanation, Incorrect, Comparing</td></tr>
+<tr><td data-label="เรื่อง">แนะแนวทาง</td><td data-label="จำให้ได้">กิจกรรมง่าย→ยาก ค้นพบเอง + ส่วนสรุป · ไม่มีเฉลย · สร้าง 4 ขั้น</td></tr>
+<tr><td data-label="เรื่อง">ใบกิจกรรม/ใบงาน/ใบความรู้</td><td data-label="จำให้ได้">ทำกิจกรรมตามกระบวนการ / ภาระงานเข้าใจ+ฝึกทักษะ (Bloom) / เนื้อหาให้อ่านเอง</td></tr>
+<tr><td data-label="เรื่อง">บทเรียนสำเร็จรูป</td><td data-label="จำให้ได้">กรอบ (Frame) เฉลยทันที · เส้นตรง vs สาขา (กรอบยืน + กรอบสาขา Remedial)</td></tr>
+<tr><td data-label="เรื่อง">ชุดการเรียนการสอน</td><td data-label="จำให้ได้">คู่มือ · คำสั่ง/มอบงาน · เนื้อหาสื่อประสม+กิจกรรม · ประเมินผล</td></tr>
+<tr><td data-label="เรื่อง">GeoGebra Graphing</td><td data-label="จำให้ได้">Basic (Move Point Slider Intersect Extremum Roots Best Fit Line) · Edit (Select, Move Graphics View, Delete, Show/Hide Label, Show/Hide Object, Copy Visual Style) · Media (Text) · Points (+Point on Object, Attach/Detach, Complex Number, List) · Lines (Line Ray Vector) · Others (Pen, Freehand Function, Button, Check Box, Input Box)</td></tr>
+<tr><td data-label="เรื่อง">GeoGebra คำสั่ง</td><td data-label="จำให้ได้"><code>Segment(A,B)</code> <code>PerpendicularLine(C,f)</code> <code>Midpoint(A,B)</code> <code>Circle(A,3)</code> <code>Polygon(A,B,C)</code> <code>a=Slider(-10,10,0.1)</code> · ซ่อน = วงกลมสี / Show/Hide Object / Settings→Show Object</td></tr>
+<tr><td data-label="เรื่อง">AI</td><td data-label="จำให้ได้">ลักษณะ 4: Input · Inference · Adaptability · Autonomous · จริยธรรม 5: ตรวจสอบได้ · ส่วนตัว · เป็นธรรม · โปร่งใส · ปลอดภัย · PTCF · 4 Roles: Content, Task Designer, Thinking Partner, Assessment</td></tr>
+<tr><td data-label="เรื่อง">เครื่องมือ AI</td><td data-label="จำให้ได้">NotebookLM สรุป→สื่อ · Canva AI ใบงาน/เกม · Suno เพลง · AlphaGeometry พิสูจน์ · Chatbot 4 ชนิด · Fluffy Bot = Sheet+Apps Script+LINE+Gemini</td></tr>
+<tr><td data-label="เรื่อง">ความรู้ทางคณิต</td><td data-label="จำให้ได้">มโนทัศน์ = นิยาม กฎ สมบัติ ทฤษฎีบท สูตร สัญลักษณ์ ที่มา · กระบวนการ = คำนวณ ใช้สูตร ขั้นตอน</td></tr>
+<tr><td data-label="เรื่อง">แผน 9 องค์ประกอบ</td><td data-label="จำให้ได้">หัวเรื่อง · มาตรฐาน/ตัวชี้วัด · จุดประสงค์ · สาระสำคัญ · สาระการเรียนรู้ · กิจกรรม · สื่อ · วัดผล · บันทึกหลังสอน</td></tr>
+<tr><td data-label="เรื่อง">จุดประสงค์</td><td data-label="จำให้ได้">K-P-A · กริยาวัดได้ · 1 กริยา/ข้อ · เน้นผู้เรียน · สอดคล้องตัวชี้วัด · ทักษะ 5: แก้ปัญหา สื่อสาร เชื่อมโยง ให้เหตุผล คิดสร้างสรรค์</td></tr>
 </table></div>
 
 <h2>จุดที่พลาดบ่อย</h2>
