@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>แบบทดสอบ: แบบทดสอบปลายภาค นวัตกรรมการสอนคณิต</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Thai:wght@400;600;700;900&family=Sarabun:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===== หน้าตาถอดจาก chula/หลักสูตร/แบบทดสอบ_หลักสูตร_100ข้อ_1.html — ห้ามแก้ ให้ทุกชุดเหมือนกัน ===== */
+:root{
+  --paper:#EEF1F6;
+  --card:#FFFFFF;
+  --ink:#1B2430;
+  --ink-soft:#5B6572;
+  --primary:#223A6B;
+  --primary-light:#3C5B99;
+  --gold:#B8862E;
+  --gold-bg:#F5ECD9;
+  --success:#2F7D4F;
+  --success-bg:#E5F3EA;
+  --danger:#B23A3A;
+  --danger-bg:#FBEAEA;
+  --border:#D7DCE5;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:'Sarabun',sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  min-height:100vh;
+  background-image:
+    radial-gradient(circle at 15% 8%, rgba(34,58,107,0.05) 0%, transparent 40%),
+    radial-gradient(circle at 85% 92%, rgba(184,134,46,0.06) 0%, transparent 40%);
+}
+#app{max-width:760px;margin:0 auto;padding:28px 18px 60px;}
+.back-lesson{display:flex;justify-content:center;padding:10px 16px 0}
+.back-lesson a{font:600 14px 'Sarabun',sans-serif;color:var(--primary);background:var(--card);border:1px solid var(--border);border-radius:99px;padding:5px 14px;text-decoration:none}
+.back-lesson a:hover{background:var(--gold-bg)}
+h1,h2,h3{font-family:'Noto Serif Thai',serif;margin:0;}
+.eyebrow{
+  font-size:12px;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--primary-light);font-weight:600;margin-bottom:6px;
+}
+button{font-family:inherit;cursor:pointer;border:none;}
+
+/* ---------- Start screen ---------- */
+.cover{
+  background:var(--card);border:1px solid var(--border);border-radius:18px;
+  padding:40px 32px;box-shadow:0 20px 40px -24px rgba(34,58,107,0.35);
+  position:relative;overflow:hidden;
+}
+.cover::before{
+  content:"";position:absolute;top:-60px;right:-60px;width:180px;height:180px;
+  border-radius:50%;background:radial-gradient(circle,var(--gold-bg) 0%, transparent 70%);
+}
+.stamp{
+  width:72px;height:72px;border:2.5px solid var(--danger);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;transform:rotate(-8deg);
+  color:var(--danger);font-family:'Noto Serif Thai',serif;font-weight:700;font-size:13px;
+  text-align:center;line-height:1.15;margin-bottom:18px;
+}
+.cover h1{font-size:30px;color:var(--primary);line-height:1.35;}
+.cover .sub{color:var(--ink-soft);margin-top:10px;font-size:15px;line-height:1.7;}
+.meta-row{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0;}
+.meta-chip{
+  background:var(--paper);border:1px solid var(--border);border-radius:999px;
+  padding:8px 16px;font-size:13px;color:var(--primary);font-weight:600;
+}
+.instructions{
+  background:var(--paper);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;
+  padding:16px 18px;margin:22px 0;font-size:14px;color:var(--ink-soft);line-height:1.8;
+}
+.instructions b{color:var(--ink);}
+.btn-primary{
+  background:var(--primary);color:#fff;padding:15px 30px;border-radius:10px;
+  font-size:16px;font-weight:700;width:100%;transition:background .15s;
+  font-family:'Sarabun',sans-serif;
+}
+.btn-primary:hover{background:var(--primary-light);}
+.btn-primary:disabled{background:#B7BEC9;cursor:not-allowed;}
+
+/* ---------- Quiz screen ---------- */
+.quiz-header{margin-bottom:18px;}
+.top-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+.qcount{font-family:'Noto Serif Thai',serif;font-weight:700;color:var(--primary);font-size:15px;}
+.map-btn{
+  background:var(--card);border:1px solid var(--border);color:var(--primary);
+  padding:8px 14px;border-radius:8px;font-size:13px;font-weight:600;
+}
+.progress-track{height:8px;background:var(--card);border:1px solid var(--border);border-radius:999px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--gold));border-radius:999px;transition:width .25s;}
+.section-tag{
+  display:inline-block;margin-top:12px;font-size:12px;font-weight:700;color:var(--gold);
+  letter-spacing:.06em;text-transform:uppercase;
+}
+
+.qcard{
+  background:var(--card);border:1px solid var(--border);border-radius:16px;
+  padding:30px 26px;margin-top:16px;box-shadow:0 16px 30px -22px rgba(27,36,48,.3);
+}
+.qnum-badge{
+  width:44px;height:44px;border-radius:50%;background:var(--primary);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-family:'Noto Serif Thai',serif;
+  font-weight:700;font-size:17px;flex-shrink:0;
+}
+.qhead{display:flex;gap:14px;align-items:flex-start;margin-bottom:22px;}
+.qtext{font-size:17px;line-height:1.75;padding-top:6px;font-weight:500;}
+
+.option{
+  display:flex;align-items:center;gap:14px;padding:14px 16px;border:1.5px solid var(--border);
+  border-radius:12px;margin-bottom:10px;transition:all .12s;background:#fff;cursor:pointer;
+}
+.option:hover{border-color:var(--primary-light);background:#F7F9FC;}
+.option.selected{border-color:var(--primary);background:#EEF2FA;}
+.bubble{
+  width:30px;height:30px;border-radius:50%;border:2px solid var(--ink-soft);
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;
+  color:var(--ink-soft);flex-shrink:0;font-family:'Noto Serif Thai',serif;
+}
+.option.selected .bubble{background:var(--primary);border-color:var(--primary);color:#fff;}
+.option-text{font-size:15px;line-height:1.6;}
+
+.option.locked{cursor:default;}
+.option.locked:hover{background:#fff;border-color:var(--border);}
+.option.correct-answer{border-color:var(--success);background:var(--success-bg);cursor:default;}
+.option.correct-answer:hover{background:var(--success-bg);border-color:var(--success);}
+.option.correct-answer .bubble{background:var(--success);border-color:var(--success);color:#fff;}
+.option.wrong-answer{border-color:var(--danger);background:var(--danger-bg);cursor:default;}
+.option.wrong-answer:hover{background:var(--danger-bg);border-color:var(--danger);}
+.option.wrong-answer .bubble{background:var(--danger);border-color:var(--danger);color:#fff;}
+
+.feedback{
+  display:flex;align-items:center;gap:10px;padding:13px 16px;border-radius:10px;
+  font-size:14.5px;font-weight:600;line-height:1.6;margin-top:6px;
+  animation:pop .18s ease-out;
+}
+@keyframes pop{from{transform:scale(.97);opacity:0;}to{transform:scale(1);opacity:1;}}
+.fb-correct{background:var(--success-bg);color:var(--success);}
+.fb-wrong{background:var(--danger-bg);color:var(--danger);}
+
+.nav-row{display:flex;gap:10px;margin-top:22px;}
+.btn-ghost{
+  background:#fff;border:1.5px solid var(--border);color:var(--primary);
+  padding:14px 20px;border-radius:10px;font-weight:600;font-size:15px;flex:1;
+}
+.btn-ghost:disabled{opacity:.4;cursor:not-allowed;}
+.btn-next{
+  background:var(--primary);color:#fff;padding:14px 20px;border-radius:10px;
+  font-weight:700;font-size:15px;flex:2;
+}
+.btn-next:hover{background:var(--primary-light);}
+
+/* map overlay */
+.overlay{
+  position:fixed;inset:0;background:rgba(27,36,48,.5);display:flex;align-items:flex-end;
+  justify-content:center;z-index:50;
+}
+.map-panel{
+  background:#fff;border-radius:18px 18px 0 0;max-width:760px;width:100%;
+  padding:22px;max-height:75vh;overflow-y:auto;
+}
+.map-panel h3{color:var(--primary);margin-bottom:4px;}
+.map-panel .sub2{font-size:13px;color:var(--ink-soft);margin-bottom:14px;}
+.map-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:6px;}
+.map-cell{
+  aspect-ratio:1;border-radius:6px;border:1.5px solid var(--border);background:#fff;
+  font-size:12px;font-weight:600;color:var(--ink-soft);display:flex;align-items:center;justify-content:center;
+}
+.map-cell.answered{background:var(--primary);color:#fff;border-color:var(--primary);}
+.map-cell.current{outline:2.5px solid var(--gold);outline-offset:1px;}
+.map-close{width:100%;margin-top:16px;padding:13px;border-radius:10px;background:var(--paper);color:var(--primary);font-weight:700;}
+.legend{display:flex;gap:16px;margin-top:12px;font-size:12px;color:var(--ink-soft);}
+.legend span{display:inline-flex;align-items:center;gap:5px;}
+.dot{width:11px;height:11px;border-radius:3px;display:inline-block;border:1.5px solid var(--border);}
+.dot.filled{background:var(--primary);border-color:var(--primary);}
+
+/* ---------- Result screen ---------- */
+.result-card{
+  background:var(--card);border:1px solid var(--border);border-radius:18px;padding:34px 28px;
+  text-align:center;box-shadow:0 20px 40px -24px rgba(34,58,107,0.35);
+}
+.score-num{font-family:'Noto Serif Thai',serif;font-weight:900;font-size:64px;color:var(--primary);line-height:1;}
+.score-total{font-size:20px;color:var(--ink-soft);}
+.score-pct{
+  display:inline-block;margin-top:10px;padding:6px 16px;border-radius:999px;font-weight:700;font-size:14px;
+}
+.pct-good{background:var(--success-bg);color:var(--success);}
+.pct-mid{background:var(--gold-bg);color:var(--gold);}
+.pct-low{background:var(--danger-bg);color:var(--danger);}
+.remark{margin-top:14px;color:var(--ink-soft);font-size:14px;line-height:1.7;}
+
+.breakdown{display:flex;gap:12px;margin-top:24px;}
+.bd-card{flex:1;background:var(--paper);border-radius:12px;padding:16px;text-align:left;}
+.bd-card .lbl{font-size:12px;color:var(--ink-soft);font-weight:600;}
+.bd-card .val{font-family:'Noto Serif Thai',serif;font-size:24px;font-weight:700;color:var(--primary);margin-top:2px;}
+
+.action-row{display:flex;gap:10px;margin-top:26px;}
+
+.review-head{display:flex;justify-content:space-between;align-items:center;margin:34px 0 14px;}
+.filter-row{display:flex;gap:8px;}
+.filter-btn{
+  padding:8px 14px;border-radius:999px;border:1.5px solid var(--border);background:#fff;
+  font-size:13px;font-weight:600;color:var(--ink-soft);
+}
+.filter-btn.active{background:var(--primary);border-color:var(--primary);color:#fff;}
+
+.review-item{
+  background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 18px;
+  margin-bottom:12px;display:flex;gap:12px;
+}
+.mark{
+  width:34px;height:34px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:16px;border:2.5px solid;
+}
+.mark.correct{color:var(--success);border-color:var(--success);}
+.mark.wrong{color:var(--danger);border-color:var(--danger);}
+.ri-num{font-size:12px;color:var(--ink-soft);font-weight:700;margin-bottom:4px;}
+.ri-q{font-size:14.5px;line-height:1.65;margin-bottom:8px;}
+.ri-ans{font-size:13.5px;line-height:1.6;}
+.ri-ans .yr{color:var(--danger);}
+.ri-ans .ck{color:var(--success);}
+.ri-ans b{font-weight:700;}
+
+@media (max-width:480px){
+  .cover{padding:28px 20px;}
+  .cover h1{font-size:24px;}
+  .score-num{font-size:52px;}
+  .breakdown{flex-direction:column;}
+  .map-grid{grid-template-columns:repeat(6,1fr);}
+}
+
+/* ---------- เพิ่ม: คำอธิบายเฉลย ---------- */
+.explain{margin-top:10px;padding:12px 16px;border-radius:10px;background:var(--paper);
+  border-left:3px solid var(--gold);font-size:14px;line-height:1.75;color:var(--ink);}
+.explain .pg{color:var(--ink-soft);font-size:12.5px;white-space:nowrap;}
+.ri-ans .explain{margin-top:8px;}
+</style>
+</head>
+<body>
+<nav class="back-lesson"><a href="index.html">← กลับไปบทเรียน</a></nav>
+<div id="app"></div>
+<script>
+/* ===================== DATA (ใส่โดย scripts/build_quiz.py) ===================== */
+const QUIZ = {"title": "แบบทดสอบปลายภาค<br>นวัตกรรมการสอนคณิต", "subtitle": "4 ส่วน: สื่อเอกสาร · GeoGebra · AI · วิธีวิทยา — เหตุผลทุกข้ออ้างหน้าในสรุป", "eyebrow": "2720341 · อ่านสอบ 20 พ.ย. 2569", "sections": ["สื่อเอกสาร", "GeoGebra Graphing Calculator", "AI เพื่อการเรียนรู้คณิต", "วิธีวิทยาการสอนคณิต"], "questions": [{"s": 1, "q": "เอกสารสรุปมโนทัศน์ จัดอยู่ในสื่อเอกสารกลุ่มใด", "o": ["กลุ่มเฉพาะ", "กลุ่มทั่วไป", "กลุ่มสมบูรณ์ในตัว", "กลุ่มเอกสารประกอบการเรียนการสอน"], "a": 0, "e": "กลุ่มเฉพาะ = สรุปมโนทัศน์ เชื่อมโยง ตัวอย่างงาน แนะแนวทาง", "p": "น. 5 (สื่อ)"}, {"s": 1, "q": "ข้อใดอยู่ในกลุ่ม \"สมบูรณ์ในตัว\"", "o": ["บทเรียนการ์ตูน", "ใบความรู้", "เอกสารแนะแนวทาง", "ใบกิจกรรม"], "a": 0, "e": "สมบูรณ์ในตัว = บทเรียนสำเร็จรูป บทเรียนการ์ตูน ชุดการเรียนการสอน · ใบความรู้/ใบกิจกรรมเป็นกลุ่มทั่วไป", "p": "น. 5 (สื่อ)"}, {"s": 1, "q": "เป้าหมายของเอกสารสรุปมโนทัศน์คือข้อใด", "o": ["ให้ผู้เรียนเข้าใจมโนทัศน์ที่เรียนชัดเจนขึ้น ไม่ใช่แค่สรุปเนื้อหานามธรรม", "ให้ผู้เรียนฝึกทำโจทย์ตามตัวอย่างจนชำนาญ", "ให้ผู้เรียนค้นพบมโนทัศน์ใหม่ด้วยตนเองจากกิจกรรม", "ให้ผู้เรียนสื่อสารแนวคิดผ่าน 4 รูปแบบการแสดงแทน"], "a": 0, "e": "ฝึกตามตัวอย่าง = ตัวอย่างงาน · ค้นพบเอง = แนะแนวทาง · 4 รูปแบบ = เชื่อมโยง", "p": "น. 8 (สื่อ)"}, {"s": 1, "q": "ข้อใด \"ไม่ใช่\" ส่วนประกอบของเอกสารสรุปมโนทัศน์", "o": ["ตัวอย่างในชีวิตประจำวัน", "ลักษณะสำคัญ", "ตัวอย่างที่สอดคล้องพร้อมเหตุผล", "ตัวอย่างที่ไม่สอดคล้องพร้อมเหตุผล"], "a": 0, "e": "ตัวอย่างในชีวิตประจำวัน (Everyday Example) เป็นช่องของเอกสารเชื่อมโยง", "p": "น. 8, 14 (สื่อ)"}, {"s": 1, "q": "ในเอกสารสรุปมโนทัศน์ เรื่องสมการเชิงเส้นตัวแปรเดียว ข้อใดเป็น \"ตัวอย่างที่ไม่สอดคล้อง\"", "o": ["3x + 1 = y − 5", "5x² + 3x = 5x² − 5", "5y + 2 = 3y + 9", "2x + 1 = 5"], "a": 0, "e": "3x+1=y−5 มีสองตัวแปร · 5x²+3x=5x²−5 จัดรูปแล้วเหลือ 3x=−5 จึงเป็นสมการเชิงเส้น", "p": "น. 7 (สื่อ)"}, {"s": 1, "q": "เอกสารเชื่อมโยงมี 4 ส่วน ข้อใดครบถูกต้อง", "o": ["ตัวอย่างทางคณิต · ตัวอย่างในชีวิตประจำวัน · แผนภาพ/รูปภาพ/กราฟ · คำอธิบายของผู้เรียน", "นิยาม · ลักษณะสำคัญ · ตัวอย่าง · ตัวอย่างค้าน", "ตัวอย่างงาน · โจทย์ฝึก · สรุปเนื้อหา · เฉลย", "กิจกรรมแนะแนวทาง · ข้อสรุป · คำถาม · เฉลย"], "a": 0, "e": "ตัวลวงอื่นคือส่วนประกอบของสรุปมโนทัศน์ ตัวอย่างงาน และแนะแนวทาง", "p": "น. 14 (สื่อ)"}, {"s": 1, "q": "ครูต้องการเน้นความแตกต่างของการหา ห.ร.ม. กับ ค.ร.น. โดยแยกตัวประกอบ ควรใช้สื่อใด", "o": ["เอกสารตัวอย่างงาน", "เอกสารเชื่อมโยง", "ใบความรู้", "บทเรียนการ์ตูน"], "a": 0, "e": "จุดเน้นข้อ 1 ของตัวอย่างงาน: งานที่มีขั้นตอนเฉพาะ/ต่างจากทั่วไป และต้องการเน้นความต่าง", "p": "น. 18 (สื่อ)"}, {"s": 1, "q": "ตัวอย่างงานที่ข้อแรกทำครบ ข้อถัดไปทำให้ครึ่งทางแล้วให้นักเรียนทำต่อ คือประเภทใด", "o": ["Faded Worked Example", "Worked Example with Self-explanation", "Incorrect Worked Example", "Comparing Worked Examples"], "a": 0, "e": "Faded = ค่อยๆ ลดขั้นที่ทำให้ จนนักเรียนทำเองทั้งข้อ", "p": "น. 20 (สื่อ)"}, {"s": 1, "q": "ตัวอย่างงานที่แสดงวิธีแก้ 3(4x+7)=15 ที่ถูกต้อง 2 วิธี (หาร 3 ก่อน กับ กระจายก่อน) แล้วถามว่าจะเลือกวิธีใด คือประเภทใด", "o": ["Comparing Worked Examples", "Incorrect Worked Example", "Faded Worked Example", "Worked Example with Self-explanation"], "a": 0, "e": "เทียบ 2 วิธีที่ถูกทั้งคู่ = Comparing", "p": "น. 24 (สื่อ)"}, {"s": 1, "q": "เอกสารแนะแนวทางมีเฉลยคำตอบในเอกสารให้นักเรียนตรวจเอง", "o": ["ถูก", "ผิด"], "a": 1, "e": "ไม่มีเฉลยไว้ให้ เพื่อให้ทำอิสระไม่กังวลคำตอบ ครูเฉลยและสรุปหลังทำจบ", "p": "น. 28, 32 (สื่อ)"}, {"s": 1, "q": "ข้อใด \"ไม่ใช่\" เทคนิคการเขียนเอกสารแนะแนวทาง", "o": ["เขียนหัวตารางเป็นคำถามเพื่อกระตุ้นการคิด", "ถ้าเติมคำตอบไม่ได้ให้มีคำตอบให้เลือก", "ยกตัวอย่างหลากหลายจนเห็นรูปแบบ", "ใช้ตัวเลขน้อยๆ ก่อนแล้วจึงสรุปเป็นนิยาม"], "a": 0, "e": "หัวตารางจะไม่เขียนในรูปคำถาม", "p": "น. 31 (สื่อ)"}, {"s": 1, "q": "ใบงาน (Worksheet) ต่างจากใบความรู้อย่างไร", "o": ["ใบงานมีภาระงานให้ลงมือทำ ใบความรู้เน้นเนื้อหาให้ศึกษาเอง", "ใบงานไม่มีคำชี้แจง ใบความรู้มีคำชี้แจง", "ใบงานใช้ก่อนสอน ใบความรู้ใช้หลังสอนเท่านั้น", "ใบงานอยู่กลุ่มเฉพาะ ใบความรู้อยู่กลุ่มทั่วไป"], "a": 0, "e": "ใบงานมี \"ภาระงาน\" · ใบความรู้คือเนื้อหาที่ครูเรียบเรียงให้อ่านเอง ทั้งสองอยู่กลุ่มทั่วไป", "p": "น. 39, 42 (สื่อ)"}, {"s": 1, "q": "การกำหนด \"ภาระงาน\" ในใบงาน ข้อใดไม่ได้อยู่ในสิ่งที่ควรพิจารณา", "o": ["ความสวยงามของการจัดหน้า", "ปริมาณ", "การเรียงลำดับความยากง่าย", "ความสอดคล้องกับความรู้ที่สอน"], "a": 0, "e": "พิจารณา: เป้าหมาย ปริมาณ ความยากง่าย การเรียงลำดับความยาก ความสอดคล้องกับความรู้ที่สอน", "p": "น. 40 (สื่อ)"}, {"s": 1, "q": "บทเรียนสำเร็จรูปที่มี \"กรอบยืน\" และ \"กรอบสาขา (Remedial Frame)\" คือแบบใด", "o": ["แบบสาขา", "แบบเส้นตรง", "บทเรียนการ์ตูน", "ชุดการเรียนการสอนแบบผสม"], "a": 0, "e": "กรอบสาขาอธิบายเหตุที่ตอบผิดแล้วให้กลับไปตอบกรอบเดิม · แบบเส้นตรงให้อ่านซ้ำ", "p": "น. 49 (สื่อ)"}, {"s": 1, "q": "บทเรียนสำเร็จรูปแบบเส้นตรงไม่เหมาะกับเนื้อหาแบบใด", "o": ["เนื้อหาที่เป็นความคิดเห็น", "เนื้อหาที่เน้นสาระ", "เนื้อหาที่มีคำตอบเดียว", "เนื้อหาที่แบ่งเป็นตอนย่อยได้"], "a": 0, "e": "เนื้อหาความคิดเห็นมีคำตอบถูกได้หลายคำตอบ", "p": "น. 47 (สื่อ)"}, {"s": 1, "q": "ข้อใด \"ไม่ใช่\" ส่วนประกอบสำคัญ 4 ส่วนของชุดการเรียนการสอน", "o": ["กรอบสาขาสำหรับซ่อมเสริม", "คู่มือการใช้ชุดการเรียนการสอน", "คำสั่งหรือการมอบงาน", "การประเมินผล"], "a": 0, "e": "4 ส่วน: คู่มือ · คำสั่ง/มอบงาน · เนื้อหาในรูปสื่อประสม+กิจกรรม · ประเมินผล · กรอบสาขาเป็นของบทเรียนสำเร็จรูป", "p": "น. 56 (สื่อ)"}, {"s": 2, "q": "ใน GeoGebra Graphing Calculator หมวด Lines มีเครื่องมือใดบ้าง", "o": ["Line, Ray, Vector", "Segment, Line, Ray", "Segment, Perpendicular Line, Parallel Line", "Line, Polygon, Circle"], "a": 0, "e": "Graphing Calculator ไม่มี Segment/Perpendicular Line ต้องพิมพ์คำสั่งแทน", "p": "น. — ส่วน GeoGebra ในสรุป (หน้า 10–11)"}, {"s": 2, "q": "ต้องการส่วนของเส้นตรง AB ใน Graphing Calculator ควรพิมพ์คำสั่งใด", "o": ["Segment(A, B)", "Line(A, B)", "Ray(A, B)", "Vector(A, B)"], "a": 0, "e": "Line ได้เส้นตรงยาวไม่สิ้นสุด · Segment ได้เฉพาะช่วง A ถึง B", "p": "น. — ส่วน GeoGebra ในสรุป (หน้า 11)"}, {"s": 2, "q": "คำสั่งสร้างเส้นตรงผ่านจุด C ตั้งฉากกับเส้น f คือข้อใด", "o": ["PerpendicularLine(C, f)", "PerpendicularBisector(C, f)", "Line(C, f)", "Midpoint(C, f)"], "a": 0, "e": "Line(C, f) ได้เส้นขนาน · PerpendicularBisector ใช้กับสองจุด", "p": "น. — ส่วน GeoGebra ในสรุป (หน้า 11–12)"}, {"s": 2, "q": "ใช้เครื่องมือ Show / Hide Object คลิกวัตถุแล้ววัตถุยังไม่หาย ต้องทำอะไร", "o": ["เปลี่ยนไปใช้เครื่องมืออื่น", "ดับเบิลคลิกวัตถุ", "กด Delete", "เปิด Settings แล้วกด Apply"], "a": 0, "e": "วัตถุจะถูกไฮไลต์ไว้และซ่อนจริงเมื่อเปลี่ยนเครื่องมือ", "p": "น. — ส่วน GeoGebra ในสรุป (หน้า 10)"}, {"s": 2, "q": "ข้อใด \"ไม่ใช่\" วิธีซ่อนวัตถุใน Graphing Calculator", "o": ["เครื่องมือ Copy Visual Style", "คลิกวงกลมสีหน้าบรรทัดในแท็บ Algebra", "เครื่องมือ Show / Hide Object", "Settings → Basic → เอาติ๊ก Show Object ออก"], "a": 0, "e": "Copy Visual Style คัดลอกสี/รูปแบบเส้นจากวัตถุหนึ่งไปอีกวัตถุ", "p": "น. — ส่วน GeoGebra ในสรุป (หน้า 10, 12)"}, {"s": 2, "q": "ต้องการ slider a ค่าตั้งแต่ −10 ถึง 10 เพิ่มทีละ 0.1 ต้องไปตั้งค่าที่ใด", "o": ["⋮ → Settings → แท็บ Slider (Min, Max, Increment)", "⋮ → Settings → แท็บ Color", "Tools → Edit → Select Objects", "Tools → Points → List"], "a": 0, "e": "แท็บ Slider ใน Settings มี Min/Max/Increment (หรือใช้ a = Slider(-10, 10, 0.1))", "p": "น. — ส่วน GeoGebra ในสรุป (หน้า 12–13)"}, {"s": 2, "q": "เครื่องมือใดใช้หาจุดตัดแกน X ของกราฟฟังก์ชัน", "o": ["Roots", "Extremum", "Intersect", "Point on Object"], "a": 0, "e": "Extremum หาจุดสูงสุด/ต่ำสุดสัมพัทธ์ · Intersect หาจุดตัดของวัตถุ 2 ชิ้น", "p": "น. — ส่วน GeoGebra ในสรุป (หน้า 10)"}, {"s": 2, "q": "ต้องการเขียนบทนิยามภาษาไทยปนสัญลักษณ์คณิตบน Graphics View ใช้เครื่องมือใด", "o": ["Media → Text", "Others → Pen", "Others → Input Box", "Edit → Show / Hide Label"], "a": 0, "e": "Text รับข้อความไทยและสัญลักษณ์/สูตรได้ · Pen เป็นการวาดมือ", "p": "น. — ส่วน GeoGebra ในสรุป (หน้า 10, 12)"}, {"s": 2, "q": "เครื่องมือใดใช้ลากกรอบครอบจุดข้อมูลหลายจุดแล้วได้เส้นถดถอย", "o": ["Best Fit Line", "Line", "Freehand Function", "List"], "a": 0, "e": "Best Fit Line อยู่ใน Basic Tools ของ Graphing Calculator", "p": "น. — ส่วน GeoGebra ในสรุป (หน้า 10)"}, {"s": 2, "q": "ต้องการกล่องติ๊กที่ให้นักเรียนกดเพื่อแสดง/ซ่อนเฉลย ใช้เครื่องมือใด", "o": ["Check Box", "Button", "Input Box", "Show / Hide Object"], "a": 0, "e": "Check Box ผูกกับวัตถุที่จะแสดง/ซ่อน · Button รันสคริปต์ · Input Box รับค่าที่พิมพ์", "p": "น. — ส่วน GeoGebra ในสรุป (หน้า 11)"}, {"s": 3, "q": "ข้อใด \"ไม่ใช่\" ลักษณะสำคัญของ AI 4 ข้อ (OECD, 2024; UNESCO, 2022)", "o": ["Virtual display", "Input processing", "Inference from data", "Autonomous decision-making"], "a": 0, "e": "4 ข้อ: Input processing · Inference from data · Adaptability as human-like intelligence · Autonomous decision-making", "p": "น. 5 (AI)"}, {"s": 3, "q": "ครูป้อนชื่อ-สกุลและเลขประจำตัวนักเรียนให้ AI ตรวจข้อสอบ แล้วประกาศคะแนนจาก AI ทันที ขัดหลักจริยธรรม AI ข้อใดชัดที่สุด", "o": ["การคุ้มครองความเป็นส่วนตัว และการตรวจสอบ/ความรับผิดชอบ", "ความเป็นธรรม และความปลอดภัย", "ความโปร่งใส อย่างเดียว", "ไม่ขัดข้อใด เพราะครูเขียนเกณฑ์เอง"], "a": 0, "e": "ป้อนข้อมูลส่วนบุคคล = Privacy · ไม่ตรวจทานคะแนนก่อนประกาศ = Verification/accountability", "p": "น. 9, 11 (AI)"}, {"s": 3, "q": "PTCF ในการเขียน prompt ย่อมาจากข้อใด", "o": ["Persona, Task, Context, Format", "Purpose, Task, Content, Feedback", "Persona, Topic, Criteria, Format", "Prompt, Task, Check, Fix"], "a": 0, "e": "P บทบาท · T งาน · C ข้อมูลประกอบ · F รูปแบบผลลัพธ์ (สพฐ., 2568)", "p": "น. 12 (AI)"}, {"s": 3, "q": "ใน prompt \"...ขอให้เฉลย พร้อมระบุเหตุผลประกอบ ขอเป็นภาษาทางการ\" ส่วนนี้คือองค์ประกอบใดของ PTCF", "o": ["Format", "Persona", "Task", "Context"], "a": 0, "e": "กำหนดลักษณะผลลัพธ์ = Format", "p": "น. 22 (AI)"}, {"s": 3, "q": "Google's AI Prompting มี 5 ขั้น ข้อใดเรียงถูก", "o": ["Task → Context → Reference → Evaluate → Iterate", "Persona → Task → Context → Format → Evaluate", "Context → Task → Iterate → Reference → Evaluate", "Task → Reference → Context → Iterate → Evaluate"], "a": 0, "e": "Task, Context, Reference, Evaluate, Iterate (Google, 2023)", "p": "น. 13 (AI)"}, {"s": 3, "q": "ข้อใด \"ไม่ใช่\" 4 Roles of AI in Mathematics Education", "o": ["AI as a Classroom Manager", "AI as a Content Assistant", "AI as a Thinking Partner", "AI as an Assessment Assistant"], "a": 0, "e": "4 บทบาท: Content Assistant · Task Designer · Thinking Partner · Assessment Assistant", "p": "น. 18 (AI)"}, {"s": 3, "q": "AI ตรวจข้อสอบและให้คะแนนอัตโนมัติได้ดีที่สุดกับข้อสอบแบบใด (ตามเอกสาร)", "o": ["ข้อสอบเลือกตอบ", "ข้อสอบพิสูจน์", "ข้อสอบอัตนัยยาว", "ชิ้นงานโครงงาน"], "a": 0, "e": "เอกสารระบุ \"ตรวจข้อสอบและให้คะแนนได้อัตโนมัติ (ดีในข้อสอบเลือกตอบ)\"", "p": "น. 20 (AI)"}, {"s": 3, "q": "ข้อใด \"ไม่ใช่\" ข้อจำกัดของ AI ในการศึกษาคณิตตามเอกสาร", "o": ["ตอบได้เฉพาะภาษาอังกฤษ", "อาจลืมพิจารณาโดเมน-เรนจ์", "อาจอธิบายสูงเกินระดับบทเรียน", "อาจเกิด Hallucination"], "a": 0, "e": "ข้อจำกัด 7 ข้อไม่มีเรื่องภาษา", "p": "น. 21 (AI)"}, {"s": 3, "q": "เครื่องมือใดสรุปเนื้อหาจากเอกสาร/วิดีโอ/ลิงก์ แล้วสร้างไฟล์เสียงคล้าย podcast และ mind map ได้", "o": ["NotebookLM", "Suno AI", "Canva AI", "AlphaGeometry"], "a": 0, "e": "NotebookLM ช่วยสรุปเนื้อหาและนำไปสร้างสื่อ", "p": "น. 27 (AI)"}, {"s": 3, "q": "ตามเอกสาร สไตล์เพลงใน Suno AI ที่แนะนำสำหรับนักเรียนประถมคือข้อใด", "o": ["Children Pop", "Pop Rock / Acoustic Pop", "Reggaeton / Latin Beat", "Rap / Hip-Hop"], "a": 0, "e": "ประถม: Children Pop, Chant/Cheer, Hip-Hop เบาๆ, Folk/ลูกทุ่ง · ตัวลวงเป็นของ ม.ต้น", "p": "น. 39 (AI)"}, {"s": 3, "q": "Fluffy Bot ของวิทยากรเป็น chatbot ชนิดใด และสร้างจากอะไร", "o": ["Hybrid chatbot — Google Sheet + Apps Script + LINE Messaging API + Gemini", "Rule-based chatbot — Google Forms + ChatGPT", "Voice-enabled chatbot — Siri + Google Drive", "AI-powered chatbot — Canva AI + Facebook Messenger"], "a": 0, "e": "Hybrid chatbot ตัวอย่างวิชาสถิติ ใช้ Sheet/Apps Script, LINE Developer, Gemini", "p": "น. 52–53 (AI)"}, {"s": 4, "q": "ข้อใดเป็นความรู้เชิงมโนทัศน์", "o": ["บทนิยามของ ห.ร.ม.", "ขั้นตอนการหารสังเคราะห์", "ขั้นตอนหาส่วนเบี่ยงเบนมาตรฐาน 5 ขั้น", "ขั้นตอนหาควอร์ไทล์ของข้อมูลที่ไม่แจกแจงความถี่"], "a": 0, "e": "บทนิยาม กฎ สมบัติ ทฤษฎีบท สูตร = มโนทัศน์ · ขั้นตอน/การคำนวณ = กระบวนการ", "p": "น. 5–8, 12 (วิธี2)"}, {"s": 4, "q": "\"ที่มาหรือเหตุผลของขั้นตอนทางคณิตศาสตร์\" จัดเป็นความรู้ประเภทใด", "o": ["ความรู้เชิงมโนทัศน์", "ความรู้เชิงกระบวนการ", "ทักษะการสื่อสาร", "คุณลักษณะที่พึงประสงค์"], "a": 0, "e": "เอกสารจัด \"ที่มาหรือเหตุผลของขั้นตอน\" ไว้ในความรู้เชิงมโนทัศน์ ตัวขั้นตอนเองเป็นกระบวนการ", "p": "น. 5 (วิธี2)"}, {"s": 4, "q": "การอธิบายสูตรค่าเฉลี่ยเลขคณิต (ม.ต้น) ด้วยการแบ่งเงินให้เท่ากัน คือการอธิบายแบบใด", "o": ["อธิบายมโนทัศน์ในรูปนิพจน์ให้มีความหมายด้วยบริบทชีวิตจริง/รูปธรรม", "อธิบายมโนทัศน์โดยใช้นิยามและสมบัติที่เรียนก่อนหน้า", "อธิบายความรู้เชิงกระบวนการเป็นลำดับขั้น", "พิสูจน์อย่างเป็นทางการ"], "a": 0, "e": "เอกสารยกตัวอย่างนี้ในการใช้บริบทชีวิตประจำวัน", "p": "น. 16 (วิธี2)"}, {"s": 4, "q": "ข้อใด \"ไม่ใช่\" องค์ประกอบของแผนการจัดการเรียนรู้ตามเอกสาร", "o": ["ประวัติผู้สอน", "สาระสำคัญ", "สื่อและแหล่งการเรียนรู้", "บันทึกหลังการจัดการเรียนรู้"], "a": 0, "e": "9 องค์ประกอบ: หัวเรื่อง มาตรฐาน/ตัวชี้วัด จุดประสงค์ สาระสำคัญ สาระการเรียนรู้ กิจกรรม สื่อ วัดผล บันทึกหลังสอน", "p": "น. 5 (วิธี1)"}, {"s": 4, "q": "รายวิชาคณิตศาสตร์เพิ่มเติม ใช้อะไรแทนมาตรฐานและตัวชี้วัดในแผน", "o": ["ผลการเรียนรู้ที่คาดหวัง", "สาระสำคัญ", "จุดประสงค์ปลายทาง", "คำอธิบายรายวิชาเท่านั้น"], "a": 0, "e": "พื้นฐาน → มาตรฐาน+ตัวชี้วัด · เพิ่มเติม → ผลการเรียนรู้ (ที่คาดหวัง)", "p": "น. 9–10 (วิธี1)"}, {"s": 4, "q": "สาระสำคัญ \"การบวกคือการนับเลขแต่ละจำนวนต่อเนื่องกันไปจนหมด\" เขียนโดยพิจารณาจากอะไร", "o": ["ความหมายของเรื่องที่สอน", "ความสำคัญของเรื่อง", "องค์ประกอบหรือขั้นตอนการปฏิบัติ", "มาตรฐานการเรียนรู้"], "a": 0, "e": "3 แบบ: จากความหมาย · ความสำคัญ · องค์ประกอบ/ขั้นตอน — ตัวอย่างนี้คือความหมาย", "p": "น. 15–16 (วิธี1)"}, {"s": 4, "q": "การเขียนสาระการเรียนรู้ ข้อใดถูกต้อง", "o": ["เรียงตามกระบวนการในกิจกรรม และไม่จำเป็นต้องเขียนสาระสำคัญซ้ำ", "ต้องคัดลอกสาระสำคัญมาไว้ด้วยเสมอ", "เขียนเป็นคำถามให้นักเรียนตอบ", "เขียนเฉพาะชื่อบทเรียน"], "a": 0, "e": "สาระการเรียนรู้เรียงตามกิจกรรม ไม่ต้องเขียนสาระสำคัญซ้ำ", "p": "น. 19 (วิธี1)"}, {"s": 4, "q": "กิจกรรมการเรียนรู้ 50 นาที ขั้นนำควรใช้เวลาประมาณเท่าใด", "o": ["5–10 นาที", "15–20 นาที", "25 นาที", "ไม่จำกัด"], "a": 0, "e": "ขั้นนำไม่ควรใช้เวลามากเกินไป 5–10 นาที", "p": "น. 22 (วิธี1)"}, {"s": 4, "q": "การเขียนกิจกรรมการเรียนรู้ในแผน ต้องระบุคำพูดของครูทุกประโยค เช่น \"ครูถามนักเรียนว่า...\"", "o": ["ถูก", "ผิด"], "a": 1, "e": "ไม่จำเป็นต้องระบุรายละเอียดของคำพูด", "p": "น. 21 (วิธี1)"}, {"s": 4, "q": "จุดประสงค์ข้อใดเขียนได้ดีที่สุด", "o": ["นักเรียนสามารถบอกความหมายของเลขยกกำลังได้", "นักเรียนเข้าใจความหมายของเลขยกกำลัง", "ครูอธิบายความหมายของเลขยกกำลังให้นักเรียนฟัง", "นักเรียนบอกความหมายและคำนวณเลขยกกำลังได้"], "a": 0, "e": "\"เข้าใจ\" วัดไม่ได้ · ข้อครูอธิบายเน้นสิ่งที่ครูทำ · ข้อสุดท้ายมี 2 กริยา", "p": "น. 34, 38 (วิธี1)"}, {"s": 4, "q": "จุดประสงค์ \"เชื่อมโยงความรู้เรื่องทฤษฎีบทพีทาโกรัสในการหาระยะทางระหว่างจุดสองจุดได้\" เป็นด้านใด", "o": ["ด้านทักษะและกระบวนการทางคณิตศาสตร์", "ด้านความรู้", "ด้านคุณลักษณะที่พึงประสงค์", "ไม่ใช่จุดประสงค์"], "a": 0, "e": "การเชื่อมโยงเป็น 1 ใน 5 ทักษะและกระบวนการทางคณิต", "p": "น. 42 (วิธี1)"}, {"s": 4, "q": "ข้อใด \"ไม่ใช่\" ทักษะและกระบวนการทางคณิตศาสตร์ 5 ด้าน", "o": ["การคำนวณเร็ว", "การแก้ปัญหา", "การให้เหตุผล", "การคิดสร้างสรรค์"], "a": 0, "e": "5 ด้าน: แก้ปัญหา · สื่อสารและสื่อความหมาย · เชื่อมโยง · ให้เหตุผล · คิดสร้างสรรค์", "p": "น. 41 (วิธี1)"}, {"s": 4, "q": "\"มีความรับผิดชอบในการส่งงาน\" เป็นจุดประสงค์ด้านใด", "o": ["ด้านคุณลักษณะที่พึงประสงค์", "ด้านความรู้", "ด้านทักษะและกระบวนการ", "ด้านการวัดผล"], "a": 0, "e": "เอกสารยกเป็นตัวอย่างจุดประสงค์ด้านคุณลักษณะ", "p": "น. 45 (วิธี1)"}, {"s": 4, "q": "ลักษณะของแผนการจัดการเรียนรู้ที่ดี ข้อใดถูกต้องที่สุด", "o": ["นำไปปฏิบัติได้จริง ชัดเจน และองค์ประกอบสอดคล้องเชื่อมโยงกัน", "ยาวและละเอียดที่สุด", "ใช้ได้กับทุกห้องโดยไม่ต้องปรับ", "มีกิจกรรมมากที่สุดในหนึ่งคาบ"], "a": 0, "e": "แผนที่ดี: ปฏิบัติได้จริง · ชัดเจนไม่คลุมเครือ · องค์ประกอบสอดคล้องเชื่อมโยงกัน", "p": "น. 29 (วิธี1)"}, {"s": 4, "q": "บันทึกหลังการจัดการเรียนรู้ ควรเขียนเป็นรายห้องและรายคาบ", "o": ["ถูก", "ผิด"], "a": 0, "e": "เขียนรายห้อง รายคาบ: ผลการจัด · ปัญหาอุปสรรค · แนวทางแก้ไข", "p": "น. 28 (วิธี1)"}]};
+const RAW_DATA = QUIZ.questions;
+const SECTIONS = QUIZ.sections;
+const TOTAL = RAW_DATA.length;
+const LETTERS = ["ก","ข","ค","ง"];
+
+let DATA = [];
+
+/* Fisher–Yates shuffle, returns a new array */
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+  return a;
+}
+
+/* สุ่มลำดับข้อ "ภายในแต่ละส่วน" (ส่วนยังเรียงตามเดิม ให้ตรงกับคำชี้แจง) และสุ่มลำดับตัวเลือก
+   ตัวเลือก ถูก/ผิด ไม่สุ่ม */
+function prepareQuestions(){
+  DATA = [];
+  SECTIONS.forEach((_,si)=>{
+    shuffle(RAW_DATA.filter(d=>d.s===si+1)).forEach(item=>{
+      const tf = item.o.length===2;
+      const order = tf ? [0,1] : shuffle(item.o.map((_,i)=>i));
+      DATA.push({ ...item, o:order.map(oi=>item.o[oi]), a:order.indexOf(item.a) });
+    });
+  });
+}
+
+function secRange(si){
+  const start = DATA.findIndex(d=>d.s===si+1);
+  const n = DATA.filter(d=>d.s===si+1).length;
+  return [start+1, start+n];
+}
+
+/* ===================== STATE ===================== */
+let state = { screen:"start", idx:0, answers:new Array(TOTAL).fill(null), showMap:false, filter:"all" };
+const app = document.getElementById("app");
+
+function render(){
+  if(state.screen==="start") renderStart();
+  else if(state.screen==="quiz") renderQuiz();
+  else renderResult();
+}
+
+function renderStart(){
+  const nTF = RAW_DATA.filter(d=>d.o.length===2).length;
+  const types = nTF ? "ปรนัย / ถูก-ผิด" : "ปรนัย";
+  const minutes = Math.max(5, Math.round(TOTAL*0.4/5)*5);
+  app.innerHTML = `
+    <div class="cover">
+      <div class="stamp">แบบ<br>ทดสอบ</div>
+      <div class="eyebrow">${QUIZ.eyebrow||"แบบทดสอบทบทวนความรู้"}</div>
+      <h1>${QUIZ.title}</h1>
+      <p class="sub">${QUIZ.subtitle}</p>
+      <div class="meta-row">
+        <div class="meta-chip">📝 ${TOTAL} ข้อ</div>
+        <div class="meta-chip">🕒 ~${minutes} นาที</div>
+        <div class="meta-chip">🎯 ${types}</div>
+      </div>
+      <div class="instructions">
+        <b>คำชี้แจง</b><br>
+        ${SECTIONS.map((name,si)=>{ const [a,b]=secRange(si); return `${si+1}. ข้อ ${a}–${b} เป็นเนื้อหาส่วนที่ ${si+1}: ${name}<br>`; }).join("")}
+        ${SECTIONS.length+1}. เลือกคำตอบที่ถูกต้องที่สุดเพียงข้อเดียว ตอบแล้วจะเห็นเฉลยและคำอธิบายทันที<br>
+        ${SECTIONS.length+2}. เมื่อทำครบทุกข้อแล้วให้กด "ส่งคำตอบ" เพื่อดูผลคะแนนและเฉลยรายข้อ
+      </div>
+      <button class="btn-primary" onclick="startQuiz()">เริ่มทำข้อสอบ</button>
+    </div>
+  `;
+}
+
+function startQuiz(){ state.screen="quiz"; state.idx=0; render(); }
+
+function explainBox(item){
+  return `<div class="explain">${item.e} <span class="pg">· ${item.p}</span></div>`;
+}
+
+function renderQuiz(){
+  const i = state.idx;
+  const item = DATA[i];
+  const answeredCount = state.answers.filter(a=>a!==null).length;
+  const pct = Math.round((answeredCount/TOTAL)*100);
+  const letters = item.o.length===2 ? ["ก","ข"] : LETTERS;
+
+  app.innerHTML = `
+    <div class="quiz-header">
+      <div class="top-row">
+        <div class="qcount">ข้อ ${i+1} / ${TOTAL}</div>
+        <button class="map-btn" onclick="toggleMap(true)">☰ ภาพรวมข้อสอบ</button>
+      </div>
+      <div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div>
+      <div class="section-tag">ส่วนที่ ${item.s} · ${SECTIONS[item.s-1]}</div>
+    </div>
+
+    <div class="qcard">
+      <div class="qhead">
+        <div class="qnum-badge">${i+1}</div>
+        <div class="qtext">${item.q}</div>
+      </div>
+      <div class="opts">
+        ${item.o.map((opt,oi)=>{
+          const answered = state.answers[i]!==null;
+          let cls = "option";
+          if(answered){
+            cls += " locked";
+            if(oi===item.a) cls += " correct-answer";
+            else if(oi===state.answers[i]) cls += " wrong-answer";
+          }
+          const mark = answered && oi===item.a ? "✓" : (answered && oi===state.answers[i] ? "✗" : letters[oi]);
+          const click = answered ? "" : `onclick="selectOption(${oi})"`;
+          return `
+            <div class="${cls}" ${click}>
+              <div class="bubble">${mark}</div>
+              <div class="option-text">${opt}</div>
+            </div>
+          `;
+        }).join("")}
+      </div>
+      ${state.answers[i]!==null ? `
+        <div class="feedback ${state.answers[i]===item.a?'fb-correct':'fb-wrong'}">
+          ${state.answers[i]===item.a
+            ? "✓ ถูกต้อง!"
+            : `✗ ไม่ถูกต้อง — คำตอบที่ถูกต้องคือ <b>${letters[item.a]}. ${item.o[item.a]}</b>`}
+        </div>
+        ${explainBox(item)}
+      `:""}
+      <div class="nav-row">
+        <button class="btn-ghost" ${i===0?'disabled':''} onclick="prevQ()">← ก่อนหน้า</button>
+        <button class="btn-next" onclick="nextQ()">${i===TOTAL-1?'ส่งคำตอบ':'ถัดไป →'}</button>
+      </div>
+    </div>
+
+    ${state.showMap?renderMap():""}
+  `;
+}
+
+function selectOption(oi){ state.answers[state.idx]=oi; render(); }
+function nextQ(){ if(state.idx<TOTAL-1){ state.idx++; render(); } else finishQuiz(); }
+function prevQ(){ if(state.idx>0){ state.idx--; render(); } }
+function toggleMap(v){ state.showMap=v; render(); }
+function jumpTo(i){ state.idx=i; state.showMap=false; render(); }
+
+function renderMap(){
+  return `
+    <div class="overlay" onclick="if(event.target===this)toggleMap(false)">
+      <div class="map-panel">
+        <h3>ภาพรวมข้อสอบ</h3>
+        <div class="sub2">แตะหมายเลขข้อเพื่อข้ามไปทำข้อนั้น ๆ</div>
+        <div class="map-grid">
+          ${DATA.map((_,i)=>`
+            <div class="map-cell ${state.answers[i]!==null?'answered':''} ${i===state.idx?'current':''}" onclick="jumpTo(${i})">${i+1}</div>
+          `).join("")}
+        </div>
+        <div class="legend">
+          <span><span class="dot filled"></span> ตอบแล้ว</span>
+          <span><span class="dot"></span> ยังไม่ตอบ</span>
+        </div>
+        <button class="map-close" onclick="toggleMap(false)">ปิด</button>
+      </div>
+    </div>
+  `;
+}
+
+function finishQuiz(){
+  const unanswered = state.answers.map((a,i)=>a===null?i+1:null).filter(x=>x!==null);
+  if(unanswered.length>0){
+    const goFirst = confirm(`คุณยังไม่ได้ตอบทั้งหมด ${unanswered.length} ข้อ (ข้อ ${unanswered.slice(0,10).join(", ")}${unanswered.length>10?" ...":""})\n\nกด "ตกลง" เพื่อไปยังข้อแรกที่ยังไม่ได้ตอบ หรือกด "ยกเลิก" เพื่อส่งคำตอบทันที`);
+    if(goFirst){ state.idx = unanswered[0]-1; render(); return; }
+  }
+  state.screen="result"; state.filter="all"; render();
+  window.scrollTo(0,0);
+}
+
+function computeScore(){
+  const per = SECTIONS.map(()=>({c:0,t:0}));
+  let correct=0;
+  DATA.forEach((item,i)=>{
+    const ok = state.answers[i]===item.a;
+    per[item.s-1].t++; if(ok){ per[item.s-1].c++; correct++; }
+  });
+  return {correct, total:TOTAL, per};
+}
+
+function renderResult(){
+  const sc = computeScore();
+  const pct = Math.round((sc.correct/sc.total)*100);
+  let pctClass = "pct-low", remark = "ควรกลับไปทบทวนเนื้อหาเพิ่มเติมอีกครั้ง โดยเฉพาะข้อที่ตอบผิดด้านล่าง (มีเลขหน้าให้เปิดกลับไปอ่าน)";
+  if(pct>=80){ pctClass="pct-good"; remark="ยอดเยี่ยมมาก! เข้าใจเนื้อหาได้ดี"; }
+  else if(pct>=60){ pctClass="pct-mid"; remark="พื้นฐานดี แต่ยังมีบางหัวข้อที่ควรทบทวนเพิ่มเติม"; }
+
+  app.innerHTML = `
+    <div class="result-card">
+      <div class="eyebrow">ผลการทดสอบ</div>
+      <div class="score-num">${sc.correct}</div>
+      <div class="score-total">จาก ${sc.total} ข้อ</div>
+      <div class="score-pct ${pctClass}">${pct}%</div>
+      <p class="remark">${remark}</p>
+      <div class="breakdown" style="flex-wrap:wrap;">
+        ${SECTIONS.map((name,si)=>`
+          <div class="bd-card" style="min-width:150px;">
+            <div class="lbl">ส่วนที่ ${si+1} · ${name}</div>
+            <div class="val">${sc.per[si].c} / ${sc.per[si].t}</div>
+          </div>`).join("")}
+      </div>
+      <div class="action-row">
+        <button class="btn-ghost" onclick="retake()">↻ ทำข้อสอบใหม่</button>
+        <button class="btn-next" onclick="document.getElementById('reviewAnchor').scrollIntoView({behavior:'smooth'})">ดูเฉลยรายข้อ ↓</button>
+      </div>
+    </div>
+
+    <div id="reviewAnchor"></div>
+    <div class="review-head">
+      <h3 style="color:var(--primary);font-size:19px;">เฉลยรายข้อ</h3>
+      <div class="filter-row">
+        <button class="filter-btn ${state.filter==='all'?'active':''}" onclick="setFilter('all',this)">ทั้งหมด</button>
+        <button class="filter-btn ${state.filter==='wrong'?'active':''}" onclick="setFilter('wrong',this)">ตอบผิด</button>
+        <button class="filter-btn ${state.filter==='correct'?'active':''}" onclick="setFilter('correct',this)">ตอบถูก</button>
+      </div>
+    </div>
+    <div id="reviewList">${renderReviewList()}</div>
+  `;
+}
+
+function setFilter(f,btn){
+  state.filter=f;
+  document.getElementById("reviewList").innerHTML = renderReviewList();
+  document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+}
+
+function renderReviewList(){
+  let items = DATA.map((item,i)=>({item,i,ok:state.answers[i]===item.a}));
+  if(state.filter==="wrong") items = items.filter(x=>!x.ok);
+  if(state.filter==="correct") items = items.filter(x=>x.ok);
+  if(items.length===0) return `<p style="color:var(--ink-soft);text-align:center;padding:24px;">ไม่มีรายการในหมวดนี้</p>`;
+
+  return items.map(({item,i,ok})=>{
+    const letters = item.o.length===2 ? ["ก","ข"] : LETTERS;
+    const userIdx = state.answers[i];
+    const userText = userIdx===null ? "ไม่ได้ตอบ" : `${letters[userIdx]}. ${item.o[userIdx]}`;
+    const correctText = `${letters[item.a]}. ${item.o[item.a]}`;
+    return `
+      <div class="review-item">
+        <div class="mark ${ok?'correct':'wrong'}">${ok?'✓':'✗'}</div>
+        <div style="flex:1;">
+          <div class="ri-num">ข้อ ${i+1} · ส่วนที่ ${item.s}</div>
+          <div class="ri-q">${item.q}</div>
+          <div class="ri-ans">
+            <div><b>คำตอบของคุณ:</b> <span class="${ok?'ck':'yr'}">${userText}</span></div>
+            ${ok?"":`<div><b>คำตอบที่ถูกต้อง:</b> <span class="ck">${correctText}</span></div>`}
+            ${explainBox(item)}
+          </div>
+        </div>
+      </div>
+    `;
+  }).join("");
+}
+
+function retake(){
+  prepareQuestions();
+  state = { screen:"start", idx:0, answers:new Array(TOTAL).fill(null), showMap:false, filter:"all" };
+  render();
+  window.scrollTo(0,0);
+}
+
+prepareQuestions();
+render();
+
+</script>
+</body>
+</html>

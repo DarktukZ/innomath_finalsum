@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>สรุปสอบนวัตกรรม</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@500;600;700&family=Sarabun:wght@400;600;700&display=swap">
+<style>
+/* layout: one reading column with sticky section nav; boxes keep the PDF's 4 colour roles */
+:root{--bg:#fbfcfe;--ink:#1f2a37;--muted:#5b6675;--line:#d9dee5;--navy:#16365c;--navy-soft:#e9eff7;--green:#1d6b4f;--green-soft:#e8f4ee;--amber:#9a5b00;--amber-soft:#fdf3e1;--red:#a32020;--red-soft:#fbeaea;--onnavy:#fff;--hl:#fdf3e1;
+--disp:"IBM Plex Sans Thai",Sarabun,system-ui,sans-serif;--body:Sarabun,"IBM Plex Sans Thai",system-ui,sans-serif;--mono:ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10161f;--ink:#e3e8ef;--muted:#9aa6b5;--line:#2c3746;--navy:#8fb4e3;--navy-soft:#1a2738;--green:#7fd1ad;--green-soft:#14271f;--amber:#f0b45c;--amber-soft:#2a2112;--red:#f08c8c;--red-soft:#2c1717;--onnavy:#0d1520;--hl:#2a2112;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#10161f;--ink:#e3e8ef;--muted:#9aa6b5;--line:#2c3746;--navy:#8fb4e3;--navy-soft:#1a2738;--green:#7fd1ad;--green-soft:#14271f;--amber:#f0b45c;--amber-soft:#2a2112;--red:#f08c8c;--red-soft:#2c1717;--onnavy:#0d1520;--hl:#2a2112;color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font:16px/1.75 var(--body);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:8px 48px}
+main{max-width:760px;margin:0 auto}
+h1,h2,h3,.label,.kicker{font-family:var(--disp);line-height:1.4;text-wrap:balance}
+.hero{padding-block:24px 8px}.kicker{font-size:12px;letter-spacing:.08em;color:var(--navy);font-weight:700}
+h1{font-size:1.9rem;color:var(--navy);margin:.2em 0}.srcnote{font-size:.85rem;color:var(--muted)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);display:flex;gap:6px;overflow-x:auto;padding-block:8px;border-bottom:1px solid var(--line);scrollbar-width:none}
+.toc a{flex:none;font:600 13px var(--disp);color:var(--navy);background:var(--navy-soft);border-radius:99px;padding:4px 12px;text-decoration:none}
+.toc a:focus-visible,a:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+h2{background:var(--navy);color:var(--onnavy);font-size:1.25rem;padding:8px 14px;border-radius:6px;margin:36px 0 12px;scroll-margin-top:56px}
+h3{color:var(--navy);font-size:1.08rem;margin:24px 0 6px;border-bottom:2px solid var(--navy-soft);padding-bottom:3px}
+p{margin:.5em 0}.ref{font-size:.8em;color:var(--muted);white-space:nowrap}
+code{font-family:var(--mono);font-size:.88em;background:var(--navy-soft);padding:1px 5px;border-radius:4px;overflow-wrap:anywhere}
+.big{list-style:none;padding:0;counter-reset:k}.big li{counter-increment:k;position:relative;padding:6px 0 6px 38px;border-bottom:1px dashed var(--line)}
+.big li::before{content:counter(k);position:absolute;left:0;top:9px;width:26px;height:26px;border-radius:50%;background:var(--navy);color:var(--onnavy);font:700 13px/26px var(--disp);text-align:center}
+.box{border-left:5px solid;border-radius:6px;padding:10px 14px;margin:12px 0;min-width:0}
+.box .label{display:block;font-weight:700;font-size:.9rem;margin-bottom:2px}
+.ex{background:var(--green-soft);border-color:var(--green)}.ex .label{color:var(--green)}
+.key{background:var(--navy-soft);border-color:var(--navy)}.key .label{color:var(--navy)}
+.note{background:var(--amber-soft);border-color:var(--amber)}.note .label{color:var(--amber)}
+.warn{background:var(--red-soft);border-color:var(--red)}.warn .label{color:var(--red)}
+.tw{overflow-x:auto;margin:10px 0}table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:420px}
+th{background:var(--navy);color:var(--onnavy);text-align:left;padding:6px 10px;font-weight:600}
+td{padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top}tr.hl td{background:var(--hl)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}.two>.box{margin:0}
+@media (max-width:560px){.two{grid-template-columns:1fr}h1{font-size:1.5rem}}
+figure{margin:12px 0;text-align:center}figcaption{font-size:.85rem;color:var(--muted)}
+figure svg{background:#fff;border-radius:8px}
+math{font-size:1.05em}
+.toc a.toc-quiz{background:var(--navy);color:var(--onnavy)}
+.quizcard{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;border:2px solid var(--navy);border-radius:10px;padding:16px 18px;margin:12px 0;background:var(--navy-soft)}
+.quizcard>div{min-width:0;flex:1 1 280px}.quizcard p{margin:.2em 0}
+.quizcard .meta{font-size:.88rem;color:var(--muted)}
+.btn-quiz{flex:none;display:inline-block;background:var(--navy);color:var(--onnavy);font:700 1rem var(--disp);padding:10px 20px;border-radius:8px;text-decoration:none}
+.btn-quiz:hover{opacity:.9}
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+ onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],output:'mathml',throwOnError:false})"></script>
+</head>
+<body>
+<main>
+
+<header class="hero"><div class="kicker">2720341 นวัตกรรมและเทคโนโลยีการสอนคณิตศาสตร์ · สอบ 20 พ.ย. 2569</div>
+<h1>สรุปอ่านสอบปลายภาค นวัตกรรม</h1>
+<p class="srcnote">ป้ายอ้างอิง: <b>สื่อ</b> = สื่อเอกสาร · <b>วิธี1/วิธี2</b> = วิธีวิทยา ครั้งที่ 1/2 · <b>AI</b> = เอกสารอบรม AI · <b>ข้อสอบ</b> = ข้อสอบปลายภาคต้น 64 · ส่วน GeoGebra เรียบเรียงจากคู่มือและซอร์สโค้ด GeoGebra</p></header>
+<nav class="toc"><a href="#s1">สื่อเอกสาร</a><a href="#s2">GeoGebra</a><a href="#s3">AI</a><a href="#s4">วิธีวิทยา</a><a href="#ans">คำตอบข้อสอบเก่า</a><a href="#sum">สรุป 1 หน้า</a><a class="toc-quiz" href="#quiz">แบบทดสอบท้ายบท</a></nav>
+
+<h2>ภาพรวมในหน้าเดียว</h2>
+<p>ข้อสอบเก่า (ต้น 64) มี 3 ตอน 6 ข้อ 20 คะแนน <b>เขียนตอบทั้งหมด</b> — ถามให้ "อธิบายลักษณะสำคัญ / ระบุ / ยกตัวอย่าง / เขียนขั้นตอน" ไม่ใช่ปรนัย <span class="ref">ข้อสอบ น.1–5</span></p>
+<div class="tw"><table><thead><tr><th>ตอน</th><th>ข้อสอบเก่าถาม</th><th>คะแนน</th><th>อ่านส่วนไหน</th></tr></thead>
+<tr><td>1</td><td>1.1 ลักษณะสำคัญของเอกสารสรุปมโนทัศน์ / เอกสารเชื่อมโยง · 1.2 ข้อควรพิจารณาในการออกแบบเอกสารตัวอย่างงาน 2 ข้อ</td><td>5</td><td>หัวข้อ 1</td></tr>
+<tr><td>2</td><td>2. เขียนขั้นตอนสร้าง 4 งานใน GeoGebra · 3. เล่านวัตกรรมเทคโนโลยี 2 ชิ้น + เหตุผล + ลักษณะ</td><td>5 + 3</td><td>หัวข้อ 2, 3</td></tr>
+<tr><td>3</td><td>4. ความรู้เชิงมโนทัศน์ vs เชิงกระบวนการ + ตัวอย่าง · 5. การเขียนจุดประสงค์ · 6. องค์ประกอบแผน + ความสัมพันธ์</td><td>7</td><td>หัวข้อ 4</td></tr>
+</table></div>
+<ol class="big">
+  <li><b>สื่อเอกสาร 3 กลุ่ม</b> — เฉพาะ (สรุปมโนทัศน์ · เชื่อมโยง · ตัวอย่างงาน · แนะแนวทาง) / ทั่วไป (ใบกิจกรรม · ใบงาน · ใบความรู้) / สมบูรณ์ในตัว (บทเรียนสำเร็จรูป · บทเรียนการ์ตูน · ชุดการเรียนการสอน) <span class="ref">สื่อ น.5</span></li>
+  <li><b>แต่ละชนิดต้องตอบได้ 3 อย่าง</b> — เป้าหมาย · รูปแบบ/ส่วนประกอบ · ใช้ตอนไหน (ข้อสอบเก่าถามตรงนี้)</li>
+  <li><b>GeoGebra Graphing Calculator</b> — มีเครื่องมือ 6 หมวด (Basic · Edit · Media · Points · Lines · Others) งานที่ไม่มีเครื่องมือ (ส่วนของเส้นตรง เส้นตั้งฉาก) ใช้คำสั่งพิมพ์ในช่อง Input</li>
+  <li><b>AI</b> — ลักษณะ 4 ข้อ · จริยธรรม 5 ข้อ · prompt PTCF · บทบาท AI 4 ด้าน · เครื่องมือ NotebookLM / Canva AI / Suno / Chatbot (Fluffy Bot) <span class="ref">AI น.5–61</span></li>
+  <li><b>ความรู้ทางคณิต 2 แบบ</b> — มโนทัศน์ (รู้ว่าคืออะไร ทำไม) vs กระบวนการ (รู้ว่าทำอย่างไร) <span class="ref">วิธี2 น.4–8</span></li>
+  <li><b>แผนการจัดการเรียนรู้ 9 องค์ประกอบ</b> + จุดประสงค์ K-P-A ที่ขึ้นต้นด้วยคำกริยาวัดได้ <span class="ref">วิธี1 น.5, 32–34</span></li>
+</ol>
+<div class="box note"><span class="label">แผนอ่านคืนนี้ (~4 ชม.)</span>
+① ตอน 1 สื่อเอกสาร 60 นาที → ② GeoGebra 60 นาที (ท่องขั้นตอน 4 งานในข้อสอบเก่าให้เขียนได้) → ③ วิธีวิทยา 50 นาที → ④ AI 30 นาที → ⑤ ทำแบบทดสอบ HTML 1 รอบ แล้วอ่าน "สรุปรวม 1 หน้า" + "คำตอบตัวอย่าง" ก่อนนอน</div>
+
+<!-- ========================= 1 ========================= -->
+<h2 id="s1">1 · สื่อการเรียนรู้คณิตศาสตร์: เอกสาร/สื่อสิ่งพิมพ์</h2>
+
+<h3>สื่อการเรียนรู้คืออะไร ทำไมต้องใช้</h3>
+<p>สื่อเป็น <b>"สะพาน"</b> เชื่อมเนื้อหาสาระกับจุดประสงค์การเรียนรู้ ให้นักเรียนบรรลุจุดประสงค์ <b>ภายในเวลาที่กำหนด</b> — ใช้เมื่อเนื้อหาบางเรื่อง ลักษณะกิจกรรม หรือบางสถานการณ์จำเป็นต้องมี <span class="ref">สื่อ น.2, 4</span></p>
+<p>ขั้นการจัดการเรียนรู้คณิตทั่วไป: <b>เตรียมความพร้อม → สร้างความรู้ใหม่ → ฝึกใช้ความรู้และทักษะ → สรุปและประเมินผล</b> <span class="ref">สื่อ น.2</span></p>
+
+<h3>แผนผัง 3 กลุ่ม (แบ่งตามขอบเขตเนื้อหา)</h3>
+<div class="tw"><table><thead><tr><th>กลุ่ม</th><th>สมาชิก</th><th>จำง่ายๆ</th></tr></thead>
+<tr><td><b>1. เฉพาะ</b></td><td>1.1 เอกสารสรุปมโนทัศน์ · 1.2 เอกสารเชื่อมโยง · 1.3 เอกสารตัวอย่างงาน · 1.4 เอกสารแนะแนวทาง</td><td>ออกแบบมาเพื่อจุดประสงค์เฉพาะอย่าง</td></tr>
+<tr><td><b>2. ทั่วไป</b></td><td>2.1 ใบกิจกรรม · 2.2 ใบงาน · 2.3 ใบความรู้</td><td>ใช้ประกอบการสอนทั่วไป</td></tr>
+<tr><td><b>3. สมบูรณ์ในตัว</b></td><td>3.1 บทเรียนแบบโปรแกรม/สำเร็จรูป · 3.2 บทเรียนการ์ตูน · 3.3 ชุดการเรียนการสอน</td><td>เรียนเองได้ครบในชุดเดียว</td></tr>
+</table></div>
+<p class="ref">สื่อ น.5, 33, 44, 59</p>
+
+<h3>1.1 เอกสารสรุปมโนทัศน์ (Concept Worksheet)</h3>
+<p><b>มโนทัศน์</b> = ความคิดรวบยอด/ความเข้าใจเกี่ยวกับเนื้อหาหนึ่ง ใช้ "ลักษณะที่จำเป็น" แยกสิ่งที่ใช่กับไม่ใช่ออกจากกันได้ แล้วสรุปเป็นบทนิยาม <span class="ref">สื่อ น.6</span></p>
+<p>นักเรียนที่มีมโนทัศน์ถูกต้องจะ: ① อธิบายความหมาย ② ระบุลักษณะที่จำเป็น/ไม่จำเป็น ③ ยกตัวอย่าง ④ ยกสิ่งที่ใกล้เคียงแต่ไม่ใช่ตัวอย่าง <span class="ref">สื่อ น.6</span></p>
+<div class="box key"><span class="label">ต้องจำ — เป้าหมาย + ส่วนประกอบ</span>
+<b>เป้าหมาย:</b> ให้ผู้เรียนเกิด "ความเข้าใจมโนทัศน์ที่เรียนได้ชัดเจนขึ้น" <b>ไม่ใช่</b>เพียงสรุปที่มีแต่เนื้อหานามธรรม<br>
+<b>ส่วนประกอบ 5:</b> ชื่อมโนทัศน์ · คำนิยาม/คำอธิบาย (ภาษาตนเอง) · ลักษณะสำคัญ · ตัวอย่างที่สอดคล้อง+เหตุผล · ตัวอย่างที่ไม่สอดคล้อง+เหตุผล <span class="ref">สื่อ น.8–9</span></div>
+<div class="box ex"><span class="label">ตัวอย่าง: สมการเชิงเส้นตัวแปรเดียว <span class="ref">สื่อ น.7</span></span>
+นิยาม: เขียนได้ในรูป $ax+b=0$, $a\ne 0$<br>
+ลักษณะจำเป็น: เป็นสมการ · จัดรูปแล้วมีตัวแปรเดียว · จัดรูปแล้วดีกรี 1<br>
+✓ ตัวอย่าง: $2x+1=5$ · $5y+2=3y+9$ · $5x^2+3x=5x^2-5$ (ดูเหมือนดีกรี 2 แต่ $x^2$ ตัดกันหมด → $3x=-5$)<br>
+✗ ไม่ใช่: $4+1=5$ (ไม่มีตัวแปร) · $5y+2=5y+(4-2)$ (ตัวแปรหายหมด) · $3x+1=y-5$ (สองตัวแปร)</div>
+<p><b>ใช้ตอนไหน:</b> ระหว่างสอน หรือสอนจบ (ขั้นสรุปและประเมินผล) <span class="ref">สื่อ น.10</span><br>
+<b>ประโยชน์ — นักเรียน:</b> แยกแยะและสรุปมโนทัศน์เป็นภาษาตนเอง · ใช้ทบทวนก่อนสอบ · พัฒนาการคิดวิจารณญาณและการจัดการความคิด · <b>ครู:</b> ตรวจมโนทัศน์ที่คลาดเคลื่อน <span class="ref">สื่อ น.11</span></p>
+
+<h3>1.2 เอกสารเชื่อมโยง</h3>
+<p>แนวคิดคณิตหนึ่งแสดงแทนได้หลายแบบ <span class="ref">สื่อ น.13</span></p>
+<div class="box key"><span class="label">ต้องจำ</span>
+<b>เป้าหมาย:</b> ให้ผู้เรียน <b>เชื่อมโยง</b>มโนทัศน์/แนวคิดคณิตที่หลากหลายที่เรียนไปแล้ว และ <b>สื่อสาร</b>ความหมายให้ผู้อื่นทราบ<br>
+<b>ส่วนประกอบ 4 ช่อง (มีชื่อเรื่องอยู่กลาง):</b> ① ตัวอย่างทางคณิต (Mathematics Example) ② ตัวอย่างในชีวิตประจำวัน (Everyday Example) ③ แผนภาพ/รูปภาพ/กราฟ (Diagram/Picture/Graph) ④ คำอธิบายของผู้เรียน (Students Explanation) <span class="ref">สื่อ น.14–15</span></div>
+<div class="box ex"><span class="label">ตัวอย่าง: เรื่อง "อัตราส่วน" (เติมเอง — เสริม)</span>
+คณิต: $2:3 = 4:6$ · ชีวิตจริง: น้ำหวาน 2 ช้อนต่อน้ำ 3 แก้ว · ภาพ: แท่งสี 2 ช่องคู่กับ 3 ช่อง · คำอธิบาย: "เทียบปริมาณสองอย่าง คูณทั้งคู่ด้วยเลขเดียวกันได้อัตราส่วนเท่าเดิม"</div>
+<p><b>ใช้ตอนไหน:</b> เมื่อสอนเนื้อหาเฉพาะจบ · ใช้วินิจฉัยข้อบกพร่อง/ระดับการพัฒนามโนทัศน์<br>
+<b>ประโยชน์:</b> ผู้เรียนฝึกคิดวิเคราะห์สิ่งที่ตนเข้าใจเพื่อสื่อสาร · ครูประเมินว่าเข้าใจเพียงใด <span class="ref">สื่อ น.16</span></p>
+
+<h3>1.3 เอกสารตัวอย่างงาน (Worked Example Sheet)</h3>
+<div class="box key"><span class="label">ต้องจำ</span>
+<b>เป้าหมาย:</b> ให้ผู้เรียนศึกษาและฝึกทำด้วยตนเอง จนเข้าใจเนื้อหาหรือเกิดทักษะความชำนาญ<br>
+<b>ส่วนประกอบ:</b> ① ตัวอย่างวิธีคิด/ขั้นตอนดำเนินการทางคณิต ② โจทย์ฝึกตามตัวอย่างงาน ③ (อาจมี) สรุปเนื้อหา <span class="ref">สื่อ น.17, 25</span></div>
+<div class="box key"><span class="label">จุดเน้น 3 ข้อ (= คำตอบข้อสอบเก่า 1.2 "ข้อควรพิจารณาในการออกแบบ") <span class="ref">สื่อ น.18</span></span>
+(1) ใช้กับงานที่มี<b>ขั้นตอนเฉพาะ</b>หรือ<b>ต่างจากขั้นตอนทั่วไป</b> และครูต้องการเน้นความต่าง เช่น ห.ร.ม. vs ค.ร.น. ด้วยการแยกตัวประกอบ<br>
+(2) เน้นให้เห็น<b>ความผิดพลาด/วิธีที่ไม่ถูกต้อง</b> เช่น $(a+b)^2=a^2+b^2$ ✗<br>
+(3) ใช้เป็น<b>แนวทางฝึกทำ</b> (How to) เช่น แก้ระบบสมการสองตัวแปรด้วยการกำจัดตัวแปร</div>
+<p><b>ประเภทตัวอย่างงาน 4 แบบ</b> (Booth et al., 2015) <span class="ref">สื่อ น.19–24</span></p>
+<div class="tw"><table><thead><tr><th>ประเภท</th><th>หน้าตา (ตัวอย่างในสไลด์: $3(4x+7)=15$)</th></tr></thead>
+<tr><td>1. Faded Worked Example</td><td>ตัวอย่างแรกทำครบ → ข้อถัดไปทำให้ครึ่งทาง ให้นักเรียนทำต่อ → "Your Turn" ทำเองทั้งข้อ (ค่อยๆ ลดความช่วยเหลือ)</td></tr>
+<tr><td>2. Worked Example with Self-explanation</td><td>วิธีทำถูก ✓ + คำถามให้อธิบาย เช่น "ทำไมลบ 7 ทั้งสองข้าง" แล้วทำข้อคล้ายกัน</td></tr>
+<tr><td>3. Incorrect Worked Example</td><td>วิธีทำผิด ✗ ให้หาว่าผิดตรงไหน / ผิดเพราะอะไร (หน้าต่อ: เทียบวิธีถูกกับผิด)</td></tr>
+<tr><td>4. Comparing Worked Examples</td><td>วิธีถูก 2 วิธีเทียบกัน (หาร 3 ก่อน vs กระจายก่อน) ถามว่าต่างกันอย่างไร จะเลือกวิธีไหน</td></tr>
+</table></div>
+<div class="box ex"><span class="label">ตัวอย่างงานผิดในสไลด์ (ตรวจแล้ว) <span class="ref">สื่อ น.22</span></span>
+$3(4x+7)=15 \Rightarrow 4x+7=5 \Rightarrow$ <b>ลบ 7 แค่ข้างซ้าย</b> $\Rightarrow 4x=5 \Rightarrow x=\tfrac54$ ✗<br>
+ที่ถูก: $4x=5-7=-2 \Rightarrow x=-\tfrac12$ · ตรวจ: $3(4(-\tfrac12)+7)=3(5)=15$ ✓</div>
+<p><b>ใช้ในการสอน</b> (จารุวรรณ ทัศนโกวิท, 2546): ขั้นนำ → สอนเนื้อหาย่อย → สรุปเนื้อหาย่อย → <b>ทำเอกสารตัวอย่างงาน</b> → (มีเนื้อหาย่อยอื่น วนกลับ / ไม่มี) → สรุปบทเรียนรวม <span class="ref">สื่อ น.26</span></p>
+
+<h3>1.4 เอกสารแนะแนวทาง</h3>
+<div class="box key"><span class="label">ต้องจำ</span>
+<b>เป้าหมาย:</b> ให้ผู้เรียนทำ "กิจกรรมที่กำหนด" (แนะความคิด) จนเกิดมโนทัศน์<b>ด้วยตนเอง (discovery)</b> เริ่มจากง่ายไปยาก ไต่ความคิดทีละน้อย<br>
+<b>ส่วนประกอบ 2:</b> ① ตัวอย่าง/กิจกรรมให้สังเกตและทำ (แนะแนวทางความคิด) ② ส่วนสรุปมโนทัศน์หรือวิธีการ<br>
+<b>จุดเด่น:</b> มีถามตอบ/เติมคำ แต่ <b>ไม่มีเฉลยในเอกสาร</b> — ให้ทำอิสระไม่กังวลคำตอบ <span class="ref">สื่อ น.28–29</span></div>
+<div class="box ex"><span class="label">ตัวอย่างในสไลด์: ผลคูณของเลขยกกำลัง <span class="ref">สื่อ น.29</span></span>
+ตาราง: ตัวตั้ง×ตัวคูณ | การคูณรูปกระจาย | ผลคูณรูปเลขยกกำลัง → $2^2\times2^3=(2\times2)\times(2\times2\times2)=2^5=2^{2+3}$ ... ทำหลายข้อ<br>
+สรุป: "ตัวตั้งและตัวคูณมีฐาน (เหมือนกัน) ... ดังนั้น $a^m\times a^n=a^{m+n}$"</div>
+<p><b>การสร้าง 4 ขั้น:</b> ① เลือกเนื้อหาที่เหมาะ + เขียนจุดประสงค์ ② เขียนเอกสารจากง่ายไปยาก ใช้ความรู้พื้นฐาน ส่วนใหญ่เป็นแบบเติมคำ ③ กำหนดเวลา ④ ตรวจความถูกต้องก่อนใช้จริง <span class="ref">สื่อ น.30</span></p>
+<p><b>เทคนิคเขียน:</b> เติมคำตอบ · ถ้าเติมไม่ได้ให้มีตัวเลือก เช่น ($x$ กับ $3x$) (คล้าย/ไม่คล้าย) · <b>หัวตารางไม่เขียนเป็นคำถาม</b> · ยกตัวอย่างหลากหลายจนเห็นรูปแบบ · ใช้ตัวเลขน้อยๆ ก่อนแล้วสรุปเป็นนิยาม <span class="ref">สื่อ น.31</span></p>
+<p><b>การใช้:</b> รายบุคคล/กลุ่มย่อย ทำจบแล้วครูเฉลยและสรุปมโนทัศน์อีกครั้ง · ถ้ายาวมากเฉลยเป็นตอนๆ · ครูให้คำแนะนำเมื่อนักเรียนทำต่อไม่ได้ <span class="ref">สื่อ น.32</span></p>
+
+<div class="box warn"><span class="label">แยกให้ออก: ตัวอย่างงาน vs แนะแนวทาง</span>
+<b>ตัวอย่างงาน</b> = ให้ดูวิธีทำ<b>สำเร็จ</b>ก่อน แล้วฝึกตาม (เน้นทักษะ/ขั้นตอน) · <b>แนะแนวทาง</b> = <b>ไม่บอก</b>ข้อสรุป ให้ทำกิจกรรมไต่ระดับจนค้นพบเอง ไม่มีเฉลยในเอกสาร</div>
+
+<h3>2.1 ใบกิจกรรม (Activity Sheet)</h3>
+<p>เอกสารประกอบการจัดกิจกรรม ให้นักเรียน "ปฏิบัติกิจกรรมตามรูปแบบหรือกระบวนการที่ชัดเจน" รูปแบบขึ้นกับวิธีสอน/รูปแบบการสอน/ลักษณะกิจกรรมที่เลือก <span class="ref">สื่อ น.34</span></p>
+<p><b>ส่วนประกอบ:</b> ชื่อ-สกุล เลขที่ ชั้น · ชื่อกิจกรรม (เนื้อหา) · คำชี้แจง · ข้อมูล/เนื้อหา (มีหรือไม่ก็ได้) · <b>กิจกรรมที่ให้ทำ + บริเวณบันทึก</b> (คิด อ่าน เขียน สรุป สะท้อนคิด — ต้องออกแบบรอบคอบที่สุด) · อื่นๆ เช่น แหล่งเรียนรู้ เฉลย <span class="ref">สื่อ น.35</span></p>
+<div class="tw"><table><thead><tr><th>ฐานในการออกแบบกิจกรรม</th><th>ตัวอย่าง</th></tr></thead>
+<tr><td>วิธีสอน</td><td>บรรยาย · อภิปราย · นิรนัย · อุปนัย · สาธิต · ทดลอง · ศูนย์การเรียน · ทัศนศึกษา</td></tr>
+<tr><td>รูปแบบการสอน</td><td>Cooperative learning · Project-based learning</td></tr>
+<tr><td>กิจกรรมคณิตศาสตร์</td><td>ทักษะและกระบวนการ · กิจกรรมเชิงสำรวจ</td></tr></table></div>
+<p class="ref">สื่อ น.36</p>
+<p><b>วิธีสอนแบบอุปนัย:</b> นักเรียนสร้างความรู้ใหม่ด้วยตนเองจากตัวอย่าง — สังเกตชุดตัวอย่าง/เติมข้อมูล → หาความสัมพันธ์ → เขียนข้อสรุป → สร้างข้อสรุปที่เป็นความรู้ (ตัวอย่างสไลด์: $(a^m)^n=a^{mn}$ จากตาราง $(5^2)^4=5^8$, $((-2)^{-3})^5=(-2)^{-15}$, $(7^2)^{-3}=7^{-6}$, $(11^{-3})^{-2}=11^6$) <span class="ref">สื่อ น.3, 37–38</span></p>
+
+<h3>2.2 ใบงาน/เอกสารฝึกหัด (Worksheet)</h3>
+<p>มี <b>"ภาระงาน"</b> (ปัญหา สถานการณ์ปัญหา กิจกรรม) ให้ลงมือทำตามคำชี้แจง เพื่อ (1) เข้าใจเนื้อหาชัดและถูกต้องขึ้น หรือ (2) ฝึกทักษะความชำนาญ (ทำตามขั้นตอน/ประยุกต์ในสถานการณ์ซับซ้อน) <span class="ref">สื่อ น.39–40</span></p>
+<p>ออกแบบภาระงานใช้ <b>ระดับการคิดของบลูม</b> ได้ · พิจารณา <b>เป้าหมาย / ปริมาณ / ความยากง่าย / การเรียงลำดับความยาก / ความสอดคล้องกับความรู้ที่สอน</b> <span class="ref">สื่อ น.40</span></p>
+<p><b>ส่วนประกอบ:</b> ชื่อ-สกุล เลขที่ ชั้น · ชื่อใบงาน · คำชี้แจง · กิจกรรมย่อย (ทำโจทย์คล้ายที่เคยทำ หรือพิจารณาความถูกต้องของข้อความพร้อมเหตุผล) <span class="ref">สื่อ น.41</span></p>
+
+<h3>2.3 ใบความรู้ (Knowledge Sheet)</h3>
+<p>ครูเรียบเรียง "เนื้อหา/สาระความรู้" ให้นักเรียน<b>ศึกษาด้วยตนเอง</b> — ใช้เมื่อเนื้อหาไม่มีในหนังสือตรงความต้องการ / กระจายหลายเล่ม / ละเอียดมากต้องใช้เวลาคัดลอก · อาจมีกิจกรรมหลังอ่าน <span class="ref">สื่อ น.42</span></p>
+<div class="box note"><span class="label">คำถามท้ายสไลด์ (อาจออกสอบ): วิธีสอน/สถานการณ์ใดควรมีใบความรู้? <span class="ref">สื่อ น.43</span></span>
+สไลด์ไม่เฉลย — แนวตอบ (เสริม): สถานการณ์ที่ผู้เรียนต้องศึกษาเอง เช่น ศูนย์การเรียน · การเรียนแบบร่วมมือ (Jigsaw ที่แต่ละคนต้องอ่านเนื้อหาของตน) · Project-based learning · ห้องเรียนกลับด้าน · สอนซ่อม/นักเรียนขาดเรียน</div>
+
+<h3>3. สื่อสมบูรณ์ในตัว</h3>
+<p><b>3.1 บทเรียนแบบโปรแกรม/สำเร็จรูป (Program Text)</b> — เรียนด้วยตนเอง ก้าวตามความสามารถของตน <span class="ref">สื่อ น.45</span> · ลักษณะ: ① แบ่งเนื้อหาเป็นตอนย่อยจากง่ายไปยาก เรียก <b>"กรอบ (Frame)"</b> ② กรอบต่อเนื่องกัน ช่วยให้ค้นพบเอง ③ ทุกกรอบมีคำถามและ<b>เฉลยทันที</b> ④ จบแล้วได้ความรู้ตามจุดประสงค์ <span class="ref">สื่อ น.46</span></p>
+<div class="tw"><table><thead><tr><th></th><th>แบบเส้นตรง</th><th>แบบสาขา</th></tr></thead>
+<tr><td>ทำงานอย่างไร</td><td>ให้ความรู้ → คำถาม (ถูก/ผิด เติมคำ) → เฉลย ตอบผิดอ่านซ้ำจนถูกจึงไปกรอบต่อไป</td><td><b>กรอบยืน</b> = ลำดับหลักที่ทุกคนเรียน · <b>กรอบสาขา (Remedial Frame)</b> = อธิบายว่าทำไมตอบผิด แล้วกลับไปตอบกรอบเดิมให้ถูก</td></tr>
+<tr><td>เหมาะ/ไม่เหมาะ</td><td>เหมาะวิชาเน้นเนื้อหาสาระ · ไม่เหมาะเนื้อหาความคิดเห็น (คำตอบได้หลายแบบ)</td><td>ตัวอย่าง: อินเวอร์สของความสัมพันธ์</td></tr></table></div>
+<p class="ref">สื่อ น.47–50</p>
+<p><b>3.2 บทเรียนการ์ตูน</b> — คล้ายบทเรียนสำเร็จรูป แต่นำเสนอเนื้อหาผ่านเรื่องราวและการ์ตูน · ส่วนประกอบ: เนื้อหา (แทรกในเรื่อง) / คำถามหรือกิจกรรม / เฉลย <span class="ref">สื่อ น.52</span></p>
+<p><b>3.3 ชุดการเรียนการสอน (Instructional package)</b> — หน่วยการเรียนรู้ครบวงจร จัดเป็นชุดสำเร็จรูป เรียนเอง (รายบุคคล/กลุ่ม) หรือครูใช้สอนได้ · 3 ชนิด: สำหรับครู / สำหรับนักเรียน / แบบผสม <span class="ref">สื่อ น.55</span><br>
+ส่วนประกอบ 4: ① คู่มือการใช้ ② คำสั่ง/การมอบงาน ③ เนื้อหาในรูปสื่อประสม + กิจกรรมกลุ่มและรายบุคคล ④ การประเมินผล (ประเมินกระบวนการ) <span class="ref">สื่อ น.56</span></p>
+<p><b>เอกสารประกอบการเรียนการสอน</b> — เอกสาร/สื่อสิ่งพิมพ์ประกอบการสอนรายวิชา สะท้อน "เนื้อหาวิชาและกิจกรรมของผู้เรียน" อย่างเป็นระบบ · มี หัวข้อบรรยาย เนื้อหา ใบกิจกรรม ใบความรู้ ใบงาน (อาจมีบทความ แผนภูมิ แถบเสียง สไลด์) <span class="ref">สื่อ น.58</span></p>
+
+<!-- ========================= 2 ========================= -->
+<h2 id="s2">2 · GeoGebra Graphing Calculator</h2>
+<div class="box note"><span class="label">ที่มาของส่วนนี้ (เสริม — ไม่มีเอกสารในโฟลเดอร์)</span>
+รายชื่อเครื่องมือดึงจากซอร์สโค้ด GeoGebra (<code>GraphingToolCollectionFactory.java</code> ที่กำหนดเมนู Tools ของ Graphing Calculator) และคำอธิบายจากคู่มือ GeoGebra · ตรวจ 19 พ.ย. 2569</div>
+
+<h3>หน้าจอ</h3>
+<figure><svg viewBox="0 0 640 260" style="width:100%;max-width:640px" font-family="Sarabun,sans-serif" font-size="13">
+<rect x="1" y="1" width="638" height="258" rx="8" fill="#fff" stroke="#16365c" stroke-width="2"/>
+<rect x="1" y="1" width="230" height="258" rx="8" fill="#e9eff7" stroke="#16365c" stroke-width="2"/>
+<rect x="12" y="12" width="100" height="28" rx="4" fill="#16365c"/><text x="62" y="31" fill="#fff" text-anchor="middle" font-weight="700">ALGEBRA</text>
+<rect x="118" y="12" width="100" height="28" rx="4" fill="#fff" stroke="#16365c"/><text x="168" y="31" fill="#16365c" text-anchor="middle" font-weight="700">TOOLS</text>
+<circle cx="26" cy="64" r="7" fill="#1d6b4f"/><text x="40" y="69">A = (1, 2)</text><text x="208" y="69" font-weight="700">⋮</text>
+<circle cx="26" cy="94" r="7" fill="#fff" stroke="#1d6b4f" stroke-width="2"/><text x="40" y="99">f = Segment(A, B)</text><text x="208" y="99" font-weight="700">⋮</text>
+<rect x="12" y="116" width="206" height="28" rx="4" fill="#fff" stroke="#9a5b00" stroke-dasharray="4 3"/><text x="20" y="135" fill="#9a5b00">Input… (พิมพ์คำสั่ง/สมการ)</text>
+<text x="20" y="175" fill="#5b6675">วงกลมสี = แสดง/ซ่อน</text><text x="20" y="195" fill="#5b6675">(วงโปร่ง = ซ่อนอยู่)</text>
+<text x="20" y="225" fill="#5b6675">⋮ = Settings, Delete, Duplicate</text>
+<line x1="260" y1="140" x2="620" y2="140" stroke="#5b6675"/><line x1="440" y1="20" x2="440" y2="245" stroke="#5b6675"/>
+<path d="M300 40 Q440 300 580 40" fill="none" stroke="#a32020" stroke-width="2"/>
+<text x="460" y="35" fill="#a32020">y = a x²</text>
+<rect x="270" y="210" width="130" height="24" rx="12" fill="#e8f4ee" stroke="#1d6b4f"/><text x="335" y="227" text-anchor="middle" fill="#1d6b4f">a = 1  ●──────</text>
+<text x="540" y="240" fill="#5b6675">Graphics View</text>
+</svg><figcaption>ซ้าย: แท็บ Algebra (รายการวัตถุ + ช่อง Input) / Tools (เครื่องมือ กด MORE เพื่อดูทุกหมวด) · ขวา: Graphics View</figcaption></figure>
+<div class="box key"><span class="label">3 ทางสร้างวัตถุ — ต้องรู้ทั้งหมด</span>
+① <b>Tools</b>: เลือกเครื่องมือ → คลิกบน Graphics View ตามลำดับที่เครื่องมือขอ<br>
+② <b>Input (Algebra)</b>: พิมพ์สมการ/คำสั่ง เช่น <code>y = 2x + 1</code>, <code>A = (1, 2)</code>, <code>Segment(A, B)</code> แล้วกด Enter<br>
+③ <b>Settings</b>: กด ⋮ ข้างวัตถุ (หรือคลิกขวาที่วัตถุ) → Settings → แท็บ <b>Basic</b> (Name, Definition, Caption, Show Object, Show Label) · <b>Color</b> · <b>Style</b> · <b>Slider</b> (Min/Max/Increment, เฉพาะ slider) · <b>Algebra</b> · <b>Advanced</b> (เงื่อนไขการแสดงวัตถุ)</div>
+
+<h3>เครื่องมือทุกตัวใน Graphing Calculator (6 หมวด)</h3>
+<div class="tw"><table><thead><tr><th style="width:24%">เครื่องมือ</th><th>ทำอะไร / วิธีใช้</th></tr></thead>
+<tr class="hl"><td colspan="2"><b>BASIC TOOLS</b> (หมวดแรกที่เห็นทันที)</td></tr>
+<tr><td>Move</td><td>เลือก/ลากวัตถุอิสระ (จุด, slider) — กด Esc กลับมาที่ Move เสมอ</td></tr>
+<tr><td>Point</td><td>คลิกที่ว่างได้จุดอิสระ · คลิกบนเส้น/กราฟได้จุดที่ติดอยู่บนวัตถุนั้น</td></tr>
+<tr><td>Slider</td><td>คลิกที่ว่าง → กล่องตั้ง Name, แบบ Number/Angle/Integer, Min, Max, Increment → ได้ตัวแปรเลื่อนค่าได้ เอาไปใช้ในสมการ</td></tr>
+<tr><td>Intersect</td><td>คลิกวัตถุ 2 ชิ้น → ได้จุดตัดทั้งหมด (หรือคลิกตรงจุดตัดเลย)</td></tr>
+<tr><td>Extremum</td><td>คลิกกราฟฟังก์ชัน → จุดสูงสุด/ต่ำสุดสัมพัทธ์</td></tr>
+<tr><td>Roots</td><td>คลิกกราฟฟังก์ชัน → จุดตัดแกน X (ราก)</td></tr>
+<tr><td>Best Fit Line</td><td>ลากกรอบครอบจุดหลายจุด (หรือเลือก list ของจุด) → เส้นตรงถดถอยที่เหมาะที่สุด</td></tr>
+<tr class="hl"><td colspan="2"><b>EDIT</b></td></tr>
+<tr><td>Select Objects</td><td>ลากกรอบเลือกหลายวัตถุพร้อมกัน</td></tr>
+<tr><td>Move Graphics View</td><td>ลากเลื่อนพื้นที่กราฟ (pan) และซูม</td></tr>
+<tr><td>Delete</td><td>คลิกวัตถุที่จะลบ (วัตถุที่สร้างต่อจากมันจะหายด้วย)</td></tr>
+<tr><td>Show / Hide Label</td><td>คลิกวัตถุ → สลับแสดง/ซ่อนชื่อ</td></tr>
+<tr><td>Show / Hide Object</td><td>คลิกวัตถุที่จะซ่อน (จะเห็นเป็นไฮไลต์) → <b>เปลี่ยนไปเครื่องมืออื่นจึงซ่อนจริง</b></td></tr>
+<tr><td>Copy Visual Style</td><td>คลิกวัตถุต้นแบบ → คลิกวัตถุอื่น → คัดลอกสี/เส้น/ความหนา</td></tr>
+<tr class="hl"><td colspan="2"><b>MEDIA</b></td></tr>
+<tr><td>Text</td><td>คลิกตำแหน่งบน Graphics View → พิมพ์ข้อความ (ไทยได้) · ใส่สัญลักษณ์จากแป้นคณิต/สูตร LaTeX · ใส่วัตถุให้ค่าเปลี่ยนตาม (dynamic text) ได้</td></tr>
+<tr class="hl"><td colspan="2"><b>POINTS</b></td></tr>
+<tr><td>Point · Intersect · Extremum · Roots</td><td>ซ้ำกับ Basic Tools</td></tr>
+<tr><td>Point on Object</td><td>คลิกบน/ในวัตถุ → จุดที่ขยับได้เฉพาะบนวัตถุนั้น</td></tr>
+<tr><td>Attach / Detach Point</td><td>คลิกจุดอิสระ แล้วคลิกวัตถุ → ผูกจุดไว้บนวัตถุ · คลิกจุดที่ผูกอยู่ → ปลดออก</td></tr>
+<tr><td>Complex Number</td><td>คลิกบนระนาบ → จำนวนเชิงซ้อน เช่น $z_1 = 2+3i$</td></tr>
+<tr><td>List</td><td>ลากกรอบเลือกหลายวัตถุ → สร้าง list เช่น {A, B, C}</td></tr>
+<tr class="hl"><td colspan="2"><b>LINES</b></td></tr>
+<tr><td>Line</td><td>คลิก 2 จุด → เส้นตรงผ่าน 2 จุด (ยาวไม่สิ้นสุด)</td></tr>
+<tr><td>Ray</td><td>คลิกจุดเริ่ม → คลิกจุดที่รังสีผ่าน</td></tr>
+<tr><td>Vector</td><td>คลิกจุดเริ่ม → คลิกจุดปลาย</td></tr>
+<tr class="hl"><td colspan="2"><b>OTHERS</b></td></tr>
+<tr><td>Pen</td><td>วาดอิสระด้วยเมาส์/ปากกา (เขียนอธิบายบนกราฟ)</td></tr>
+<tr><td>Freehand Function</td><td>วาดเส้นโค้งด้วยมือ → GeoGebra แปลงเป็นฟังก์ชัน</td></tr>
+<tr><td>Button</td><td>คลิกตำแหน่ง → ตั้ง Caption + สคริปต์ที่จะทำเมื่อกดปุ่ม</td></tr>
+<tr><td>Check Box</td><td>คลิกตำแหน่ง → ตั้ง Caption + เลือกวัตถุที่จะแสดง/ซ่อนตามการติ๊ก</td></tr>
+<tr><td>Input Box</td><td>คลิกตำแหน่ง → ตั้ง Caption + วัตถุที่ผูก → ผู้ใช้พิมพ์ค่าเปลี่ยนวัตถุได้</td></tr>
+</table></div>
+<div class="box warn"><span class="label">⚠ Graphing Calculator ไม่มีเครื่องมือเหล่านี้ — ต้องพิมพ์คำสั่งใน Input</span>
+<div class="tw"><table><thead><tr><th>อยากได้</th><th>คำสั่ง</th><th>ใน Classic / Calculator Suite อยู่ที่</th></tr></thead>
+<tr><td>ส่วนของเส้นตรง AB</td><td><code>Segment(A, B)</code></td><td>Lines → Segment</td></tr>
+<tr><td>เส้นตั้งฉากผ่าน C กับเส้น f</td><td><code>PerpendicularLine(C, f)</code></td><td>Construct → Perpendicular Line</td></tr>
+<tr><td>เส้นขนาน</td><td><code>Line(C, f)</code></td><td>Construct → Parallel Line</td></tr>
+<tr><td>จุดกึ่งกลาง</td><td><code>Midpoint(A, B)</code></td><td>Construct → Midpoint or Center</td></tr>
+<tr><td>เส้นแบ่งครึ่งตั้งฉาก</td><td><code>PerpendicularBisector(A, B)</code></td><td>Construct</td></tr>
+<tr><td>วงกลม จุดศูนย์กลาง A รัศมี 3</td><td><code>Circle(A, 3)</code></td><td>Circles</td></tr>
+<tr><td>รูปหลายเหลี่ยม</td><td><code>Polygon(A, B, C)</code></td><td>Polygons</td></tr>
+<tr><td>ระยะทาง / มุม</td><td><code>Distance(A, B)</code> · <code>Angle(A, B, C)</code></td><td>Measure</td></tr>
+</table></div>
+คำตอบในข้อสอบเก่าเขียน "Tools → Lines → Segment" ซึ่งเป็นเมนูของ Classic/Calculator Suite — ถ้าในห้องใช้ Graphing Calculator ให้เขียนคำสั่งพิมพ์ <b>ควบคู่</b>ไปด้วยจะปลอดภัยที่สุด</div>
+
+<h3>ข้อสอบเก่าข้อ 2 — ขั้นตอนสร้าง 4 งาน (5 คะแนน) <span class="ref">ข้อสอบ น.2</span></h3>
+<div class="box ex long"><span class="label">งาน ① สร้างส่วนของเส้นตรง AB แล้วซ่อน</span>
+1. แท็บ Tools → Basic Tools → <b>Point</b> → คลิก 2 ตำแหน่งบน Graphics View ได้จุด A และ B (หรือพิมพ์ <code>A = (1, 2)</code>, <code>B = (5, 4)</code> ใน Input)<br>
+2. ที่ช่อง Input พิมพ์ <code>Segment(A, B)</code> → Enter ได้ส่วนของเส้นตรง (เช่นชื่อ f) · (Classic/Suite: Tools → Lines → Segment → คลิก A แล้ว B)<br>
+3. ซ่อน เลือกได้ 3 วิธี: (ก) คลิก<b>วงกลมสี</b>หน้าบรรทัด f ในแท็บ Algebra ให้เป็นวงโปร่ง (ข) Tools → Edit → <b>Show / Hide Object</b> → คลิกเส้น → เปลี่ยนเครื่องมือ (ค) ⋮ → Settings → Basic → เอาติ๊ก <b>Show Object</b> ออก</div>
+<div class="box ex long"><span class="label">งาน ② เขียนบทนิยามที่มีทั้งภาษาไทยและสัญลักษณ์คณิต</span>
+1. Tools → MORE → Media → <b>Text</b> → คลิกตำแหน่งที่จะวางข้อความ<br>
+2. พิมพ์ข้อความไทย เช่น "สมการเชิงเส้นตัวแปรเดียว คือสมการที่เขียนได้ในรูป"<br>
+3. ใส่ส่วนสัญลักษณ์ ด้วยแป้นพิมพ์คณิต (≠, ≤, √, π, α …) หรือเปิดโหมดสูตร/LaTeX แล้วพิมพ์ <code>ax + b = 0, a \neq 0</code><br>
+4. กด OK · ปรับขนาด/สีที่ ⋮ → Settings<br>
+(ทางลัด: พิมพ์ข้อความในเครื่องหมายคำพูดที่ Input เช่น <code>"นิยาม: ax + b = 0 เมื่อ a ≠ 0"</code>)</div>
+<div class="box ex long"><span class="label">งาน ③ สร้างเส้นตั้งฉากระหว่างจุดกับเส้นตรง</span>
+1. Tools → Lines → <b>Line</b> → คลิก 2 จุด (A, B) ได้เส้นตรง f<br>
+2. Basic Tools → <b>Point</b> → คลิกนอกเส้นได้จุด C<br>
+3. Input: <code>PerpendicularLine(C, f)</code> → ได้เส้น g ผ่าน C ตั้งฉากกับ f · (Classic/Suite: Construct → Perpendicular Line → คลิก C แล้วคลิกเส้น f)<br>
+4. (ถ้าโจทย์ต้องการ "ระยะจากจุดถึงเส้น") Basic Tools → <b>Intersect</b> → คลิก f กับ g ได้จุด D → <code>Segment(C, D)</code> แล้วซ่อนเส้น g · วัดความยาวด้วย <code>Distance(C, f)</code></div>
+<div class="box ex long"><span class="label">งาน ④ พาราโบลา $y=ax^2$ พร้อม slider $a$ จาก −10 ถึง 10 เพิ่มทีละ 0.1</span>
+<b>วิธี ก (พิมพ์สมการก่อน):</b> 1. Input พิมพ์ <code>y = a x^2</code> → Enter → กดปุ่ม <b>"Create Sliders for: a"</b> (หรือพิมพ์ <code>a = 1</code> ก่อน) 2. ⋮ ที่บรรทัด a → <b>Settings → แท็บ Slider</b> → Min = −10, Max = 10, Increment = 0.1 3. ลากจุดบน slider ดูกราฟเปลี่ยน<br>
+<b>วิธี ข (ใช้เครื่องมือ):</b> 1. Basic Tools → <b>Slider</b> → คลิกที่ว่าง 2. กล่องตั้งค่า: Name = a, Number, Min −10, Max 10, Increment 0.1 → OK 3. Input พิมพ์ <code>y = a x^2</code><br>
+<b>วิธี ค (คำสั่งเดียว):</b> <code>a = Slider(-10, 10, 0.1)</code> แล้ว <code>y = a x^2</code><br>
+เพิ่มคะแนน: ⋮ → Animation (เล่นอัตโนมัติ) · ชี้ว่า $a&gt;0$ หงาย $a&lt;0$ คว่ำ $a=0$ เป็นเส้นตรง $y=0$</div>
+
+<h3>งานที่อาจออกเพิ่ม (เสริม — ฝึกเผื่อ)</h3>
+<div class="tw"><table><thead><tr><th>งาน</th><th>ขั้นตอนใน Graphing Calculator</th></tr></thead>
+<tr><td>หาจุดตัดของ $y=x^2-4$ กับ $y=x+2$</td><td>Input พิมพ์ทั้งสองสมการ → Basic Tools → Intersect → คลิกกราฟทั้งสอง (ได้ (−2, 0) และ (3, 5))</td></tr>
+<tr><td>หารากและจุดยอดของ $f(x)=x^2-2x-3$</td><td>พิมพ์ฟังก์ชัน → Roots คลิกกราฟ ได้ (−1, 0), (3, 0) → Extremum ได้ (1, −4)</td></tr>
+<tr><td>เส้นตรง $y=mx+c$ ปรับความชัน</td><td>พิมพ์ <code>y = m x + c</code> → Create Sliders m, c → ตั้งช่วงใน Settings → Slider</td></tr>
+<tr><td>สามเหลี่ยมมุมฉาก + วัดด้าน</td><td>Point สร้าง A, B, C → <code>Polygon(A, B, C)</code> → <code>Distance(A, B)</code> · <code>Angle(A, B, C)</code></td></tr>
+<tr><td>เส้นถดถอยจากข้อมูล</td><td>พิมพ์จุด หรือ <code>{(1,2),(2,3),(3,5)}</code> → Best Fit Line ลากกรอบครอบจุด</td></tr>
+<tr><td>ปุ่มเฉลย/ซ่อนคำตอบ</td><td>Others → Check Box → Caption "แสดงคำตอบ" → เลือกข้อความเฉลย</td></tr>
+</table></div>
+<p class="ref">จุดตัด/รากในตาราง คำนวณซ้ำแล้ว</p>
+
+<!-- ========================= 3 ========================= -->
+<h2 id="s3">3 · AI เพื่อการเรียนรู้คณิตศาสตร์ (อ.ดร.วรัญญู ฉายาบรรณ์)</h2>
+<p>วิทยากรจากคณะศึกษาศาสตร์ ม.เกษตรศาสตร์ · โครง 3 ส่วน: Basic of AI (30 น.) → Applying AI for Math learning (30 น.) → AI Tools for Math learning (60 น.) <span class="ref">AI น.1, 4</span></p>
+
+<h3>พื้นฐาน AI</h3>
+<div class="box key"><span class="label">ลักษณะสำคัญของ AI 4 ข้อ (OECD, 2024; UNESCO, 2022) <span class="ref">AI น.5</span></span>
+① Input processing (รับและประมวลข้อมูลนำเข้า) ② Inference from data (อนุมานจากข้อมูล) ③ Adaptability as human-like intelligence (ปรับตัวคล้ายมนุษย์) ④ Autonomous decision-making (ตัดสินใจได้เอง)</div>
+<div class="box ex"><span class="label">กิจกรรม "อันไหนเป็น AI?" <span class="ref">AI น.6–7</span></span>
+สไลด์ให้ 6 อย่าง: CAI · Siri · AR · VR · Face Recognition · Scripted chatbot — <b>สไลด์ไม่เฉลย</b> แนวคิด (เสริม): ใช้ลักษณะ 4 ข้อเช็ก → <b>Siri</b> และ <b>Face Recognition</b> อนุมานจากข้อมูลและปรับตัวได้ = AI · <b>CAI / Scripted chatbot</b> ทำตามสคริปต์ที่เขียนไว้ · <b>AR / VR</b> เป็นเทคโนโลยีแสดงผล ไม่ได้อนุมานเอง (เว้นแต่ฝัง AI เพิ่ม)</div>
+<p><b>AI competency framework for teachers (UNESCO, 2024)</b> 5 ด้าน × 3 ระดับ (Acquire → Deepen → Create): ① Human-centred mindset ② Ethics of AI ③ AI foundations and applications ④ AI pedagogy ⑤ AI for professional development <span class="ref">AI น.8</span></p>
+<div class="box key"><span class="label">จริยธรรม AI 5 ข้อ (Hagendorf, 2020; UNESCO, 2024) <span class="ref">AI น.9</span></span>
+① ตรวจสอบได้และรับผิดชอบ (Verification, accountability) ② คุ้มครองความเป็นส่วนตัว (Privacy) ③ เป็นธรรม ไม่เลือกปฏิบัติ (Fairness) ④ โปร่งใส เปิดเผย (Transparency) ⑤ ปลอดภัย ไม่ก่ออันตราย (Safety)</div>
+<div class="box note"><span class="label">สถานการณ์จริยธรรม (สไลด์ไม่เฉลย — แนววิเคราะห์ เสริม) <span class="ref">AI น.11</span></span>
+<b>1.</b> นิสิตใช้ GenAI เสนอแนวคิด อาจารย์ไม่ห้ามชัด นิสิตตรวจกับแหล่งน่าเชื่อถือและเรียบเรียงเอง → ค่อนข้างไม่ผิด (มี verification + เขียนเอง) แต่ควร<b>โปร่งใส</b> แจ้งอาจารย์ว่าใช้<br>
+<b>2.</b> ครูป้อนชื่อ-สกุล เลขประจำตัว ข้อมูลส่วนบุคคลให้ AI ตรวจอัตนัย แล้วประกาศคะแนนจาก AI ตรง → ผิด <b>Privacy</b> และขาด <b>Verification/accountability</b> (ไม่ได้ตรวจทานคะแนนเอง)</div>
+
+<h3>การเขียน prompt</h3>
+<div class="tw"><table><thead><tr><th>กรอบ</th><th>องค์ประกอบ</th></tr></thead>
+<tr><td><b>PTCF</b> (สพฐ., 2568)</td><td><b>P</b>ersona บทบาท · <b>T</b>ask งานที่ให้ทำ · <b>C</b>ontext ข้อมูลประกอบ · <b>F</b>ormat รูปแบบผลลัพธ์</td></tr>
+<tr><td>Google's AI Prompting (2023)</td><td>Task → Context → Reference → Evaluate → Iterate</td></tr></table></div>
+<p class="ref">AI น.12–13</p>
+<div class="box ex"><span class="label">แยก PTCF จาก prompt ในสไลด์ <span class="ref">AI น.22</span></span>
+<b>P:</b> "คุณเป็นครูคณิตศาสตร์ชั้นมัธยม เชี่ยวชาญการวัดและประเมินผล" · <b>T:</b> "สร้างข้อสอบ 4 ตัวเลือก คำตอบถูกข้อเดียว 5 ข้อ" · <b>C:</b> "เรื่องสมบัติการคูณ-หารเลขยกกำลังฐานเดียวกัน ม.2 ใช้ 3–4 สมบัติผสม" · <b>F:</b> "ขอเฉลยพร้อมเหตุผล ภาษาทางการ"<br>
+ไม่ได้ผลตามต้องการ → ปรับต่อ (Iterate): ให้ซับซ้อนขึ้น · ให้คำตอบเป็นจำนวนเต็ม · ให้โยงชีวิตจริง · ให้ระบุระดับ Bloom ของแต่ละข้อ <span class="ref">AI น.23</span></div>
+
+<h3>บทบาท AI ในการศึกษาคณิต</h3>
+<div class="box key"><span class="label">4 Roles of AI <span class="ref">AI น.18</span></span>
+① Content Assistant ② Task Designer ③ Thinking Partner ④ Assessment Assistant</div>
+<div class="tw"><table><thead><tr><th>ด้านการจัดการเรียนรู้และสื่อ (7) <span class="ref">AI น.19</span></th><th>ด้านการตรวจงานและประเมิน (6) <span class="ref">AI น.20</span></th></tr></thead>
+<tr><td>1) หาผลลัพธ์ แสดงวิธีทำ/พิสูจน์ 2) ยกตัวอย่างโจทย์/สถานการณ์ 3) ออกแบบกิจกรรม 4) สร้างสื่อ (ภาพ วิดีโอ) 5) สร้างเกม/แต่งเพลง 6) ร่างแผนการสอน 7) Personalized learning</td>
+<td>1) สร้างข้อสอบหลากหลายรูปแบบ 2) ตรวจให้คะแนนอัตโนมัติ (ดีกับเลือกตอบ) 3) สร้างรูบริก 4) วิเคราะห์ข้อผิดพลาดรายคน 5) ให้ feedback 6) ตรวจความซื่อสัตย์ทางวิชาการ</td></tr></table></div>
+<div class="box warn"><span class="label">ข้อจำกัดของ AI ในการศึกษาคณิต 7 ข้อ <span class="ref">AI น.21</span></span>
+1) คำนวณ/แสดงวิธีผิด ใช้เงื่อนไขไม่ครบ เช่นลืมโดเมน-เรนจ์ 2) อธิบายสูงเกินระดับบทเรียน 3) เน้นคำนวณ/ผลลัพธ์มากไป 4) ใช้ไม่เหมาะ → ขาดทักษะแก้ปัญหา คิดวิจารณญาณ สร้างสรรค์ 5) Hallucination 6) ใช้มากไป → ขาดปฏิสัมพันธ์มนุษย์ 7) งบประมาณ/อินเทอร์เน็ต</div>
+<p>สไลด์ "AI เก่งคณิตจริงไหม" ให้ลองถามโจทย์รากซ้อน และพิสูจน์ BM = AM = CM ในสามเหลี่ยมมุมฉากที่ M เป็นจุดกึ่งกลางด้านตรงข้ามมุมฉาก — ชี้ว่า AI อาจตอบผิด ต้องตรวจเสมอ <span class="ref">AI น.17</span></p>
+
+<h3>เครื่องมือ AI สำหรับคณิต</h3>
+<div class="tw"><table><thead><tr><th>เครื่องมือ</th><th>ทำอะไร</th><th>ลักษณะเด่น (ใช้ตอบข้อ "เล่านวัตกรรม")</th></tr></thead>
+<tr><td><b>NotebookLM</b></td><td>สรุปเนื้อหาจากเอกสาร ไฟล์เสียง วิดีโอ ลิงก์</td><td>นำสรุปไปสร้างสื่อต่อ: คลิป ไฟล์เสียงแบบ podcast mind map รายงาน <span class="ref">AI น.27</span></td></tr>
+<tr><td><b>Canva AI</b></td><td>ใบงาน/ใบกิจกรรม สไลด์ เกม (จับคู่ เติมคำ ลาก-วาง) สคริปต์วิดีโอ สตอรีบอร์ด เพลง กลอน</td><td>สร้างเกม HTML5 จาก prompt ได้ เช่น เกมจับคู่โจทย์ ม.1 · เกมเก็บลูกบอลทศนิยม ม.1 · เกมล่าขุมทรัพย์คู่อันดับ (มีตัวลวงสลับเครื่องหมาย) <span class="ref">AI น.28–37</span></td></tr>
+<tr><td><b>Suno AI</b></td><td>แต่งเพลง: ให้แต่งทั้งเนื้อ+ทำนอง หรือใส่เนื้อเพลงเองให้แต่งทำนอง</td><td>เลือกสไตล์ตามวัย: ประถม = Children Pop, Chant/Cheer, Hip-Hop เบาๆ, Folk/ลูกทุ่ง · ม.ต้น = Pop Rock/Acoustic, Reggae/Ska, Reggaeton, Rap <span class="ref">AI น.39–40</span></td></tr>
+<tr><td><b>AlphaGeometry</b></td><td>แก้โจทย์และพิสูจน์เรขาคณิต</td><td>ให้แสดงวิธีคิด/พิสูจน์หลายแบบ <span class="ref">ข้อสอบ น.3</span></td></tr>
+<tr><td><b>Chatbot</b></td><td>โปรแกรมจำลองการสนทนาด้วย NLP + AI ตอบแบบ real-time</td><td>4 ชนิด: Rule-based · AI-powered · Hybrid · Voice-enabled <span class="ref">AI น.43–44</span></td></tr></table></div>
+<p><b>ใช้ chatbot ในการเรียนและประเมิน 7 ข้อ:</b> 1) ให้สื่อ/แหล่งเรียนรู้เพิ่ม 2) ติดตาม syllabus งาน rubric กำหนดส่ง 3) feedback ทันที (formative) 24/7 4) ประเมิน/วินิจฉัยด้วย quiz (placement, diagnostic, formative, summative, self-assessment) 5) แจ้งคะแนน/เกรดอย่างเปิดเผยและเป็นส่วนตัว 6) เก็บข้อมูลทำ learning analytics 7) ใช้ GenAI สนทนาในขอบเขตที่กำหนด <span class="ref">AI น.45–51</span></p>
+<div class="box ex"><span class="label">Fluffy Bot (ตัวอย่างของวิทยากร) <span class="ref">AI น.52–61</span></span>
+Hybrid chatbot สำหรับมือใหม่ ตัวอย่างวิชาสถิติ · สร้างด้วย <b>Google Sheet + Apps Script</b> + <b>Messaging API (LINE Developer)</b> + <b>Gemini AI</b> · Rich menu 6 ปุ่ม: Learn more, Gain more! (ลิงก์ Drive สื่อ) · Track my tasks (Sheet ความคืบหน้าส่งงาน) · Practice makes perfect (แบบฝึก 3 ตัวเลือก + feedback ทันที) · Test a hit or a miss (สอบ 4 ตัวเลือก บันทึกคะแนน) · Check my scores (ล็อกอินด้วยรหัส ดูคะแนน — privacy) · Chat with Fluffy (คุยกับ Gemini ในบทครูคณิตที่สุภาพ ตอบสั้น มีอีโมจิ)</div>
+
+<!-- ========================= 4 ========================= -->
+<h2 id="s4">4 · ความรู้พื้นฐานด้านวิธีวิทยาการสอนคณิตศาสตร์</h2>
+
+<h3>4.1 ความรู้ทางคณิตศาสตร์ 2 ประเภท</h3>
+<div class="tw"><table><thead><tr><th></th><th>ความรู้เชิงมโนทัศน์ (Conceptual)</th><th>ความรู้เชิงขั้นตอน/กระบวนการ (Procedural)</th></tr></thead>
+<tr><td>คืออะไร</td><td>ความหมายและโครงสร้างทางคณิต · ความสัมพันธ์ของสิ่งที่ใช้อธิบาย · ความรู้เกี่ยวกับ<b>บทนิยาม กฎ สมบัติ ทฤษฎีบท สูตร สัญลักษณ์</b> · <b>ที่มา/เหตุผลของขั้นตอน</b></td><td><b>การคำนวณ</b> · <b>การใช้กฎ/ทฤษฎีบท/สูตร</b> · <b>ขั้นตอนการดำเนินงาน</b>ทางคณิต</td></tr>
+<tr><td>ตัวอย่างในสไลด์</td><td>ทฤษฎีบทตัวประกอบตรรกยะ · นิยาม ห.ร.ม. · ที่มาของสูตรระยะทางระหว่างจุดสองจุด</td><td>หารสังเคราะห์ · หา ห.ร.ม. แบบยุคลิด · ขั้นตอนการสร้าง · ขั้นตอนแก้ปัญหา · ขั้นตอนไม่มีชื่อทางการ · หาควอร์ไทล์ · หาส่วนเบี่ยงเบนมาตรฐาน 5 ขั้น</td></tr>
+<tr><td>อธิบายอย่างไร</td><td>(1) ใช้นิยาม/สมบัติที่เรียนก่อนหน้า + เหตุผลทางคณิต (2) ให้นิพจน์มีความหมายด้วยบริบทชีวิตจริง/รูปธรรม</td><td>อธิบายกฎและขั้นตอนให้ชัด ไปพร้อมกับทำงานคณิตเป็นลำดับขั้น</td></tr></table></div>
+<p class="ref">วิธี2 น.4–8, 12, 14</p>
+<div class="box key"><span class="label">ประโยคตอบสอบ (ข้อ 4 ข้อสอบเก่า, 2 คะแนน)</span>
+<b>ความรู้เชิงมโนทัศน์</b> คือความรู้เกี่ยวกับความหมายและโครงสร้างทางคณิตศาสตร์ ความสัมพันธ์ของสิ่งที่ใช้อธิบาย ได้แก่ บทนิยาม กฎ สมบัติ ทฤษฎีบท สูตร สัญลักษณ์ รวมถึงที่มาหรือเหตุผลของขั้นตอน เช่น "สมการเชิงเส้นตัวแปรเดียวคือสมการที่เขียนได้ในรูป $ax+b=0$ เมื่อ $a\ne0$"<br>
+<b>ความรู้เชิงกระบวนการ</b> คือความรู้เกี่ยวกับการคำนวณ การใช้กฎ/ทฤษฎีบท/สูตร และขั้นตอนการดำเนินงานทางคณิตศาสตร์ เช่น "ขั้นตอนหาส่วนเบี่ยงเบนมาตรฐาน: หาค่าเฉลี่ย → หาผลต่างจากค่าเฉลี่ย → ยกกำลังสอง → รวม → แทนในสูตร"</div>
+<div class="box ex"><span class="label">ตัวอย่างที่สองแบบอยู่ด้วยกัน (ตรวจแล้ว) <span class="ref">วิธี2 น.18–23</span></span>
+<b>ห.ร.ม.×ค.ร.น.</b>: $300=2^2\cdot3\cdot5^2$, $1400=2^3\cdot5^2\cdot7$ → $(300,1400)=2^2\cdot5^2=100$ (เลขชี้กำลัง min), $[300,1400]=2^3\cdot3\cdot5^2\cdot7=4200$ (max) → $100\times4200=420{,}000=300\times1400$ ⇒ ข้อสังเกต $(a,b)[a,b]=ab$ (มโนทัศน์ อธิบายด้วยตัวอย่าง)<br>
+<b>แยกตัวประกอบ $x^4-x^3-2x^2-4x-24$</b> (กระบวนการ): ตัวหารของ −24 → $p(-2)=16+8-8+8-24=0$ → $x+2$ เป็นตัวประกอบ → หารได้ $x^3-3x^2+4x-12=(x-3)(x^2+4)$ → $=(x+2)(x-3)(x^2+4)$<br>
+<b>ตารางค่าความจริง</b> $(p\lor\sim q)\land\sim(p\to q)$ จริงเฉพาะกรณี p = T, q = F — สไลด์ถามว่า "มีความรู้เชิงกระบวนการแทรกไหม" → มี (ขั้นตอนสร้างตารางทีละคอลัมน์) ใช้มโนทัศน์ของตัวเชื่อมแต่ละตัวประกอบ</div>
+<div class="box note"><span class="label">ต้องอธิบายที่มา vs ต้องรู้แต่อาจไม่อธิบายที่มา <span class="ref">วิธี2 น.15–17</span></span>
+ต้องอธิบาย: ที่มาของสูตรระยะทางระหว่างจุดสองจุด · ฟังก์ชันผ่านผลคูณคาร์ทีเซียน/ความสัมพันธ์ · $\log x^n=n\log x$ · มุมภายใน n เหลี่ยม $180(n-2)$ · ผลบวก $1+2+\dots+n$ (ใช้การให้เหตุผลแทนการพิสูจน์)<br>
+ต้องรู้แต่อาจไม่อธิบายที่มา: ขั้นตอนแบ่งครึ่งส่วนของเส้นตรงด้วยวงเวียนและสันตรง (ทวนขั้นตอนพอ)</div>
+
+<h3>4.2 แผนการจัดการเรียนรู้ (Lesson Plan)</h3>
+<p>การออกแบบการจัดการเรียนรู้ประจำหน่วย/เรื่อง เพื่อเตรียมล่วงหน้าอย่างเป็นระบบและเป็นลายลักษณ์อักษร <span class="ref">วิธี1 น.3</span></p>
+<div class="tw"><table><thead><tr><th>องค์ประกอบ (9)</th><th>เขียนอย่างไร</th></tr></thead>
+<tr><td>1. หัวเรื่อง</td><td>ลำดับที่แผน · กลุ่มสาระ · ระดับชั้น · หัวข้อ (บท/หัวข้อย่อย) · เวลา · วัน-วันที่-ช่วงเวลา <span class="ref">วิธี1 น.7</span></td></tr>
+<tr><td>2. มาตรฐานการเรียนรู้และตัวชี้วัด / ผลการเรียนรู้ที่คาดหวัง</td><td>วิชาพื้นฐาน → มาตรฐาน + ตัวชี้วัด · วิชาเพิ่มเติม → ผลการเรียนรู้ (ที่คาดหวัง) ตามหลักสูตรแกนกลาง/สถานศึกษา <span class="ref">วิธี1 น.9–10</span></td></tr>
+<tr><td>3. จุดประสงค์การเรียนรู้</td><td>สิ่งที่ครูคาดหวังหลังเรียน: รู้อะไร (K) · ทำอะไรได้ (P) · คุณลักษณะ (A) · สอดคล้องมาตรฐาน/ตัวชี้วัด <span class="ref">วิธี1 น.12</span></td></tr>
+<tr><td>4. สาระสำคัญ (Concept)</td><td>ข้อความสรุปจากลักษณะเด่นของเนื้อหา กระชับ ชัด · ความเรียงหรือข้อๆ · ชั้นต้นๆ ควรมีสาระสำคัญเดียว <span class="ref">วิธี1 น.13–14</span></td></tr>
+<tr><td>5. สาระการเรียนรู้ (Content)</td><td>ทฤษฎีบท หลักการ วิธีการ ขั้นตอน ตัวอย่าง เรียงตามกิจกรรม · ไม่ต้องเขียนสาระสำคัญซ้ำ <span class="ref">วิธี1 น.19</span></td></tr>
+<tr><td>6. กิจกรรมการเรียนรู้</td><td>ใช้ทฤษฎี/รูปแบบ/วิธี/เทคนิคการสอน เขียนเป็นข้อตามวิธีสอน สอดคล้องจุดประสงค์ เห็นแนวประเมิน บอกทำอะไร-อย่างไร-เวลา ไม่ต้องเขียนคำพูดครู เน้นผู้เรียนเป็นสำคัญ <span class="ref">วิธี1 น.20–21</span></td></tr>
+<tr><td>7. สื่อและแหล่งการเรียนรู้</td><td>สื่อ: วัสดุ สื่อมือ แอป คลิป เอกสาร · แหล่ง: หนังสือเรียน เว็บไซต์ <span class="ref">วิธี1 น.23</span></td></tr>
+<tr><td>8. การวัดและประเมินผล</td><td>ระบุวิธีให้สอดคล้องจุดประสงค์ + วิธีการ เครื่องมือ เกณฑ์ (ตาราง: จุดประสงค์ K/P/A | วิธีวัด | เครื่องมือ | เกณฑ์ | ผล) · วิธี: สังเกต ถาม ตรวจชิ้นงาน แบบทดสอบท้ายคาบ <span class="ref">วิธี1 น.25–27</span></td></tr>
+<tr><td>9. บันทึกหลังการจัดการเรียนรู้</td><td>รายห้อง รายคาบ: ผลการจัด (ข้อดี/ข้อจำกัด) · ปัญหาอุปสรรค · แนวทางแก้ไข <span class="ref">วิธี1 น.28</span></td></tr></table></div>
+<div class="box ex"><span class="label">วิธีเขียนสาระสำคัญ 3 แบบ <span class="ref">วิธี1 น.15–18</span></span>
+จาก<b>ความหมาย</b>: "การบวกคือการนับเลขแต่ละจำนวนต่อเนื่องกันไปจนหมด" · จาก<b>ความสำคัญ</b>: "การหาปริมาณ ระยะทาง เวลา พื้นที่ ปริมาตร จำเป็นต้องใช้การวัด ใช้หน่วยสากล SI" · จาก<b>องค์ประกอบ/ขั้นตอน</b>: แก้โจทย์ร้อยละ 4 ขั้น เข้าใจโจทย์ → วางแผน (เขียนสัดส่วน) → ดำเนินการ → ตรวจคำตอบ</div>
+<p><b>กิจกรรม 50 นาที:</b> ขั้นนำ 5–10 นาที (กระตุ้นความสนใจ ทบทวนพื้นฐาน บอกจุดประสงค์) → ขั้นสอน (ลำดับกิจกรรม สะท้อนจุดประสงค์ วิธีสอน สื่อ การประเมิน) → ขั้นสรุป (ให้นักเรียนลองสรุปก่อน) <span class="ref">วิธี1 น.22</span></p>
+<p><b>ประโยชน์ของการวัดผล:</b> นักเรียนรู้ความสามารถตน (feedback) · วินิจฉัยแก้ข้อบกพร่อง · ครูรู้ว่าบรรลุจุดประสงค์ไหม · ปรับปรุงแผน <span class="ref">วิธี1 น.24</span></p>
+<p><b>แผนที่ดี:</b> นำไปปฏิบัติได้จริง · ชัดเจนไม่คลุมเครือ · องค์ประกอบ<b>สอดคล้องเชื่อมโยงกัน</b> <span class="ref">วิธี1 น.29</span><br>
+<b>ประโยชน์ของแผน:</b> เห็นความต่อเนื่องตามหลักสูตร · ปรับปรุงจากข้อจำกัด · สอดคล้องความถนัด/ความสนใจผู้เรียน · เตรียมสื่อก่อนสอน · มั่นใจ · คนอื่นสอนแทนได้ · หลักฐานผลงาน · บ่งชี้ความเป็นวิชาชีพครู <span class="ref">วิธี1 น.30</span></p>
+
+<h3>4.3 การเขียนจุดประสงค์การเรียนรู้</h3>
+<p>ข้อความระบุผลที่คาดหวังให้ผู้เรียนบรรลุจากการสอน — 3 ด้าน: <b>ความรู้ (Knowledge)</b> · <b>ทักษะและกระบวนการทางคณิต (Process)</b> · <b>คุณลักษณะที่พึงประสงค์ (Attribute)</b> <span class="ref">วิธี1 น.32</span></p>
+<div class="box key"><span class="label">หลักการเขียน 6 ข้อ (ข้อสอบเก่า 5.1) <span class="ref">วิธี1 น.34</span></span>
+① สนใจสิ่งที่<b>ผู้เรียน</b>จะเรียนรู้ ไม่ใช่สิ่งที่ผู้สอนทำ ② <b>หลีกเลี่ยงคำกริยาคลุมเครือ</b> เช่น "มีความรู้" "เข้าใจ" ③ เริ่มด้วย<b>คำกริยาการกระทำที่สังเกตและวัดผลได้</b> ④ <b>1 คำกริยาต่อ 1 จุดประสงค์</b> ⑤ เหมาะกับระดับผู้เรียน ⑥ จำนวนต่อคาบไม่มากเกินไป</div>
+<div class="two">
+<div class="box warn"><span class="label">✗ เขียนผิด</span>นักเรียน<b>เข้าใจ</b>เลขยกกำลัง (วัดไม่ได้)<br>ครูอธิบายความหมายเลขยกกำลัง (เขียนสิ่งที่ครูทำ)<br>บอกความหมาย<b>และ</b>คำนวณเลขยกกำลังได้ (2 กริยา)</div>
+<div class="box ex"><span class="label">✓ ที่ถูก <span class="ref">วิธี1 น.38</span></span>ด้านความรู้ นักเรียนสามารถ<br>1. บอกความหมายของเลขยกกำลังได้<br>2. เขียนจำนวนแทนเลขยกกำลังที่มีเลขชี้กำลังเป็นจำนวนเต็มบวกได้</div></div>
+<p><b>สิ่งที่ต้องคำนึง (ด้านความรู้ — ข้อสอบเก่า 5.2):</b> มาตรฐานการเรียนรู้ · ตัวชี้วัด/ผลการเรียนรู้ · สาระการเรียนรู้แกนกลาง · หน่วยการเรียนรู้ · เนื้อหาที่เลือก <span class="ref">วิธี1 น.36</span></p>
+<div class="box key"><span class="label">ทักษะและกระบวนการทางคณิต 5 ด้าน <span class="ref">วิธี1 น.40–41</span></span>
+① <b>การแก้ปัญหา</b> เข้าใจ วิเคราะห์ วางแผน เลือกวิธี คำนึงความสมเหตุสมผล ตรวจสอบ ② <b>การสื่อสารและสื่อความหมาย</b> ใช้รูป ภาษา สัญลักษณ์ สรุปผล นำเสนอ ③ <b>การเชื่อมโยง</b> ความรู้คณิตกับคณิตด้วยกัน/ศาสตร์อื่น/ชีวิตจริง ④ <b>การให้เหตุผล</b> ให้/รับฟัง/โต้แย้งเหตุผล ⑤ <b>การคิดสร้างสรรค์</b> ขยายหรือสร้างแนวคิดใหม่<br>
+ตัวอย่างจุดประสงค์ด้าน P: แก้โจทย์ร้อยละได้อย่างเป็นลำดับขั้น · แสดงเหตุผลสนับสนุนคำตอบได้สมเหตุสมผล · เชื่อมโยงพีทาโกรัสหาระยะระหว่างจุด <span class="ref">วิธี1 น.42</span></div>
+<p><b>ด้านคุณลักษณะ:</b> ทำงานเป็นระบบ · มีระเบียบ · มีวิจารณญาณ · เชื่อมั่นในตนเอง · รอบคอบ · รับผิดชอบ · ตระหนักในคุณค่า/เจตคติที่ดีต่อคณิต — ตัวอย่าง: มีความร่วมมือในการทำกิจกรรม · รับผิดชอบในการส่งงาน · รอบคอบในการตอบคำถาม · ตรงเวลา <span class="ref">วิธี1 น.44–45</span></p>
+
+<!-- ========================= คำตอบตัวอย่าง ========================= -->
+<h2 id="ans">คำตอบตัวอย่างข้อสอบเก่า (เขียนตามได้)</h2>
+<p>ไฟล์ข้อสอบเก่ามีคำตอบลายมือของรุ่นก่อน — ตรวจเทียบเอกสารแล้ว ส่วนใหญ่ถูก จุดที่ควรเติมเขียนไว้ด้านล่าง <span class="ref">ข้อสอบ น.1–5</span></p>
+<h3>1.1 ลักษณะสำคัญของเอกสารสรุปมโนทัศน์ / เอกสารเชื่อมโยง (3 คะแนน)</h3>
+<p><b>สรุปมโนทัศน์:</b> เอกสารที่ช่วยให้ผู้เรียนเข้าใจมโนทัศน์ที่เรียนชัดเจนขึ้น ไม่ใช่เพียงสรุปเนื้อหานามธรรม ประกอบด้วย ชื่อมโนทัศน์ · นิยามด้วยภาษาตนเอง · ลักษณะสำคัญ · ตัวอย่างที่สอดคล้องพร้อมเหตุผล · ตัวอย่างที่ไม่สอดคล้องพร้อมเหตุผล ใช้ระหว่างสอนหรือเมื่อสอนจบ</p>
+<p><b>เชื่อมโยง:</b> เอกสารที่ให้ผู้เรียนเชื่อมโยงมโนทัศน์ที่หลากหลายที่เรียนแล้วและสื่อสารความหมายให้ผู้อื่นทราบ แบ่ง 4 ช่องรอบชื่อเรื่อง: ตัวอย่างทางคณิต · ตัวอย่างในชีวิตประจำวัน · แผนภาพ/รูปภาพ/กราฟ · คำอธิบายของผู้เรียน ใช้เมื่อสอนจบและใช้วินิจฉัยระดับมโนทัศน์</p>
+<div class="box note"><span class="label">จุดที่ควรเติมจากคำตอบรุ่นก่อน</span>คำตอบเดิมบอกแค่เป้าหมาย — ใส่<b>ส่วนประกอบ</b>ด้วย เพราะคำถามคือ "ลักษณะสำคัญ"</div>
+<h3>1.2 ข้อควรพิจารณาในการออกแบบเอกสารตัวอย่างงาน (2 คะแนน)</h3>
+<p>1) ใช้กับงานที่มีขั้นตอนเฉพาะหรือต่างจากขั้นตอนทั่วไป เพื่อเน้นความแตกต่าง เช่น หา ห.ร.ม. กับ ค.ร.น. 2) ควรเน้นให้เห็นความผิดพลาดหรือวิธีที่ไม่ถูกต้อง เช่น $(a+b)^2\ne a^2+b^2$ (3) ใช้เป็นแนวทางฝึกทำทีละขั้น)</p>
+<h3>2. GeoGebra (5 คะแนน)</h3>
+<p>ใช้ขั้นตอนในหัวข้อ 2 · เขียนเป็นลำดับเลข ระบุ<b>ชื่อเมนู → ชื่อเครื่องมือ → คลิกอะไร</b> หรือคำสั่งที่พิมพ์</p>
+<h3>3. เล่านวัตกรรมเทคโนโลยี 2 ชิ้น (3 คะแนน)</h3>
+<p><b>Canva AI</b> — เหตุผล: ครูสร้างใบงาน สไลด์ และเกมการเรียนรู้ได้เร็วจาก prompt ภาษาไทย · ลักษณะ: พิมพ์ prompt (PTCF) ระบุระดับชั้น หัวข้อ กิจกรรม การออกแบบ → ได้ใบงาน A4 หรือเกม HTML5 เช่น เกมจับคู่โจทย์ ม.1 ที่มีคะแนนและจับเวลา<br>
+<b>Suno AI</b> — เหตุผล: เพลงช่วยให้จำสูตรได้ สนุก เหมาะเด็กเล็ก · ลักษณะ: ให้แต่งทั้งเนื้อและทำนอง หรือนำเนื้อที่มีมาใส่ทำนอง เลือกสไตล์ตามวัย เช่น Children Pop สำหรับประถม เพลงสูตรเส้นรอบรูป/พื้นที่สี่เหลี่ยม<br>
+(ตัวเลือกอื่น: NotebookLM · Chatbot แบบ Fluffy Bot · AlphaGeometry)</p>
+<h3>4–6 วิธีวิทยา (7 คะแนน)</h3>
+<p><b>4.</b> ใช้กล่อง "ประโยคตอบสอบ" ในหัวข้อ 4.1<br>
+<b>5.1</b> ขึ้นต้นด้วยคำกริยาการกระทำที่สังเกต/วัดผลได้ · หลีกเลี่ยงคำกริยาคลุมเครือ เช่น "เข้าใจ" (หรือ: 1 กริยาต่อ 1 ข้อ · เน้นสิ่งที่ผู้เรียนทำ)<br>
+<b>5.2</b> ต้องสอดคล้องกับมาตรฐานการเรียนรู้และตัวชี้วัด เพราะทำให้ขอบเขตเนื้อหาถูกต้องตามหลักสูตร และนำไปสู่การวัดผลที่ตรงตัวชี้วัด<br>
+<b>6.1</b> หัวเรื่อง · มาตรฐาน/ตัวชี้วัด/ผลการเรียนรู้ · จุดประสงค์ · สาระสำคัญ · สาระการเรียนรู้ · กิจกรรม · สื่อและแหล่งเรียนรู้ · การวัดและประเมินผล · บันทึกหลังสอน<br>
+<b>6.2</b> <b>จุดประสงค์</b>กำหนดว่าผู้เรียนต้องรู้/ทำอะไรได้ → <b>กิจกรรม</b>ออกแบบให้ผู้เรียนบรรลุจุดประสงค์นั้น (จุดประสงค์ "แก้โจทย์ร้อยละเป็นลำดับขั้น" → กิจกรรมให้ฝึกทำทีละขั้น) → <b>การวัดผล</b>ต้องวัดสิ่งที่จุดประสงค์ระบุ ด้วยวิธี เครื่องมือ เกณฑ์ที่สอดคล้อง (ตรวจใบงานที่แสดงขั้นตอน เกณฑ์ถูก 70%) — สามส่วนต้องสอดคล้องกันจึงเป็นแผนที่ดี</p>
+
+<!-- ========================= สรุปรวม ========================= -->
+<h2 id="sum">สรุปรวม 1 หน้า</h2>
+<div class="tw"><table><thead><tr><th style="width:26%">เรื่อง</th><th>จำให้ได้</th></tr></thead>
+<tr><td>สื่อเอกสาร 3 กลุ่ม</td><td>เฉพาะ (สรุปมโนทัศน์ เชื่อมโยง ตัวอย่างงาน แนะแนวทาง) · ทั่วไป (ใบกิจกรรม ใบงาน ใบความรู้) · สมบูรณ์ในตัว (บทเรียนสำเร็จรูป การ์ตูน ชุดการเรียนการสอน)</td></tr>
+<tr><td>สรุปมโนทัศน์</td><td>ชื่อ · นิยาม · ลักษณะสำคัญ · ตัวอย่าง ✓+เหตุผล · ตัวอย่าง ✗+เหตุผล</td></tr>
+<tr><td>เชื่อมโยง</td><td>4 ช่อง: คณิต · ชีวิตประจำวัน · ภาพ/กราฟ · คำอธิบายผู้เรียน</td></tr>
+<tr><td>ตัวอย่างงาน</td><td>ตัวอย่างวิธีทำ + โจทย์ฝึก (+สรุป) · เน้น ขั้นตอนเฉพาะ/ข้อผิดพลาด/How to · 4 แบบ Faded, Self-explanation, Incorrect, Comparing</td></tr>
+<tr><td>แนะแนวทาง</td><td>กิจกรรมง่าย→ยาก ค้นพบเอง + ส่วนสรุป · ไม่มีเฉลย · สร้าง 4 ขั้น</td></tr>
+<tr><td>ใบกิจกรรม/ใบงาน/ใบความรู้</td><td>ทำกิจกรรมตามกระบวนการ / ภาระงานเข้าใจ+ฝึกทักษะ (Bloom) / เนื้อหาให้อ่านเอง</td></tr>
+<tr><td>บทเรียนสำเร็จรูป</td><td>กรอบ (Frame) เฉลยทันที · เส้นตรง vs สาขา (กรอบยืน + กรอบสาขา Remedial)</td></tr>
+<tr><td>ชุดการเรียนการสอน</td><td>คู่มือ · คำสั่ง/มอบงาน · เนื้อหาสื่อประสม+กิจกรรม · ประเมินผล</td></tr>
+<tr><td>GeoGebra Graphing</td><td>Basic (Move Point Slider Intersect Extremum Roots Best Fit Line) · Edit (Select, Move Graphics View, Delete, Show/Hide Label, Show/Hide Object, Copy Visual Style) · Media (Text) · Points (+Point on Object, Attach/Detach, Complex Number, List) · Lines (Line Ray Vector) · Others (Pen, Freehand Function, Button, Check Box, Input Box)</td></tr>
+<tr><td>GeoGebra คำสั่ง</td><td><code>Segment(A,B)</code> <code>PerpendicularLine(C,f)</code> <code>Midpoint(A,B)</code> <code>Circle(A,3)</code> <code>Polygon(A,B,C)</code> <code>a=Slider(-10,10,0.1)</code> · ซ่อน = วงกลมสี / Show/Hide Object / Settings→Show Object</td></tr>
+<tr><td>AI</td><td>ลักษณะ 4: Input · Inference · Adaptability · Autonomous · จริยธรรม 5: ตรวจสอบได้ · ส่วนตัว · เป็นธรรม · โปร่งใส · ปลอดภัย · PTCF · 4 Roles: Content, Task Designer, Thinking Partner, Assessment</td></tr>
+<tr><td>เครื่องมือ AI</td><td>NotebookLM สรุป→สื่อ · Canva AI ใบงาน/เกม · Suno เพลง · AlphaGeometry พิสูจน์ · Chatbot 4 ชนิด · Fluffy Bot = Sheet+Apps Script+LINE+Gemini</td></tr>
+<tr><td>ความรู้ทางคณิต</td><td>มโนทัศน์ = นิยาม กฎ สมบัติ ทฤษฎีบท สูตร สัญลักษณ์ ที่มา · กระบวนการ = คำนวณ ใช้สูตร ขั้นตอน</td></tr>
+<tr><td>แผน 9 องค์ประกอบ</td><td>หัวเรื่อง · มาตรฐาน/ตัวชี้วัด · จุดประสงค์ · สาระสำคัญ · สาระการเรียนรู้ · กิจกรรม · สื่อ · วัดผล · บันทึกหลังสอน</td></tr>
+<tr><td>จุดประสงค์</td><td>K-P-A · กริยาวัดได้ · 1 กริยา/ข้อ · เน้นผู้เรียน · สอดคล้องตัวชี้วัด · ทักษะ 5: แก้ปัญหา สื่อสาร เชื่อมโยง ให้เหตุผล คิดสร้างสรรค์</td></tr>
+</table></div>
+
+<h2>จุดที่พลาดบ่อย</h2>
+<div class="two">
+<div class="box warn"><span class="label">✗ คิดผิด</span>เอกสารแนะแนวทางมีเฉลยให้นักเรียนตรวจเอง</div>
+<div class="box ex"><span class="label">✓ ที่ถูก</span>ไม่มีเฉลยในเอกสาร — ครูเฉลยและสรุปหลังทำเสร็จ <span class="ref">สื่อ น.28, 32</span></div>
+<div class="box warn"><span class="label">✗</span>บทเรียนสำเร็จรูปแบบเส้นตรงมีกรอบสาขา</div>
+<div class="box ex"><span class="label">✓</span>กรอบยืน + กรอบสาขา คือแบบ<b>สาขา</b> · เส้นตรงตอบผิดให้อ่านซ้ำ <span class="ref">สื่อ น.47–49</span></div>
+<div class="box warn"><span class="label">✗</span>"เข้าใจความหมายของ…ได้" เป็นจุดประสงค์ที่ดี</div>
+<div class="box ex"><span class="label">✓</span>"เข้าใจ" คลุมเครือ วัดไม่ได้ → ใช้ "บอก/เขียน/คำนวณ/อธิบาย" <span class="ref">วิธี1 น.34</span></div>
+<div class="box warn"><span class="label">✗</span>สูตร/ทฤษฎีบท = ความรู้เชิงกระบวนการ</div>
+<div class="box ex"><span class="label">✓</span>ตัวสูตร/ทฤษฎีบทเป็น<b>มโนทัศน์</b> · การ<b>ใช้</b>สูตรเป็นกระบวนการ <span class="ref">วิธี2 น.5, 7</span></div>
+<div class="box warn"><span class="label">✗</span>Graphing Calculator มีเครื่องมือ Segment</div>
+<div class="box ex"><span class="label">✓</span>หมวด Lines มีแค่ Line, Ray, Vector → ส่วนของเส้นตรงใช้ <code>Segment(A, B)</code></div>
+<div class="box warn"><span class="label">✗</span>Show/Hide Object คลิกแล้ววัตถุหายทันที</div>
+<div class="box ex"><span class="label">✓</span>ต้อง<b>เปลี่ยนไปเครื่องมืออื่น</b>ก่อนจึงซ่อนจริง</div>
+<div class="box warn"><span class="label">✗</span>ใบความรู้ = ใบงาน</div>
+<div class="box ex"><span class="label">✓</span>ใบความรู้ให้<b>อ่าน</b>เนื้อหาเอง · ใบงานมี<b>ภาระงาน</b>ให้ทำ <span class="ref">สื่อ น.39, 42</span></div>
+</div>
+
+
+<h2 id="quiz">แบบทดสอบท้ายบทเรียน</h2>
+<div class="quizcard"><div>
+<p><b>อ่านครบทุกหัวข้อแล้ว ลองทำแบบทดสอบ 52 ข้อ</b></p>
+<p class="meta">สื่อเอกสาร 16 · GeoGebra 10 · AI 11 · วิธีวิทยา 15 — ตอบแล้วเห็นเฉลยพร้อมเหตุผลทันที สุ่มข้อและตัวเลือกใหม่ทุกครั้ง</p>
+<p class="meta">ข้อไหนพลาด กลับมาอ่านหัวข้อนั้นได้จากแถบเมนูด้านบน</p>
+</div><a class="btn-quiz" href="%E0%B9%81%E0%B8%9A%E0%B8%9A%E0%B8%97%E0%B8%94%E0%B8%AA%E0%B8%AD%E0%B8%9A_%E0%B8%99%E0%B8%A7%E0%B8%B1%E0%B8%95%E0%B8%81%E0%B8%A3%E0%B8%A3%E0%B8%A1_%E0%B8%9B%E0%B8%A5%E0%B8%B2%E0%B8%A2%E0%B8%A0%E0%B8%B2%E0%B8%84_52%E0%B8%82%E0%B9%89%E0%B8%AD.html">เริ่มทำแบบทดสอบ →</a></div>
+</main>
+</body>
+</html>
